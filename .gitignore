@@ -2,4 +2,3 @@ __pycache__/
 errors/
 sessions/*
 DS_Store
-databases/
