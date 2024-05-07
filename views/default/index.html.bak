@@ -1,7 +1,7 @@
 {{extend 'layout.html'}}
 
 
-<h2>(test2) This is index.html</h2>
+<h2>This is different</h2>
 
 <p>
     {{ = A('Go To Company List', _href = URL('companies'))}}
