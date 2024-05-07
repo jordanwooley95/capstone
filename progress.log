@@ -89,4 +89,9 @@
 >>>>>>> 666b87ff449ab0a95416fd31b4b6d4e4187069ae
 [2024-05-07 18:24:11] EDIT crm/views/default/index.html: -4
 [2024-05-07 18:42:06] EDIT crm/views/default/index.html: 0
+<<<<<<< Updated upstream
 [2024-05-07 18:56:41] EDIT crm/views/default/index.html: 0
+=======
+[2024-05-07 18:46:33] EDIT crm/views/default/index.html: 0
+[2024-05-07 18:49:22] EDIT crm/views/default/index.html: 0
+>>>>>>> Stashed changes
