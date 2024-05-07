@@ -93,3 +93,5 @@ CREATE TABLE "events"(
     "comments" TEXT
 );
 success!
+timestamp: 2024-05-07T18:26:12.449320
+ALTER TABLE "companies" ADD "company_nam" CHAR(512) NOT NULL;
