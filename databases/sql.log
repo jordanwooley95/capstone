@@ -104,3 +104,13 @@ CREATE TABLE "events"(
     "comments" TEXT
 );
 success!
+timestamp: 2024-05-07T19:52:05.521292
+ALTER TABLE "states" ADD "name_of_state" CHAR(512) NOT NULL;
+success!
+timestamp: 2024-05-07T19:52:05.535785
+ALTER TABLE "companies" ADD "name_of_state" INTEGER REFERENCES "states" ("id") ON DELETE CASCADE ON UPDATE CASCADE  NOT NULL ;
+success!
+success!
+success!
+success!
+success!
