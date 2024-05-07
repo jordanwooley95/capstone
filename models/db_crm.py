@@ -2,8 +2,8 @@
 
 db.define_table(
     "states",
-    Field("state", notnull=True, requires=IS_IN_SET(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona"])),
-format="%(state)s"
+    Field("state_name", notnull=True, requires=IS_IN_SET(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona"])),
+format="%(state_name)s"
 )
 
 
