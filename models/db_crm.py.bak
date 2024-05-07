@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 
 db.define_table(
-    "company",
-    Field("company_name", notnull=True, format="%(company_name)s"),
+    "companies",
+    Field("company_nam", notnull=True, format="%(company_name)s"),
     Field("address", notnull=True),
     Field("industry", notnull=True),
     Field("socials"),
     Field("phone_number"),
+    format="%(company_name)s"
 )
 
 db.define_table(
     "persons",
-    Field("person_name", notnull=True, format="%(person_name)s"),
-    Field("company_name", "reference company", notnull=True),
+    Field("person_name", notnull=True),
+    Field("company_name", "reference companies", notnull=True),
     Field("title"),
     Field("work_phone", requires=IS_MATCH("[\d\-\(\) ]+")),
     Field("cell_phone", requires=IS_MATCH("[\d\-\(\) ]+")),
@@ -23,6 +24,7 @@ db.define_table(
     Field("comments", "text"),
     Field("created_by", "reference auth_user", default=auth.user_id),
     Field("created_on", "datetime", default=request.now),
+    format="%(person_name)s"
 )
 
 db.define_table(
@@ -35,5 +37,5 @@ db.define_table(
     Field("status", requires=IS_IN_SET(["Open", "Closed", "Canceled"])),
     Field("event_type", requires=IS_IN_SET(["Meeting", "Call", "Email", "Lunch", "Dinner", "Breakfast", "Other"])),
     Field("comments", "text"),
-    format="%(user_name)s",
+    format="%(event_type)s"
 )
