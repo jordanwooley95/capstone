@@ -82,3 +82,9 @@
 [2024-05-06 14:26:47] EDIT crm/views/default/index.html: -1
 [2024-05-06 14:27:04] EDIT crm/views/default/index.html: 0
 [2024-05-06 14:56:08] EDIT crm/models/menu.py: -60
+<<<<<<< HEAD
+[2024-05-07 18:15:25] EDIT crm/views/default/index.html: 0
+=======
+[2024-05-07 18:09:00] EDIT crm/views/default/index.html: 0
+>>>>>>> 666b87ff449ab0a95416fd31b4b6d4e4187069ae
+[2024-05-07 18:24:11] EDIT crm/views/default/index.html: -4
