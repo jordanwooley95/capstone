@@ -111,3 +111,7 @@ timestamp: 2024-05-07T19:22:33.455759
 ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
 timestamp: 2024-05-07T19:23:33.465758
 ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:24:39.343827
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:25:39.348875
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
