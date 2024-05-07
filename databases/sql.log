@@ -95,3 +95,17 @@ CREATE TABLE "events"(
 success!
 timestamp: 2024-05-07T18:26:12.449320
 ALTER TABLE "companies" ADD "company_nam" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:16:33.406953
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:17:33.414994
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:18:33.421392
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:19:33.439152
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:20:33.431944
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:21:33.444228
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
+timestamp: 2024-05-07T19:22:33.455759
+ALTER TABLE "companies" ADD "company_id" CHAR(512) NOT NULL;
