@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
 
 db.define_table(
+    "states",
+    Field("state", notnull=True, requires=IS_IN_SET(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona"])),
+format="%(state)s"
+)
+
+
+db.define_table(
     "companies",
     Field("company_id", notnull=True),
     Field("company_name", notnull=True),
     Field("address", notnull=True),
+    Field("state", "reference states", notnull=True),
     Field("industry", notnull=True),
     Field("website", requires=IS_URL()),
     Field("linkedin"),
