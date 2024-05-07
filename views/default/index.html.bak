@@ -1,5 +1,9 @@
 {{extend 'layout.html'}}
-<h2>This is the index.html template</h2>
+<<<<<<< HEAD
+<h2>Hello!This is index.html</h2>
+=======
+<h2>Hello! This is index.html</h2>
+>>>>>>> 666b87ff449ab0a95416fd31b4b6d4e4187069ae
 
 <p>
     {{ = A('Go To Company List', _href = URL('companies'))}}
