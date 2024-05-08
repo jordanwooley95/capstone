@@ -2,17 +2,16 @@
 
 db.define_table(
     "states",
-    Field("statename", notnull=True, requires=IS_IN_SET(sorted(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona", "Montana", "New Jersey", "New York", "Virginia", "New Mexico", "Connecticut", "Rhode Island", "Maryland", "Missouri", "Delaware", "Minnesota", "Ohio"]))),
-format="%(statename)s"
-)
-
+    Field("select_state", requires=IS_IN_SET(sorted(["Colorado", "Washington", "Alaska", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona", "Montana", "New Jersey", "New York", "Virginia", "New Mexico", "Connecticut", "Rhode Island", "Maryland", "Missouri", "Delaware", "Minnesota", "Ohio"]))),
+    format="%(select_state)s"
+    )
 
 db.define_table(
     "companies",
     Field("company_id", notnull=True),
     Field("company_name", notnull=True),
     Field("address", notnull=True),
-    Field("statename", "reference states", notnull=True),
+    Field("select_state", "reference states"),
     Field("industry", notnull=True),
     Field("website", requires=IS_URL()),
     Field("linkedin"),
