@@ -101,3 +101,18 @@ CREATE TABLE "events"(
     "comments" TEXT
 );
 success!
+timestamp: 2024-05-08T19:55:00.681589
+CREATE TABLE "products"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "product_name" CHAR(512) NOT NULL,
+    "category" CHAR(512),
+    "description" TEXT,
+    "thc_content" DOUBLE,
+    "cbd_content" DOUBLE,
+    "price" DOUBLE,
+    "stock_quantity" INTEGER,
+    "supplier" CHAR(512) NOT NULL,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "created_on" TIMESTAMP
+);
+success!

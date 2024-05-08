@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+
 db.define_table(
     "states",
     Field("state_name", notnull=True),
@@ -7,10 +8,10 @@ db.define_table(
 )
 
 
-#with open(os.path.join(request.folder, 'private', 'states.csv'), 'rt') as f:
-    #db.states.import_from_csv_file(f)
+# with open(os.path.join(request.folder, 'private', 'states.csv'), 'rt') as f:
+# db.states.import_from_csv_file(f)
 
-#db.commit()
+# db.commit()
 
 db.define_table(
     "companies",
@@ -45,7 +46,10 @@ db.define_table(
 db.define_table(
     "events",
     Field("user_id", "reference auth_user"),
-    Field("person_id","reference persons",),
+    Field(
+        "person_id",
+        "reference persons",
+    ),
     Field("comm_type", requires=IS_IN_SET(["Phone", "Email", "In person"])),
     Field("event_datetime", "datetime", requires=IS_DATETIME()),
     Field("status", requires=IS_IN_SET(["Open", "Closed", "Canceled"])),
@@ -57,4 +61,28 @@ db.define_table(
     ),
     Field("comments", "text"),
     format="%(event_type)s",
+)
+
+db.define_table(
+    "products",
+    Field("product_name", notnull=True),
+    Field(
+        "category",
+        requires=IS_IN_SET(
+            ["Flower", "Edible", "Concentrate", "Pre-roll", "Topical", "Accessory"]
+        ),
+    ),
+    Field("description", "text"),
+    Field(
+        "thc_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)
+    ),  # THC content in percentage
+    Field(
+        "cbd_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)
+    ),  # CBD content in percentage
+    Field("price", "double", requires=IS_FLOAT_IN_RANGE(0)),  # Price per unit
+    Field("stock_quantity", "integer", default=0),  # Current stock quantity
+    Field("supplier", notnull=True),  # Supplier of the product
+    Field("created_by", "reference auth_user", default=auth.user_id),
+    Field("created_on", "datetime", default=request.now),
+    format="%(product_name)s",
 )

@@ -24,6 +24,11 @@ def events():
     grid = SQLFORM.grid(db.events)
     return dict(grid=grid)
 
+@auth.requires_login()
+def states():
+    grid = SQLFORM.grid(db.states)
+    return dict(grid=grid)
+
 # ---- API (example) -----
 @auth.requires_login()
 def api_get_user_email():

@@ -124,3 +124,5 @@
 [2024-05-07 21:55:10] EDIT crm/models/db_crm.py: 0
 [2024-05-07 21:55:25] EDIT crm/models/db_crm.py: 0
 [2024-05-07 21:55:27] EDIT crm/models/db_crm.py: 0
+[2024-05-08 19:53:35] EDIT crm/controllers/default.py: 4
+[2024-05-08 19:54:07] EDIT crm/views/default/index.html: 2
