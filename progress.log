@@ -95,3 +95,19 @@
 [2024-05-07 18:46:33] EDIT crm/views/default/index.html: 0
 [2024-05-07 18:49:22] EDIT crm/views/default/index.html: 0
 >>>>>>> Stashed changes
+[2024-05-07 19:08:58] EDIT crm/views/default/index.html: 0
+[2024-05-07 19:09:09] EDIT crm/views/default/index.html: 0
+[2024-05-07 19:14:46] EDIT crm/controllers/default.py: 16
+[2024-05-07 19:15:21] EDIT crm/views/default/index.html: 18
+[2024-05-07 19:16:10] EDIT crm/views/default/user.html: 0
+[2024-05-07 19:16:18] EDIT crm/controllers/default.py: 0
+[2024-05-07 19:19:59] EDIT crm/controllers/default.py: 1
+[2024-05-07 19:20:03] EDIT crm/controllers/default.py: 0
+[2024-05-07 19:24:28] EDIT crm/views/default/user.html: 0
+[2024-05-07 19:25:00] EDIT crm/controllers/default.py: 0
+[2024-05-07 19:26:44] EDIT crm/views/default/index.html: 0
+[2024-05-07 19:26:50] EDIT crm/views/default/index.html: 0
+[2024-05-07 19:43:48] EDIT crm/controllers/default.py: 0
+[2024-05-07 19:44:02] EDIT crm/controllers/default.py: 0
+[2024-05-07 19:56:28] EDIT crm/views/default/index.html: -18
+[2024-05-07 19:56:39] EDIT crm/controllers/default.py: -17

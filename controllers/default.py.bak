@@ -6,6 +6,26 @@
 
 # ---- example index page ----
 def index():
+    # Fetch data from your database
+    data = db().select(db.your_table.ALL)
+    return dict(data=data)
+
+def sort():
+    column = request.vars.column
+    # Perform sorting based on the selected column
+    if column == 'last_name':
+        sorted_data = db().select(db.your_table.ALL, orderby=db.your_table.last_name)
+    elif column == 'company':
+        sorted_data = db().select(db.your_table.ALL, orderby=db.your_table.company)
+    elif column == 'date_created':
+        sorted_data = db().select(db.your_table.ALL, orderby=db.your_table.date_created)
+    else:
+        sorted_data = db().select(db.your_table.ALL)
+
+    #return dict(data=sorted_data)
+    return locals()
+
+def index():
     response.flash = T("hello world")
     return dict(message=T('Welcome to web2py!'))
 

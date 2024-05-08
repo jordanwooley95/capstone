@@ -1,7 +1,26 @@
 {{extend 'layout.html'}}
 
+<table>
+    <thead>
+        <tr>
+            <th><a href="{{=URL('sort', vars=dict(column='last_name'))}}">Last Name</a></th>
+            <th><a href="{{=URL('sort', vars=dict(column='company'))}}">Company</a></th>
+            <th><a href="{{=URL('sort', vars=dict(column='date_created'))}}">Date Created</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{for row in sort.data:}}
+        <tr>
+            <td>{{=row.last_name}}</td>
+            <td>{{=row.company}}</td>
+            <td>{{=row.date_created}}</td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
 
-<h2>(test2) This is index.html</h2>
+
+<h2>This is different</h2>
 
 <p>
     {{ = A('Go To Company List', _href = URL('companies'))}}
