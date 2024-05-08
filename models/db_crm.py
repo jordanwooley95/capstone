@@ -49,7 +49,7 @@ db.define_table(
     Field("name_of_state", "reference states", notnull=True),
     Field("industry", notnull=True),
     Field("website", requires=IS_URL()),
-    Field("linkedin"),
+    Field("linkedin", requires=IS_URL()),
     Field("phone_number"),
     format="%(company_name)s",
 )

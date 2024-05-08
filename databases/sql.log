@@ -106,3 +106,5 @@ ALTER TABLE "events" ADD "person_name" INTEGER REFERENCES "persons" ("id") ON DE
 success!
 success!
 success!
+success!
+success!
