@@ -3,7 +3,7 @@
 db.define_table(
     "states",
     Field(
-        "name_of_state",
+        "select_state",
         notnull=True,
         unique=True,
         requires=IS_IN_SET(
@@ -38,7 +38,7 @@ db.define_table(
             )
         ),
     ),
-    format="%(name_of_state)s",
+    format="%(select_state)s",
 )
 
 
@@ -46,7 +46,7 @@ db.define_table(
     "companies",
     Field("company_name", notnull=True),
     Field("address", notnull=True),
-    Field("name_of_state", "reference states", notnull=True),
+    Field("select_state", "reference states", notnull=True),
     Field("industry", notnull=True),
     Field("website", requires=IS_URL()),
     Field("linkedin", requires=IS_URL()),
