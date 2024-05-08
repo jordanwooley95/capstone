@@ -6,6 +6,12 @@ db.define_table(
     format="%(state_name)s",
 )
 
+
+#with open(os.path.join(request.folder, 'private', 'states.csv'), 'rt') as f:
+    #db.states.import_from_csv_file(f)
+
+#db.commit()
+
 db.define_table(
     "companies",
     Field("company_name", notnull=True),
