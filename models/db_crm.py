@@ -1,62 +1,27 @@
 # -*- coding: utf-8 -*-
-
+import os
 db.define_table(
     "states",
-    Field(
-        "select_state",
-        notnull=True,
-        unique=True,
-        requires=IS_IN_SET(
-            sorted(
-                [
-                    "Colorado",
-                    "Washington",
-                    "Alaska",
-                    "Oregon",
-                    "Washington D.C.",
-                    "California",
-                    "Maine",
-                    "Massachusetts",
-                    "Nevada",
-                    "Michigan",
-                    "Vermont",
-                    "Illinois",
-                    "Arizona",
-                    "Montana",
-                    "New Jersey",
-                    "New York",
-                    "Virginia",
-                    "New Mexico",
-                    "Connecticut",
-                    "Rhode Island",
-                    "Maryland",
-                    "Missouri",
-                    "Delaware",
-                    "Minnesota",
-                    "Ohio",
-                ]
-            )
-        ),
-    ),
-    format="%(select_state)s",
+    Field("state_name", notnull=True),
+    format="%(state_name)s",
 )
-
 
 db.define_table(
     "companies",
     Field("company_name", notnull=True),
-    Field("address", notnull=True),
-    Field("select_state", "reference states", notnull=True),
-    Field("industry", notnull=True),
+    Field("city", notnull=True),
+    Field("state_name", "reference states", notnull=True),
+    Field("zip_code"),
+    Field("industry"),
     Field("website", requires=IS_URL()),
     Field("linkedin", requires=IS_URL()),
-    Field("phone_number"),
+    Field("phone_number", requires=IS_MATCH("[\d\-\(\) ]+")),
     format="%(company_name)s",
 )
 
 db.define_table(
     "persons",
-    Field("company_id", "reference companies", notnull=True),
+    Field("company_id", "reference companies"),
     Field("first_name", notnull=True),
     Field("last_name", notnull=True),
     Field("title"),
@@ -64,8 +29,7 @@ db.define_table(
     Field("cell_phone", requires=IS_MATCH("[\d\-\(\) ]+")),
     Field("email", requires=IS_EMAIL()),
     Field("birthday", requires=IS_DATE(format=T("%Y-%m-%d"))),
-    Field("company_type", requires=IS_IN_SET(["Customer", "Vendor"])),
-    Field("comm_type", requires=IS_IN_SET(["Web", "Phone", "Email", "In person"])),
+    Field("person_type", requires=IS_IN_SET(["Customer", "Vendor"])),
     Field("comments", "text"),
     Field("created_by", "reference auth_user", default=auth.user_id),
     Field("created_on", "datetime", default=request.now),
