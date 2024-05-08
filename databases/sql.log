@@ -1,0 +1,161 @@
+timestamp: 2024-05-07T19:43:12.097150
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+success!
+timestamp: 2024-05-07T19:43:12.107798
+CREATE TABLE "auth_group"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2024-05-07T19:43:12.116340
+CREATE TABLE "auth_membership"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2024-05-07T19:43:12.124098
+CREATE TABLE "auth_permission"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "name" CHAR(512),
+    "table_name" CHAR(512),
+    "record_id" INTEGER
+);
+success!
+timestamp: 2024-05-07T19:43:12.133386
+CREATE TABLE "auth_event"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "time_stamp" TIMESTAMP,
+    "client_ip" CHAR(512),
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "origin" CHAR(512),
+    "description" TEXT
+);
+success!
+timestamp: 2024-05-07T19:43:12.142403
+CREATE TABLE "auth_cas"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "created_on" TIMESTAMP,
+    "service" CHAR(512),
+    "ticket" CHAR(512),
+    "renew" CHAR(1)
+);
+success!
+timestamp: 2024-05-07T19:43:12.150493
+CREATE TABLE "states"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "statename" CHAR(512) NOT NULL
+);
+success!
+timestamp: 2024-05-07T19:43:40.178794
+CREATE TABLE "companies"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "company_id" CHAR(512) NOT NULL,
+    "company_name" CHAR(512) NOT NULL,
+    "address" CHAR(512) NOT NULL,
+    "statename" INTEGER REFERENCES "states" ("id") ON DELETE CASCADE ON UPDATE CASCADE  NOT NULL ,
+    "industry" CHAR(512) NOT NULL,
+    "website" CHAR(512),
+    "linkedin" CHAR(512),
+    "phone_number" CHAR(512)
+);
+success!
+timestamp: 2024-05-07T19:43:40.197176
+CREATE TABLE "persons"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "person_id" CHAR(512) NOT NULL,
+    "company_id" INTEGER REFERENCES "companies" ("id") ON DELETE CASCADE ON UPDATE CASCADE  NOT NULL ,
+    "first_name" CHAR(512) NOT NULL,
+    "last_name" CHAR(512) NOT NULL,
+    "title" CHAR(512),
+    "work_phone" CHAR(512),
+    "cell_phone" CHAR(512),
+    "email" CHAR(512),
+    "birthday" CHAR(512),
+    "company_type" CHAR(512),
+    "comm_type" CHAR(512),
+    "comments" TEXT,
+    "created_by" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "created_on" TIMESTAMP
+);
+success!
+timestamp: 2024-05-07T19:43:40.208213
+CREATE TABLE "events"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "person_name" INTEGER REFERENCES "persons" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "comm_type" CHAR(512),
+    "event_date" CHAR(512),
+    "event_time" CHAR(512),
+    "status" CHAR(512),
+    "event_type" CHAR(512),
+    "comments" TEXT
+);
+success!
+timestamp: 2024-05-07T19:52:05.521292
+ALTER TABLE "states" ADD "name_of_state" CHAR(512) NOT NULL;
+success!
+timestamp: 2024-05-07T19:52:05.535785
+ALTER TABLE "companies" ADD "name_of_state" INTEGER REFERENCES "states" ("id") ON DELETE CASCADE ON UPDATE CASCADE  NOT NULL ;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2024-05-07T20:03:11.042123
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+timestamp: 2024-05-07T20:04:11.031105
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
+timestamp: 2024-05-07T20:05:11.051522
+CREATE TABLE "auth_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "first_name" CHAR(128),
+    "last_name" CHAR(128),
+    "email" CHAR(512),
+    "password" CHAR(512),
+    "registration_key" CHAR(512),
+    "reset_password_key" CHAR(512),
+    "registration_id" CHAR(512)
+);
