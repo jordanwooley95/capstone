@@ -6,6 +6,12 @@
 
 # ---- example index page ----
 
+def person_details():
+    # Retrieve person details based on the ID
+    person_id = request.args(0)
+    person = db.persons(person_id) or redirect(URL('persons'))
+    return dict(person=person)
+
 def index():
     response.flash = T("hello world")
     return dict(message=T('Welcome to web2py!'))
@@ -25,6 +31,11 @@ def events():
     grid = SQLFORM.grid(db.events)
     return dict(grid=grid)
 
+@auth.requires_login()
+def products():
+    grid = SQLFORM.grid(db.products)
+    return dict(grid=grid)
+    
 @auth.requires_login()
 def states():
     grid = SQLFORM.grid(db.states)

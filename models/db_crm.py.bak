@@ -22,7 +22,7 @@ db.define_table(
 
 db.define_table(
     "persons",
-    Field("person_id", notnull=True),
+    Field("person_id", "id", primarykey=True, writable=False),
     Field("company_id", "reference companies", notnull=True),
     Field("first_name", notnull=True),
     Field("last_name", notnull=True),
@@ -36,7 +36,7 @@ db.define_table(
     Field("comments", "text"),
     Field("created_by", "reference auth_user", default=auth.user_id),
     Field("created_on", "datetime", default=request.now),
-    format="%(person_name)s"
+    format="%(first_name)s %(last_name)s"
 )
 
 db.define_table(
@@ -50,4 +50,19 @@ db.define_table(
     Field("event_type", requires=IS_IN_SET(["Meeting", "Call", "Email", "Lunch", "Dinner", "Breakfast", "Other"])),
     Field("comments", "text"),
     format="%(person_name)s"
+)
+
+db.define_table(
+    "products",
+    Field("product_name", notnull=True),
+    Field("category", requires=IS_IN_SET(["Flower", "Edible", "Concentrate", "Pre-roll", "Topical", "Accessory"])),
+    Field("description", "text"),
+    Field("thc_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)),  # THC content in percentage
+    Field("cbd_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)),  # CBD content in percentage
+    Field("price", "double", requires=IS_FLOAT_IN_RANGE(0)),  # Price per unit
+    Field("stock_quantity", "integer", default=0),  # Current stock quantity
+    Field("supplier", notnull=True),  # Supplier of the product
+    Field("created_by", "reference auth_user", default=auth.user_id),
+    Field("created_on", "datetime", default=request.now),
+    format="%(product_name)s"
 )

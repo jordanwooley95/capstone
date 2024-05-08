@@ -2,7 +2,7 @@
 
 db.define_table(
     "states",
-    Field("name_of_state", notnull=True, requires=IS_IN_SET(sorted(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona", "Montana", "New Jersey", "New York", "Virginia", "New Mexico", "Connecticut", "Rhode Island", "Maryland", "Missouri", "Delaware", "Minnesota", "Ohio"]))),
+    Field("statename", notnull=True, requires=IS_IN_SET(sorted(["Colorado", "Washington", "Alask", "Oregon", "Washington D.C.", "California", "Maine", "Massachusetts", "Nevada", "Michigan", "Vermont", "Illinois", "Arizona", "Montana", "New Jersey", "New York", "Virginia", "New Mexico", "Connecticut", "Rhode Island", "Maryland", "Missouri", "Delaware", "Minnesota", "Ohio"]))),
 format="%(statename)s"
 )
 
@@ -12,7 +12,7 @@ db.define_table(
     Field("company_id", notnull=True),
     Field("company_name", notnull=True),
     Field("address", notnull=True),
-    Field("name_of_state", "reference states", notnull=True),
+    Field("statename", "reference states", notnull=True),
     Field("industry", notnull=True),
     Field("website", requires=IS_URL()),
     Field("linkedin"),
@@ -36,7 +36,7 @@ db.define_table(
     Field("comments", "text"),
     Field("created_by", "reference auth_user", default=auth.user_id),
     Field("created_on", "datetime", default=request.now),
-    format="%(person_name)s"
+    format="%(first_name)s %(last_name)s"
 )
 
 db.define_table(
@@ -50,4 +50,19 @@ db.define_table(
     Field("event_type", requires=IS_IN_SET(["Meeting", "Call", "Email", "Lunch", "Dinner", "Breakfast", "Other"])),
     Field("comments", "text"),
     format="%(person_name)s"
+)
+
+db.define_table(
+    "products",
+    Field("product_name", notnull=True),
+    Field("category", requires=IS_IN_SET(["Flower", "Edible", "Concentrate", "Pre-roll", "Topical", "Accessory"])),
+    Field("description", "text"),
+    Field("thc_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)),  # THC content in percentage
+    Field("cbd_content", "double", requires=IS_FLOAT_IN_RANGE(0, 100)),  # CBD content in percentage
+    Field("price", "double", requires=IS_FLOAT_IN_RANGE(0)),  # Price per unit
+    Field("stock_quantity", "integer", default=0),  # Current stock quantity
+    Field("supplier", notnull=True),  # Supplier of the product
+    Field("created_by", "reference auth_user", default=auth.user_id),
+    Field("created_on", "datetime", default=request.now),
+    format="%(product_name)s"
 )

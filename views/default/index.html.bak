@@ -1,35 +1,15 @@
 {{extend 'layout.html'}}
 
-<table>
-    <thead>
-        <tr>
-            <th><a href="{{=URL('sort', vars=dict(column='last_name'))}}">Last Name</a></th>
-            <th><a href="{{=URL('sort', vars=dict(column='company'))}}">Company</a></th>
-            <th><a href="{{=URL('sort', vars=dict(column='date_created'))}}">Date Created</a></th>
-        </tr>
-    </thead>
-    <tbody>
-        {{for row in sort.data:}}
-        <tr>
-            <td>{{=row.last_name}}</td>
-            <td>{{=row.company}}</td>
-            <td>{{=row.date_created}}</td>
-        </tr>
-        {{pass}}
-    </tbody>
-</table>
-
-<<<<<<< HEAD
-
-<h2>This is different</h2>
-=======
-<h2>another change</h2>
->>>>>>> upstream/main
-
+<h2> <style>="text-align: center; background-color: #f0f0f0; padding: 10px;"Tri-High"</style>
+</h2>
 <p>
     {{ = A('Go To Company List', _href = URL('companies'))}}
     <br/>
     {{ = A('Go To Person List', _href = URL('persons'))}}
     <br/>
     {{ = A('Go To Event List', _href = URL('events'))}}
+    <br/>
+    {{ = A('Go To States List', _href = URL('states'))}}
+     <br/>
+    {{ = A('Go To Products List', _href = URL('products'))}}
 </p>
