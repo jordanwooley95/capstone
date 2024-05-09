@@ -10,13 +10,13 @@ def index():
     return dict(message=T('Welcome to web2py!'))
 
 @auth.requires_login()
-def companies():
-    grid = SQLFORM.grid(db.companies)
+def brands():
+    grid = SQLFORM.grid(db.brands)
     return dict(grid=grid)
 
 @auth.requires_login()
-def persons():
-    grid = SQLFORM.grid(db.persons)
+def customers():
+    grid = SQLFORM.grid(db.customers)
     return dict(grid=grid)
 
 @auth.requires_login()
@@ -28,6 +28,17 @@ def events():
 def states():
     grid = SQLFORM.grid(db.states)
     return dict(grid=grid)
+
+@auth.requires_login()
+def products():
+    grid = SQLFORM.grid(db.products)
+    return dict(grid=grid)
+
+@auth.requires_login()
+def orders():
+    grid = SQLFORM.grid(db.orders)
+    return dict(grid=grid)
+
 
 # ---- API (example) -----
 @auth.requires_login()
