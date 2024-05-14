@@ -1,0 +1,21 @@
+brands.id,brands.brand_name,brands.city,brands.state_name,brands.zip_code,brands.website,brands.phone_number
+1,AbsoluteXtracts,Santa Rosa,5,95407,www.abx.org,707-757-7075
+2,Apothecanna (body),Denver,6,80205,www.apothecanna.com,888-643-8883
+3,Caviar Gold,Costa Mesa,5,92626,www.caviargold.com,888-888-8888
+4,Cheech's Stash,Spokane,48,99201,www.cheechsprivatestash.com,509-222-2222
+5,Dosist (vapes),Los Angeles,5,90001,www.dosist.com,323-111-1111
+6,Houseplant,Chino Hills,5,91709,www.houseplant.com,909-444-4444
+7,Khalifa Kush Enterprises,Marina del Rey,5,90392,www.khalifakush.com,424-777-7777
+8,Kiva Confections,Sand Leandro,5,94577,www.kivaconfections.com,510-999-9999
+9,Kurvana,Inglewood,5,90301,www.kurvana.com,888-588-5873
+10,Lowell Herb Co.,Salinas,5,93907,www.lowellfarms.com,831-998-8214
+11,Marley Natural (Glass & herb),Seattle,48,98039,www.marleynaturalshop.com,206-662-6622
+12,Monogram,Los Angeles,5,90001,www.monogramcompany.com,323-333-3333
+13,Natures Medicines,East Wareham,34,25380,naturesmedicines.com,508-927-1975
+14,Papa & Barkley (body),Pasadena,5,91001,www.papaandbarkley.com,844-234-8416
+15,Siskiyou Sungrown,Williams,23,97544,www.siskiyousungrown.com,841-846-1876
+16,THC Design,Inglewood,5,90301,www.thcdesign.com,831-55
+17,The Clear,Denver,6,80205,theclearbrands.com,720-200-3001
+18,Tommy Chong's Cannabis,Las Vegas,23,89122,tommychong.com,702-777-7777
+19,Wana (Gummies),Boulder,6,80301,www.wanabrands.com,855-668-3342
+20,Willie's Reserve,Denver,6,80205,williesreserve.com,303-555-4444

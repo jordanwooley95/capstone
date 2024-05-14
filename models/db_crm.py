@@ -7,13 +7,14 @@ db.define_table(
     format="%(state_name)s",
 )
 ################################################################################
+# states table data:
 # leave this commented out, uncomment and run once to populate the states table
 
-# with open(os.path.join(request.folder, 'private', 'states.csv'), 'rt') as f:
-# db.states.import_from_csv_file(f)
+#with open(os.path.join(request.folder, 'private', 'states.csv'), 'rt') as f:
+#   db.states.import_from_csv_file(f)
+#db.commit()
 ################################################################################
 
-db.commit()
 
 db.define_table(
     "brands",
@@ -22,10 +23,17 @@ db.define_table(
     Field("state_name", "reference states", notnull=True),
     Field("zip_code"),
     Field("website", requires=IS_URL()),
-    Field("linkedin", requires=IS_URL()),
     Field("phone_number", requires=IS_MATCH("[\d\-\(\) ]+")),
     format="%(brand_name)s",
 )
+################################################################################
+# brands table data:
+# leave this commented out, uncomment and run once to populate the brands table
+
+#with open(os.path.join(request.folder, 'private', 'brands.csv'), 'rt') as f:
+    #db.brands.import_from_csv_file(f)
+#db.commit()
+################################################################################
 
 db.define_table(
     "customers",
@@ -43,12 +51,20 @@ db.define_table(
     Field("created_on", "datetime", default=request.now),
     format="%(last_name)s, %(first_name)s",
 )
+################################################################################
+# customers table data:
+# leave this commented out, uncomment and run once to populate the customers table
+
+#with open(os.path.join(request.folder, 'private', 'customers.csv'), 'rt') as f:
+    #db.customers.import_from_csv_file(f)
+#db.commit()
+################################################################################
 
 db.define_table(
     "events",
-    Field("user_id", "reference auth_user"),
+    Field("user_id", "reference auth_user", default=auth.user_id),
     Field(
-        "person_id",
+        "customer_id",
         "reference customers",
     ),
     Field("comm_type", requires=IS_IN_SET(["Phone", "Email", "In person"])),
@@ -63,6 +79,14 @@ db.define_table(
     Field("comments", "text"),
     format="%(event_type)s",
 )
+################################################################################
+# events table data:
+# leave this commented out, uncomment and run once to populate the events table
+
+#with open(os.path.join(request.folder, 'private', 'events.csv'), 'rt') as f:
+    #db.events.import_from_csv_file(f)
+#db.commit()
+################################################################################
 
 db.define_table(
     "products",
@@ -87,6 +111,13 @@ db.define_table(
     Field("created_on", "datetime", default=request.now),
     format="%(product_name)s",
 )
+################################################################################
+# leave this commented out, uncomment and run once to populate the products table
+
+#with open(os.path.join(request.folder, 'private', 'products.csv'), 'rt') as f:
+    #db.products.import_from_csv_file(f)
+#db.commit()
+################################################################################
 
 db.define_table(
     "orders",
@@ -95,3 +126,10 @@ db.define_table(
     Field("quantity", "integer", notnull=True),
     Field("ordered_on", "datetime", default=request.now),
 )
+################################################################################
+# leave this commented out, uncomment and run once to populate the products table
+
+#with open(os.path.join(request.folder, 'private', 'orders.csv'), 'rt') as f:
+    #db.orders.import_from_csv_file(f)
+#db.commit()
+################################################################################

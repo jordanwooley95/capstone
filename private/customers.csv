@@ -1,0 +1,21 @@
+customers.id,customers.company_id,customers.first_name,customers.last_name,customers.city,customers.state_name,customers.zip_code,customers.phone_number,customers.email,customers.birthday,customers.comments,customers.created_by,customers.created_on
+1,1,Ben,Miller,Montgomery,1,44010,215-091-2121,benmiller@gmail.com,2009-10-11,,1,2024-05-13 12:41:10
+2,2,Garrett,Vargas,Juneau,2,10312,215-091-2121,garrettvargas@icloud.com,2009-10-12,,1,2024-05-14 12:41:10
+3,3,Gabe ,Mares,Phoenix,3,30141,215-091-2121,gabemares@yahoo.com,2009-10-13,,1,2024-05-15 12:41:10
+4,4,Reuben,Dian,Columbus,1,34112,215-091-2121,reubendian@gmail.com,2009-10-14,,1,2024-05-16 12:41:10
+5,5,Gordon ,Ramsey,Albany,2,14362,215-091-2121,gordonramsey@aol.com,2009-10-15,,1,2024-05-17 12:41:10
+6,6,Karan,Khan,Salem,3,12415,215-091-2121,karankhan@gmail.com,2009-10-16,,1,2024-05-18 12:41:10
+7,7,Kirk,Ross,Columbia,1,14511,215-091-2121,kirkross@icloud.com,2009-10-17,,1,2024-05-19 12:41:10
+8,8,Paul,Singh,Richmond,2,14131,215-091-2121,paulsingh@gmail.com,2009-10-18,,1,2024-05-20 12:41:10
+9,9,Jack,Richins,Austin,3,11341,215-091-2121,jackrichins@gmail.com,2009-10-19,,1,2024-05-21 12:41:10
+10,10,John,Evans,Austin,1,14149,215-091-2121,johnevan@yahoo.com,2009-10-20,,1,2024-05-22 12:41:10
+11,11,Mike,Bugenskie,Richmond,2,14131,215-091-2121,mikebugenskie@aol.com,2009-10-21,,1,2024-05-23 12:41:10
+12,12,Lola,Myer,Columbia,3,14114,215-091-2121,lolamyer@icloud.com,2009-10-22,,1,2024-05-24 12:41:10
+13,13,Brenda,Diaz,Sacramento,1,54363,215-091-2121,brendadiaz@yahoo.com,2009-10-23,,1,2024-05-25 12:41:10
+14,14,Barbra,Moreland,Tallahassee,2,74373,215-091-2121,barbramoreland@outlook.com,2009-10-24,,1,2024-05-26 12:41:10
+15,15,Caleb,Johnson,Augusta,3,33535,215-091-2121,calebjohnson@gmail.com,2009-10-25,,1,2024-05-27 12:41:10
+16,16,Kim,Ralls,Annapolis,1,23525,215-091-2121,kimralls@icloud.com,2009-10-26,,1,2024-05-28 12:41:10
+17,17,Fadi,Fakhouri,Lansing,2,25255,215-091-2121,fadifakhouri@gmail.com,2009-10-27,,1,2024-05-29 12:41:10
+18,18,Reed,Koch,Augusta,3,25262,215-091-2121,reedkoch@gmail.com,2009-10-28,,1,2024-05-30 12:41:10
+19,19,Mike,Seamans,Salt Lake City,1,22552,215-091-2121,mikeseasmans@aol.com,2009-10-29,,1,2024-05-31 12:41:10
+20,20,Michael,Raheem,Montpelier,2,56765,215-091-2121,michaelraheem@icloud.com,2009-10-30,,1,2024-06-01 12:41:10
