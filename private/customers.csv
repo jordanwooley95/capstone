@@ -1,4 +1,4 @@
-customer_id,first_name,last_name,city,state_name,zip_code,phone_number,email,birthday,comments,created_by,created_on
+customer_id,first_name,last_name,city,state_id,zip_code,phone_number,email,birthday,comments,created_by,created_on
 1,Ben,Miller,Montgomery,1,44010,215-091-2121,benmiller@gmail.com,2009-10-11,,1,2024-05-13 12:41:10
 2,Garrett,Vargas,Juneau,2,10312,215-091-2121,garrettvargas@icloud.com,2009-10-12,,1,2024-05-14 12:41:10
 3,"Gabe ",Mares,Phoenix,3,30141,215-091-2121,gabemares@yahoo.com,2009-10-13,,1,2024-05-15 12:41:10
