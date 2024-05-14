@@ -1,4 +1,4 @@
-brands.id,brands.brand_name,brands.city,brands.state_name,brands.zip_code,brands.website,brands.phone_number
+brand_id,brand_name,city,state_name,zip_code,website,phone_number
 1,AbsoluteXtracts,Santa Rosa,5,95407,www.abx.org,707-757-7075
 2,Apothecanna (body),Denver,6,80205,www.apothecanna.com,888-643-8883
 3,Caviar Gold,Costa Mesa,5,92626,www.caviargold.com,888-888-8888

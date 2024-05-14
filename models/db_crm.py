@@ -37,7 +37,6 @@ db.define_table(
 
 db.define_table(
     "customers",
-    Field("company_id", "reference brands"),
     Field("first_name", notnull=True),
     Field("last_name", notnull=True),
     Field("city", notnull=True),

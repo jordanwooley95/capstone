@@ -1,4 +1,4 @@
-products.id,products.product_name,products.category,products.strain,products.description,products.thc_content,products.cbd_content,products.price,products.stock_quantity,products.created_by,products.created_on
+product_id,product_name,category,strain,description,thc_content,cbd_content,price,stock_quantity,created_by,created_on
 1,Lemon OG,Flower,Indica,"Premium Flower, Hand Trimmed",24.56,0.02,25.00,1,1,2024-05-13 19:41:37
 2,Runtz,Flower,Sativa,"Premium Flower, Hand Trimmed",22.96,0.06,20.00,1,1,2024-05-13 19:41:37
 3,Biscotti,Flower,Hybrid, Top Quality Flower,18.92,0,30.00,4,1,2024-05-13 19:41:37

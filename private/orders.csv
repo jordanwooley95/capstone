@@ -1,4 +1,4 @@
-orders.id,orders.customer_id,orders.product_id,orders.quantity,orders.ordered_on
+order_id,customer_id,product_id,quantity,ordered_on
 1,14,4,3,2024-05-15 09:30:12
 2,8,11,6,2024-05-15 10:15:28
 3,7,19,1,2024-05-15 11:45:59
