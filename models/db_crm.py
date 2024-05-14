@@ -132,3 +132,11 @@ db.define_table(
     #db.orders.import_from_csv_file(f)
 #db.commit()
 ################################################################################
+
+################################################################################
+# leave this commented out, uncomment and run once to populate the auth_user table
+
+#with open(os.path.join(request.folder, 'private', 'auth_user.csv'), 'rt') as f:
+    #db.auth_user.import_from_csv_file(f)
+#db.commit()
+################################################################################

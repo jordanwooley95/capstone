@@ -1,4 +1,4 @@
-timestamp: 2024-05-14T15:08:56.883561
+timestamp: 2024-05-14T15:43:36.389295
 CREATE TABLE "auth_user"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(128),
@@ -10,21 +10,21 @@ CREATE TABLE "auth_user"(
     "registration_id" CHAR(512)
 );
 success!
-timestamp: 2024-05-14T15:08:56.887583
+timestamp: 2024-05-14T15:43:36.391348
 CREATE TABLE "auth_group"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "role" CHAR(512),
     "description" TEXT
 );
 success!
-timestamp: 2024-05-14T15:08:56.890331
+timestamp: 2024-05-14T15:43:36.392237
 CREATE TABLE "auth_membership"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
 );
 success!
-timestamp: 2024-05-14T15:08:56.892164
+timestamp: 2024-05-14T15:43:36.392949
 CREATE TABLE "auth_permission"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "group_id" INTEGER REFERENCES "auth_group" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
@@ -33,7 +33,7 @@ CREATE TABLE "auth_permission"(
     "record_id" INTEGER
 );
 success!
-timestamp: 2024-05-14T15:08:56.894321
+timestamp: 2024-05-14T15:43:36.393708
 CREATE TABLE "auth_event"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "time_stamp" TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE "auth_event"(
     "description" TEXT
 );
 success!
-timestamp: 2024-05-14T15:08:56.895989
+timestamp: 2024-05-14T15:43:36.394405
 CREATE TABLE "auth_cas"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
@@ -53,13 +53,13 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
-timestamp: 2024-05-14T15:08:56.898275
+timestamp: 2024-05-14T15:43:36.395134
 CREATE TABLE "states"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "state_name" CHAR(512) NOT NULL
 );
 success!
-timestamp: 2024-05-14T15:08:56.900590
+timestamp: 2024-05-14T15:43:36.396171
 CREATE TABLE "brands"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "brand_name" CHAR(512) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE "brands"(
     "phone_number" CHAR(512)
 );
 success!
-timestamp: 2024-05-14T15:08:56.902670
+timestamp: 2024-05-14T15:43:36.396970
 CREATE TABLE "customers"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "first_name" CHAR(512) NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE "customers"(
     "created_on" TIMESTAMP
 );
 success!
-timestamp: 2024-05-14T15:08:56.904290
+timestamp: 2024-05-14T15:43:36.397728
 CREATE TABLE "events"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
@@ -98,7 +98,7 @@ CREATE TABLE "events"(
     "comments" TEXT
 );
 success!
-timestamp: 2024-05-14T15:08:56.905880
+timestamp: 2024-05-14T15:43:36.398433
 CREATE TABLE "products"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "product_name" CHAR(512) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE "products"(
     "created_on" TIMESTAMP
 );
 success!
-timestamp: 2024-05-14T15:08:56.907764
+timestamp: 2024-05-14T15:43:36.399090
 CREATE TABLE "orders"(
     "id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "customer_id" INTEGER REFERENCES "customers" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,

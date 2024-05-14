@@ -1,0 +1,7 @@
+id,first_name,last_name,email,user.password,registration_key,reset_password_key,registration_id
+1,jordan,wooley,jordanwooley95@gmail.com,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
+2,cara,colker-eybel,ccolkereybel@gmail.com,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
+3,jeanitha,houze,jeanithalh@gmail.com,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
+4,aazaz,peer,aazazpeer@icloud.com,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
+5,briana,renae,brianarenae89@gmail.com,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
+6,wayne,largent,wayne.largent@tri-c.edu,"pbkdf2(1000,20,sha512)$86da57ba0144c332$429731be60df77fb815d560a74d28026680aec84",,,
