@@ -44,7 +44,7 @@ db.define_table(
     Field("zip_code"),
     Field("phone_number", requires=IS_MATCH("[\d\-\(\) ]+")),
     Field("email", requires=IS_EMAIL()),
-    Field("birthday", requires=IS_DATE(format=T("%Y-%m-%d"))),
+    Field("birthday", type="date", requires=IS_DATE(format=T("%Y-%m-%d"))),
     Field("comments", "text"),
     Field("created_by", "reference auth_user", default=auth.user_id),
     Field("created_on", "datetime", default=request.now),
