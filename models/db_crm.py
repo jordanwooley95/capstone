@@ -126,7 +126,7 @@ db.define_table(
     Field("ordered_on", "datetime", default=request.now),
 )
 ################################################################################
-# leave this commented out, uncomment and run once to populate the products table
+# leave this commented out, uncomment and run once to populate the orders table
 
 #with open(os.path.join(request.folder, 'private', 'orders.csv'), 'rt') as f:
     #db.orders.import_from_csv_file(f)
