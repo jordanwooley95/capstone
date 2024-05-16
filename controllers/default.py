@@ -8,6 +8,10 @@
 def index():
     return dict(message=T('Welcome to Joint Ventures!'))
 
+def about():
+    return dict(message="About us")
+
+@auth.requires_login()
 def cannalytics():
     return dict(message="Hello from Cannalytics!")
 
