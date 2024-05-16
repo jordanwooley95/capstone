@@ -6,8 +6,10 @@
 
 # ---- example index page ----
 def index():
-    response.flash = T("hello world")
-    return dict(message=T('Welcome to web2py!'))
+    return dict(message=T('Welcome to Joint Ventures!'))
+
+def cannalytics():
+    return dict(message="Hello from Cannalytics!")
 
 @auth.requires_login()
 def brands():
