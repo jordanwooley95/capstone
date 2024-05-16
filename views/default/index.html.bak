@@ -1,7 +1,7 @@
 {{extend 'layout.html'}}
 
 
-<h2>another change</h2>
+<h2 style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}</h2>
 
 <p>
     {{ = A('Go To Brand List', _href = URL('brands'))}}
