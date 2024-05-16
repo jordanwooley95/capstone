@@ -58,5 +58,28 @@
    <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
-</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var tabs = document.querySelectorAll('.nav-link');
+        var currentUrl = window.location.href;
 
+        tabs.forEach(function(tab) {
+            // Set the active class based on the current URL
+            if (tab.href === currentUrl) {
+                tab.classList.add('active');
+            }
+
+            // Add click event listener to each tab
+            tab.addEventListener('click', function() {
+                // Remove the 'active' class from all tabs
+                tabs.forEach(function(t) {
+                    t.classList.remove('active');
+                });
+
+                // Add the 'active' class to the clicked tab
+                tab.classList.add('active');
+            });
+        });
+    });
+    </script>
+</html>
