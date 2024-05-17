@@ -3,3 +3,4 @@ sessions/*
 DS_Store
 .DS_Store
 errors/
+progress.log
