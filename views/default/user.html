@@ -12,29 +12,59 @@
 		<script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
 		<script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
 		<style>
-			.centered {
+			#web2py_user_form input[type="submit"] {
+				background-color: #4caf50;
+				color: white;
+				padding: 14px 20px;
+				margin: 8px 0;
+				border: none;
+				cursor: pointer;
+				width: 100%;
+			}
+
+			.text {
+				text-align: center;
+				margin-top: 50px;
+			}
+
+			.login {
+				margin: 30px;
+				text-align: center;
+			}
+
+			.img {
+				height: auto;
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height: 100vh;
 			}
 
-      .login {
-        margin: 0 auto 20px auto;
-      }
+			.img img {
+				width: 20%;
+			}
 		</style>
 	</head>
+	<div class="img">
+		<img src="../../static/images/JVlogo3.png" alt="welcome" />
+	</div>
 
-	<div class="centered">
-		<div
-			id="web2py_user_form"
-			class="col-lg-5"
-			style="background-color: white; margin: 0 auto 5px auto; box-shadow: 0 0 5px #a1a1a1; border-radius: 5px; padding: 20px">
-			<h2 class="login">
-				{{=T('Sign Up') if request.args(0) == 'register' else T(
-           'Log In') if request.args(0) == 'login' else T(request.args(0).replace('_','').title())}}
-			</h2>
-			{{=form}} {{if request.args(0)=='login' and not 'register' in auth.settings.actions_disabled:}}
+	<div
+		id="web2py_user_form"
+		class="col-lg-5"
+		style="
+			background-color: #c3e1b4;
+			margin: 0 auto 5px auto;
+			box-shadow: 0 0 5px #a1a1a1;
+			border-radius: 5px;
+			padding: 5px 50px 25px 50px;
+		">
+		<h4 class="login">
+			{{=T('Sign Up') if request.args(0) == 'register' else T(
+         'Log In') if request.args(0) == 'login' else T(request.args(0).replace('_','').title())}}
+		</h4>
+
+		{{=form}} {{if request.args(0)=='login' and not 'register' in auth.settings.actions_disabled:}}
+		<div class="text">
 			<a href="{{=URL('user/register')}}">{{=T('Register')}}</a>
 			<br />
 			{{pass}} {{if request.args(0)=='login' and not 'retrieve_password' in auth.settings.actions_disabled:}}
