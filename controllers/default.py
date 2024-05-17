@@ -6,14 +6,17 @@
 
 
 # ---- example index page ----
+@auth.requires_login()
 def index():
     return dict(message=T("Welcome to Joint Ventures!"))
 
 
+@auth.requires_login()
 def about():
     return dict(message="About us")
 
 
+@auth.requires_login()
 def productz():
     return dict(message="Our products")
 
