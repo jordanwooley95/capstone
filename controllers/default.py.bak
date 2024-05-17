@@ -6,8 +6,14 @@
 
 # ---- example index page ----
 def index():
-    response.flash = T("hello world")
-    return dict(message=T('Welcome to web2py!'))
+    return dict(message=T('Welcome to Joint Ventures!'))
+
+def about():
+    return dict(message="About us")
+
+@auth.requires_login()
+def cannalytics():
+    return dict(message="Hello from Cannalytics!")
 
 @auth.requires_login()
 def brands():
@@ -38,7 +44,6 @@ def products():
 def orders():
     grid = SQLFORM.grid(db.orders)
     return dict(grid=grid)
-
 
 # ---- API (example) -----
 @auth.requires_login()

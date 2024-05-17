@@ -16,6 +16,10 @@ def cannalytics():
     return dict(message="Hello from Cannalytics!")
 
 @auth.requires_login()
+def dataadmin():
+    return dict(message="Hello from Cannalytics!")
+
+@auth.requires_login()
 def brands():
     grid = SQLFORM.grid(db.brands)
     return dict(grid=grid)
