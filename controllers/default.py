@@ -11,6 +11,9 @@ def index():
 def about():
     return dict(message="About us")
 
+def productz():
+    return dict(message="Our products")
+
 @auth.requires_login()
 def cannalytics():
     return dict(message="Hello from Cannalytics!")
