@@ -28,7 +28,7 @@
 			<div class="container" style="color: grey">
 				<ul class="nav nav-tabs m-auto">
 					<li class="nav-item">
-						<a class="nav-link text-secondary" href="index.html">Dashboard</a>
+						<a class="nav-link text-secondary" href="index">Dashboard</a>
 					</li>
 
 					<li class="nav-item">
@@ -80,6 +80,15 @@
 		<!-- Begin page content -->
 		<div class="container-fluid main-container">{{include}} {{=response.toolbar() if response.show_toolbar else ''}}</div>
 	</body>
+    
+ <!-- Footer section -->
+<footer class="footer" style="background-color: #333; color: #fff; padding: 20px; text-align: center; position: fixed; bottom: 0; width: 100%">
+    <p>&copy; 2024 Joint Ventures. All rights reserved.</p>
+</footer>
+
+
+
+    
 	<!-- The javascript =============================== -->
 	<script src="{{=URL('static','js/bootstrap.bundle.min.js')}}"></script>
 	<script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
@@ -108,4 +117,6 @@
 			});
 		});
 	</script>
+    
+
 </html>
