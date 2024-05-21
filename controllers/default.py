@@ -57,9 +57,19 @@ def productz():
 def cannalytics():
     strain_sold = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     category_sold = "SELECT SUM(o.quantity) as howmany, category FROM orders o JOIN products p ON o.product_id = p.id GROUP BY category"
+    products_sold = "SELECT SUM(o.quantity) as howmany, product_name FROM orders o JOIN products p ON o.product_id = p.id GROUP BY product_name"
+    customer_orders = "SELECT COUNT(o.id) as howmany, c.first_name, c.last_name FROM orders o JOIN customers c ON o.customer_id = c.id GROUP BY c.first_name, c.last_name"
+
     strain_rows = db.executesql(strain_sold, as_dict=True)
     category_rows = db.executesql(category_sold, as_dict=True)
-    return dict(strain_rows=strain_rows, category_rows=category_rows)
+    product_rows = db.executesql(products_sold, as_dict=True)
+    customer_orders_rows = db.executesql(customer_orders, as_dict=True)
+    return dict(
+        strain_rows=strain_rows,
+        category_rows=category_rows,
+        product_rows=product_rows,
+        customer_orders_rows=customer_orders_rows
+    )
 
 
 def dataadmin():
