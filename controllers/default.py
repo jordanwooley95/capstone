@@ -7,7 +7,7 @@
 
 # ---- example index page ----
 def index():
-    sqlstmt = "SELECT count(*) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
+    sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     rows = db.executesql(sqlstmt, as_dict=True)
     return dict(rows=rows)
 
