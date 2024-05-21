@@ -31,6 +31,7 @@
         </div>
         
         <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
+            <h4 style="color: white">Recent Orders</h4>
             <div class="list-group">
     <!-- First item -->
     <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/499?order=~orders.ordered_on&_signature=a2704e02b9fbd0e411f7f021318bfbf995035bc7" target="_blank" class="list-group-item list-group-item-action">
