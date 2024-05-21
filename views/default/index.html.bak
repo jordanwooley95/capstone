@@ -36,7 +36,7 @@
             <h4>New Orders</h4>
             <div class="list-group">
                 <!-- First item -->
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/499?order=~orders.ordered_on&_signature=08672077bc78574d1241d525d7e356e6ba33788f" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
                         <small>{{=recent_orders[0]['days_ago']}} days ago</small>
@@ -81,6 +81,24 @@
     </div>
 
     <script>
-        xdata = [];
-        ydata = [];
-        my
+    xdata = [];
+    ydata = [];
+    myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
+    {{ for row in rows: }}
+           xdata.push("{{ =row['strain'] }}");
+           ydata.push({{ =row['howmany'] }});
+    {{ pass }}
+    var data = [{
+        values: ydata,
+        labels: xdata,
+        type: 'pie',
+        marker: {
+              colors: myColors}
+    }];
+    var layout = {
+       height: 600,
+       width: 500,
+       title: 'Sales By Strain'
+    };
+    Plotly.newPlot('pie', data, layout);
+</script>
