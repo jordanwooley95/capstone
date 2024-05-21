@@ -10,7 +10,17 @@
 		<!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
 		<script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
-        <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
+    <style>
+      nav li a {
+        color: #6c757d;
+        text-decoration: none;
+      }
+
+      nav li a:hover {
+        color: #9bd45c;
+    }
+    </style>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
@@ -29,7 +39,7 @@
 						<a class="nav-link text-secondary" href="cannalytics.html">Cannalytics</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-secondary" href="products.html">Products</a>
+						<a class="nav-link text-secondary" href="productz.html">Products</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-secondary" href="about.html">About</a>
@@ -75,6 +85,7 @@
 	<script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function () {
+            
 			var tabs = document.querySelectorAll(".nav-link");
 			var currentUrl = window.location.href;
 
