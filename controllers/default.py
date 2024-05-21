@@ -12,8 +12,6 @@ def index():
     return dict(rows=rows)
 
 
-
-
 def about():
     return dict(message="About us")
 
@@ -24,7 +22,11 @@ def productz():
 
 @auth.requires_login()
 def cannalytics():
-    return dict(message="Hello from Cannalytics!")
+    strain_sold = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
+    category_sold = "SELECT SUM(o.quantity) as howmany, category FROM orders o JOIN products p ON o.product_id = p.id GROUP BY category"
+    strain_rows = db.executesql(strain_sold, as_dict=True)
+    category_rows = db.executesql(category_sold, as_dict=True)
+    return dict(strain_rows=strain_rows, category_rows=category_rows)
 
 
 @auth.requires_login()
