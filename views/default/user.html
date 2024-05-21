@@ -7,8 +7,6 @@
 		<link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}" />
 		<link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}" />
-		<!-- All JavaScript at the bottom, except for Modernizr which enables
-         HTML5 elements & feature detects -->
 		<script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
 		<script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
 		<style>
@@ -16,15 +14,27 @@
 				background-color: #4caf50;
 				color: white;
 				padding: 14px 20px;
-				margin: 8px 0;
+				margin: 10px 0;
 				border: none;
 				cursor: pointer;
 				width: 100%;
 			}
 
+			#web2py_user_form a {
+				color: black;
+			}
+
+			#submit_record__row {
+				justify-content: center;
+			}
+
 			.text {
 				text-align: center;
 				margin-top: 50px;
+			}
+
+			.text a {
+				color: black;
 			}
 
 			.login {
@@ -59,8 +69,8 @@
 			padding: 5px 50px 25px 50px;
 		">
 		<h4 class="login">
-			{{=T('Sign Up') if request.args(0) == 'register' else T(
-         'Log In') if request.args(0) == 'login' else T(request.args(0).replace('_','').title())}}
+			{{=T('Sign Up') if request.args(0) == 'register' else T( 'Log In') if request.args(0) == 'login' else
+			T(request.args(0).replace('_','').title())}}
 		</h4>
 
 		{{=form}} {{if request.args(0)=='login' and not 'register' in auth.settings.actions_disabled:}}
