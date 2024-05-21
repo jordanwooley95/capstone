@@ -1,2 +1,58 @@
 {{extend 'layout.html'}}
-<h1>This is the default/cannalytics.html template</h1>
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+<style>
+  #container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 100px;
+  }
+  #tester, #tester2 {
+      width: 45%;
+      height: 250px;
+  }
+</style>
+<div id="container">
+  <div id="tester"></div>
+  <div id="tester2"></div>
+</div>
+<script>
+	// First graph
+	xdata = [];
+	ydata = [];
+	{{ for strain_row in strain_rows: }}
+	       xdata.push("{{ =strain_row['strain'] }}");
+	       ydata.push({{ =strain_row['howmany'] }});
+	{{ pass }}
+	TESTER = document.getElementById('tester');
+	Plotly.newPlot( TESTER, [{
+	x: xdata,
+	y: ydata,
+	type: 'bar' }], {
+	margin: { t: 0 },
+	xaxis: {
+	    title: 'Strain',
+	},
+	yaxis: {
+	    title: 'Amount Sold',
+	} } );
+
+	// Second graph
+	xdata2 = [];
+  ydata2 = [];
+	{{ for category_row in category_rows: }}
+	       xdata2.push("{{ =category_row['category'] }}");
+	       ydata2.push({{ =category_row['howmany'] }});
+	{{ pass }}
+	TESTER2 = document.getElementById('tester2');
+	Plotly.newPlot( TESTER2, [{
+	x: xdata2,
+	y: ydata2,
+	type: 'bar' }], {
+	margin: { t: 0 },
+	xaxis: {
+	    title: 'Category',
+	},
+	yaxis: {
+	    title: 'Amount Sold',
+	} } );
+</script>
