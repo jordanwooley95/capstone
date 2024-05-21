@@ -14,16 +14,17 @@ def index():
     # Fetch the top 3 most recent orders
     recent_orders = []
     orders = db().select(
-        db.orders.ALL, db.customers.ALL,
+        db.orders.ALL,
+        db.customers.ALL,
         join=db.orders.on(db.orders.customer_id == db.customers.id),
         orderby=~db.orders.ordered_on,
-        limitby=(0, 3)  # Limit to the top 3 recent orders
+        limitby=(0, 3),  # Limit to the top 3 recent orders
     )
-    
+
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
-        state_name = state.state_name if state else 'N/A'
+        state_name = state.state_name if state else "N/A"
 
         # Calculate days ago
         current_datetime = datetime.datetime.now()
@@ -32,10 +33,10 @@ def index():
 
         # Prepare the order details
         order_details = {
-            'id': order.orders.id,  # Directly access the id field of the orders table
-            'name': f"{order.customers.first_name} {order.customers.last_name}",
-            'state': state_name,
-            'days_ago': days_ago
+            "id": order.orders.id,  # Directly access the id field of the orders table
+            "name": f"{order.customers.first_name} {order.customers.last_name}",
+            "state": state_name,
+            "days_ago": days_ago,
         }
         recent_orders.append(order_details)
     # Fetch the aggregate data
@@ -43,6 +44,7 @@ def index():
     rows = db.executesql(sqlstmt, as_dict=True)
 
     return dict(recent_orders=recent_orders, rows=rows)
+
 
 def about():
     return dict(message="About us")
