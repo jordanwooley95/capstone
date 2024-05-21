@@ -31,18 +31,36 @@
         </div>
         
         <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
-            <h4>New Orders</h4>
+            <h4 style="color: white">Recent Orders</h4>
             <div class="list-group">
-                {{for order in recent_orders:}}
-                <a href="/crm/default/orders/view/{{=order['id']}}" target="_blank" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=order['name']}}</h6>
-                        <small>{{=order['days_ago']}} days ago</small>
-                    </div>
-                    <p class="mb-1">{{=order['state']}}</p>
-                </a>
-                {{pass}}
-            </div>
+    <!-- First item -->
+    <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/499?order=~orders.ordered_on&_signature=a2704e02b9fbd0e411f7f021318bfbf995035bc7" target="_blank" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+            <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+        </div>
+        <p class="mb-1">{{=recent_orders[0]['state']}}</p>
+    </a>
+
+    <!-- Second item -->
+    <a href= "http://127.0.0.1:8000/crm/default/orders/view/orders/498?order=~orders.ordered_on&_signature=82e5bc4c4e485fe44358f4ac78341425597235cc" target="_blank" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
+            <small>{{=recent_orders[1]['days_ago']}} days ago</small>
+        </div>
+        <p class="mb-1">{{=recent_orders[1]['state']}}</p>
+    </a>
+
+    <!-- Third item -->
+    <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/497?order=~orders.ordered_on&_signature=49cbf077d1a68869edc2ec039a79c0bf77399851" target="_blank" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
+            <small>{{=recent_orders[2]['days_ago']}} days ago</small>
+        </div>
+        <p class="mb-1">{{=recent_orders[2]['state']}}</p>
+    </a>
+</div>
+
         </div>
         
         <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
