@@ -6,6 +6,8 @@
 
 
 # ---- example index page ----
+
+
 def index():
     import datetime
 
@@ -35,7 +37,6 @@ def index():
             'state': state_name,
             'days_ago': days_ago
         }
-        order['href'] = f"/crm/default/orders/view/orders/{order.orders.id}?order=~orders.ordered_on"
         recent_orders.append(order_details)
     # Fetch the aggregate data
     sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
@@ -43,57 +44,71 @@ def index():
 
     return dict(recent_orders=recent_orders, rows=rows)
 
-
-
 def about():
     return dict(message="About us")
+
+@auth.requires_login()
+def personal():
+    user_id = auth.user_id
+    sqlstmt_events = (
+        "SELECT user_id, status, event_type, COUNT(*) AS event_count "
+        "FROM events "
+        f"WHERE user_id = {user_id} "
+        "AND status = 'Open' "
+        "AND (event_type = 'Call' OR event_type = 'Email') "
+        "AND comm_type IN ('Phone', 'Email', 'In person') "  # Corrected field name
+        "GROUP BY user_id, status, event_type"
+    )
+    rows = db.executesql(sqlstmt_events, as_dict=True)
+    return dict(rows=rows)
+
+
+
+
+
 
 
 def productz():
     return dict(message="Our products")
 
 
-@auth.requires_login()
 def cannalytics():
-    return dict(message="Hello from Cannalytics!")
+    strain_sold = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
+    category_sold = "SELECT SUM(o.quantity) as howmany, category FROM orders o JOIN products p ON o.product_id = p.id GROUP BY category"
+    strain_rows = db.executesql(strain_sold, as_dict=True)
+    category_rows = db.executesql(category_sold, as_dict=True)
+    return dict(strain_rows=strain_rows, category_rows=category_rows)
 
 
-@auth.requires_login()
 def dataadmin():
     return dict(message="Hello from Cannalytics!")
 
 
-@auth.requires_login()
 def brands():
     grid = SQLFORM.grid(db.brands)
     return dict(grid=grid)
 
 
-@auth.requires_login()
 def customers():
     grid = SQLFORM.grid(db.customers)
     return dict(grid=grid)
 
 
-@auth.requires_login()
 def events():
     grid = SQLFORM.grid(db.events)
     return dict(grid=grid)
 
 
-@auth.requires_login()
 def states():
     grid = SQLFORM.grid(db.states)
     return dict(grid=grid)
 
 
-@auth.requires_login()
 def products():
     grid = SQLFORM.grid(db.products)
     return dict(grid=grid)
 
 
-@auth.requires_login()
 def orders():
     grid = SQLFORM.grid(db.orders)
     return dict(grid=grid)

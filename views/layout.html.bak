@@ -28,7 +28,7 @@
 			<div class="container" style="color: grey">
 				<ul class="nav nav-tabs m-auto">
 					<li class="nav-item">
-						<a class="nav-link text-secondary" href="index.html">Dashboard</a>
+						<a class="nav-link text-secondary" href="index">Dashboard</a>
 					</li>
 
 					<li class="nav-item">
