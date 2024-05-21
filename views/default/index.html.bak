@@ -8,6 +8,7 @@
     </h2>
 
     <div class="row">
+        <!-- Inquiries Column -->
         <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
             <h4>Inquiries</h4>
             <ul class="list-group">
@@ -30,21 +31,26 @@
             </ul>
         </div>
         
+        <!-- New Orders Column -->
         <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
             <h4>New Orders</h4>
             <div class="list-group">
-                {{for order in recent_orders:}}
-                <a href="/crm/default/orders/view/{{=order['id']}}" target="_blank" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=order['name']}}</h6>
-                        <small>{{=order['days_ago']}} days ago</small>
-                    </div>
-                    <p class="mb-1">{{=order['state']}}</p>
-                </a>
-                {{pass}}
+                <!-- Loop through recent_orders -->
+                {{ for order in recent_orders: }}
+                    <a href="{{=order.get('link', '#')}}" target="_blank" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">{{=order.get('name', 'Order Name')}}</h6>
+                            <small>{{=order.get('days_ago', '0')}} days ago</small>
+                        </div>
+                        <p class="mb-1">{{=order.get('state', 'Order State')}}</p>
+                    </a>
+                {{ pass }}
             </div>
         </div>
-        
+    </div>
+    
+    <!-- Shoutouts Section -->
+    <div class="row">
         <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
             <h4 style="color: white">Shoutout</h4>
             <div class="card" style="width: 18rem">
@@ -59,7 +65,6 @@
     </div>
 
    <div class="container text-center my-4">
-        <h2>Sales By Strain</h2>
         <div id="pie" style="display: inline-block;"></div>
     </div>
     <script>
