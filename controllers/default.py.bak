@@ -15,7 +15,7 @@ def index():
         db.orders.ALL, db.customers.ALL,
         join=db.orders.on(db.orders.customer_id == db.customers.id),
         orderby=~db.orders.ordered_on,
-        limitby=(0, 2)  # Limit to the top 2 recent orders
+        limitby=(0, 3)  # Limit to the top 2 recent orders
     )
     
     for order in orders:

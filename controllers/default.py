@@ -9,13 +9,13 @@
 def index():
     import datetime
 
-    # Fetch the top 2 most recent orders
+    # Fetch the top 3 most recent orders
     recent_orders = []
     orders = db().select(
         db.orders.ALL, db.customers.ALL,
         join=db.orders.on(db.orders.customer_id == db.customers.id),
         orderby=~db.orders.ordered_on,
-        limitby=(0, 3)  # Limit to the top 2 recent orders
+        limitby=(0, 3)  # Limit to the top 3 recent orders
     )
     
     for order in orders:
@@ -30,12 +30,12 @@ def index():
 
         # Prepare the order details
         order_details = {
+            'id': order.orders.id,  # Directly access the id field of the orders table
             'name': f"{order.customers.first_name} {order.customers.last_name}",
             'state': state_name,
             'days_ago': days_ago
         }
         recent_orders.append(order_details)
-
     # Fetch the aggregate data
     sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     rows = db.executesql(sqlstmt, as_dict=True)
