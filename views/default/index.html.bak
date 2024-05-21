@@ -31,21 +31,17 @@
 		</div>
 		<div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
 			<h4>New Orders</h4>
-			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action">
-					<div class="d-flex w-100 justify-content-between">
-						<h6 class="mb-1">Joe Shmo</h6>
-						<small>3 days ago</small>
-					</div>
-					<p class="mb-1">California</p>
-				</a>
-				<a href="#" class="list-group-item list-group-item-action">
-					<div class="d-flex w-100 justify-content-between">
-						<h6 class="mb-1">Jane Doe</h6>
-						<small>3 days ago</small>
-					</div>
-					<p class="mb-1">Ohio</p>
-				</a>
+<div class="list-group">
+    {{for order in recent_orders:}}
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{=order['name']}}</h6>
+            <small>{{=order['days_ago']}} days ago</small>
+        </div>
+        <p class="mb-1">{{=order['state']}}</p>
+    </a>
+    {{pass}}
+</div>
 				<a href="#" class="list-group-item list-group-item-action">
 					<div class="d-flex w-100 justify-content-between">
 						<h6 class="mb-1">John Dough</h6>
@@ -66,7 +62,9 @@
 				</div>
 			</div>
 		</div>
-
+<div id="pie">
+    
+        </div>
 <script>
     xdata = [];
     ydata = [];
