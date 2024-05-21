@@ -1,3 +1,73 @@
 {{extend 'layout.html'}}
-<h1>This is the default/dataadmin.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+
+<style>
+    h5 {
+        display: inline;
+    }
+
+    .container {
+        max-width: 800px; /* Adjust the max-width as needed */
+        margin: 0 auto; /* Center the container */
+    }
+
+    .card {
+        width: 100%; /* Ensure the cards take full width of their column */
+    }
+</style>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body alert-success">
+                    <h5 class="card-title">Brands &nbsp;<i class="fa-solid fa-cannabis"></i></h5>
+                    <p class="card-text">Access brands database</p>
+                    <a href="http://127.0.0.1:8000/crm/default/brands.html" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body alert-success">
+                    <h5 class="card-title">Customers &nbsp;<i class="fa fa-user-circle"></i></h5>
+                    <p class="card-text">Access customers database</p>
+                    <a href="http://127.0.0.1:8000/crm/default/customers.html" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body alert-success">
+                    <h5 class="card-title">Events &nbsp; <i class="fa-solid fa-calendar-days"></i></h5>
+                    <p class="card-text">Access events database</p>
+                    <a href="http://127.0.0.1:8000/crm/default/events.html" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body alert-success">
+                    <h5 class="card-title">Products &nbsp; <i class="fa fa-shopping-bag"></i></h5>
+                    <p class="card-text">Access products database</p>
+                    <a href="http://127.0.0.1:8000/crm/default/products.html" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body alert-success">
+                    <h5 class="card-title">Orders &nbsp; <i class="fa fa-shopping-cart"></i>
+</h5>
+                    <p class="card-text">Access orders database</p>
+                    <a href="http://127.0.0.1:8000/crm/default/orders.html" class="btn btn-primary">Click Here</a>
+                </div>
+            </div>
+        </div>
+        <!-- If you have an odd number of cards, add another col for the last card -->
+        <div class="col"></div>
+    </div>
+</div>
