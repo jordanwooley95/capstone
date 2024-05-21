@@ -1,5 +1,7 @@
 {{extend 'layout.html'}}
 
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+
 <div class="container m-auto" style="width: 80%">
 	<h2 class="container" style="text-transform: capitalize; color: dark-grey">
 		Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
@@ -64,14 +66,30 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="container">
-			<div class="row">
-				<div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #cfcfcf">
-					{{=IMG(_src=URL('static', 'images/graph-static.png'), _alt="graph", _width="100%")}}
-				</div>
-			</div>
-		</div>
+<div id="pie">
+    
+        </div>
+<script>
+    xdata = [];
+    ydata = [];
+    myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
+    {{ for row in rows: }}
+           xdata.push("{{ =row['strain'] }}");
+           ydata.push({{ =row['howmany'] }});
+    {{ pass }}
+    var data = [{
+        values: ydata,
+        labels: xdata,
+        type: 'pie',
+        marker: {
+		      colors: myColors}
+    }];
+    var layout = {
+       height: 600,
+       width: 1100
+    };
+    Plotly.newPlot('pie', data, layout);
+</script>
 
 		<!--<p>
     {{ = A('Go To Brand List', _href = URL('brands'))}}

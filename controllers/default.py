@@ -7,7 +7,11 @@
 
 # ---- example index page ----
 def index():
-    return dict(message=T("Welcome to Joint Ventures!"))
+    sqlstmt = "SELECT count(*) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
+    rows = db.executesql(sqlstmt, as_dict=True)
+    return dict(rows=rows)
+
+
 
 
 def about():
