@@ -2,6 +2,7 @@
 
 <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 
+<div style="width: 100%">
 <div class="container m-auto" style="width: 80%">
     <h2 class="container" style="text-transform: capitalize; color: dark-grey">
         Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
@@ -36,7 +37,7 @@
             <h4>New Orders</h4>
             <div class="list-group">
                 <!-- First item -->
-                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/499?order=~orders.ordered_on&_signature=08672077bc78574d1241d525d7e356e6ba33788f" target="_blank" class="list-group-item list-group-item-action">
+                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[0]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
                         <small>{{=recent_orders[0]['days_ago']}} days ago</small>
@@ -44,7 +45,7 @@
                     <p class="mb-1">{{=recent_orders[0]['state']}}</p>
                 </a>
                 <!-- Second item -->
-                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/498?order=~orders.ordered_on&_signature=46836eede48608099208a1dcf247626d3d886d08" target="_blank" class="list-group-item list-group-item-action">
+                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[1]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
                         <small>{{=recent_orders[1]['days_ago']}} days ago</small>
@@ -52,7 +53,7 @@
                     <p class="mb-1">{{=recent_orders[1]['state']}}</p>
                 </a>
                 <!-- Third item -->
-                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/497?order=~orders.ordered_on&_signature=211208bd7286e1044eb0bc5366e5d2f27c860f95" target="_blank" class="list-group-item list-group-item-action">
+                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[2]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
                         <small>{{=recent_orders[2]['days_ago']}} days ago</small>
@@ -79,7 +80,8 @@
     <div class="container text-center my-4">
         <div id="pie" style="display: inline-block;"></div>
     </div>
-
+    </div>
+    </div>
     <script>
     xdata = [];
     ydata = [];

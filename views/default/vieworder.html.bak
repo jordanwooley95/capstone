@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+{{for row in rows:}}
+<table>
+    <tr>
+        <td>Customer Name</td>
+        <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td>{{=row["product_name"]}}</td>
+    </tr>
+    <tr>
+        <td>Strain</td>
+         <td>{{=row["strain"]}}</td>
+    </tr>
+    <tr>
+        <td>Price</td>
+         <td>${{=round(row["price"], 2)}}</td>
+    </tr>
+    <tr>
+        <td>Quantity</td>
+         <td>{{=row["quantity"]}}</td>
+    </tr>
+    <tr>
+        <td>Order Date</td>
+         <td>{{=row["order_date"]}}</td>
+    </tr>
+</table>
+{{pass}}
