@@ -44,7 +44,7 @@
                     <p class="mb-1">{{=recent_orders[0]['state']}}</p>
                 </a>
                 <!-- Second item -->
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/498?order=~orders.ordered_on&_signature=46836eede48608099208a1dcf247626d3d886d08" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
                         <small>{{=recent_orders[1]['days_ago']}} days ago</small>
@@ -52,7 +52,7 @@
                     <p class="mb-1">{{=recent_orders[1]['state']}}</p>
                 </a>
                 <!-- Third item -->
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="http://127.0.0.1:8000/crm/default/orders?order=~orders.ordered_on&_signature=4db1535141dd6e0542f56b91e90b215fa7550168" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
                         <small>{{=recent_orders[2]['days_ago']}} days ago</small>
