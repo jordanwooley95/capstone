@@ -108,6 +108,8 @@ def cannalytics():
         "SELECT COUNT(o.id) as howmany, c.first_name, c.last_name"
         " FROM orders o JOIN customers c ON o.customer_id = c.id "
         " GROUP BY c.first_name, c.last_name"
+        " ORDER BY howmany DESC"
+        " LIMIT 10"
     )
 
     # Execute the queries

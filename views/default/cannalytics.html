@@ -16,6 +16,13 @@
         margin-top: 50px;
 	}
 
+    #state_map {
+        width: 100%;
+        height: 500px;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        border: 2px solid black;
+    }
 	#tester3,
     #tester4 {
 		width: 100%;
@@ -25,18 +32,61 @@
 	}
 </style>
 <div id="container">
+    <div id="state_map"></div>
 	<div id="tester"></div>
 	<div id="tester2"></div>
 	<div id="tester3"></div>
 	<div id="tester4"></div>
 </div>
 <script>
-	// first graph
+    // state map
+    var locations = [];
+    var z = [];
+    var text = [];
+
+    {{ for state_row in sold_by_state_rows: }}
+        locations.push("{{ =state_row['state_name'] }}");
+        z.push({{ =state_row['howmany'] }});
+        text.push({{ =state_row['howmany'] }});
+    {{ pass }}
+
+    var data = [{
+        type: 'choropleth',
+        locationmode: 'USA-states',
+        locations: locations,
+        z: z,
+        text: text,
+        colorscale: [
+        ],
+        colorbar: {
+            title: 'Number of Orders',
+            thickness: 0.2
+        },
+        marker: {
+            line:{
+                color: 'rgb(255,255,255)',
+                width: 2
+            }
+        }
+    }];
+
+    var layout = {
+        title: 'Sales by State',
+        geo:{
+            scope: 'usa',
+            showlakes: true,
+            lakecolor: 'rgb(255,255,255)'
+        }
+    };
+
+    Plotly.newPlot('state_map', data, layout);
+
+	// strains graph
 	xdata = [];
 	ydata = [];
 	{{ for strain_row in strain_rows: }}
 	    xdata.push("{{ =strain_row['strain'] }}");
-	    ydata.push({{ =strain_row['howmany'] }});
+	    ydata.push("{{ =strain_row['howmany'] }}");
 	{{ pass }}
 	TESTER = document.getElementById('tester');
 	Plotly.newPlot( TESTER, [{
@@ -55,7 +105,7 @@
 	        bgcolor: 'rgb(255, 255, 255)'
 	} } );
 
-	// Second graph
+	// categories graph
 	xdata2 = [];
 	ydata2 = [];
 	{{ for category_row in category_rows: }}
@@ -79,7 +129,7 @@
 	        bgcolor: 'rgb(255, 255, 255)'
 	    } } );
 
-	// Third graph
+	//  products graph
 	xdata3 = [];
 	ydata3 = [];
 	{{ for product_row in product_rows: }}
@@ -106,7 +156,7 @@
 	        bgcolor: 'rgb(255, 255, 255)'
 	    } } );
 
-    // Fourth graph
+    // Top 10 customers graph
     var xdata4 = [];
     var ydata4 = [];
     {{ for customer_orders_row in customer_orders_rows: }}
@@ -123,9 +173,9 @@
         } }], {
         margin: { t: 0 },
         xaxis: {
-            title: 'Customer Orders',
+            title: 'Top 10 Customers',
             tickangle: 45,
-            automargin: true
+            automargin: true,
         },
         hoverlabel: {
             bgcolor: 'rgb(255, 255, 255)'
