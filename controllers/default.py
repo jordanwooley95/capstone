@@ -13,15 +13,20 @@ def index():
     # Fetch the top 3 most recent orders
     recent_orders = []
     orders = db().select(
-        db.orders.ALL, db.customers.ALL,
+        db.orders.ALL,
+        db.customers.ALL,
         join=db.orders.on(db.orders.customer_id == db.customers.id),
         orderby=~db.orders.ordered_on,
-        limitby=(0, 3)  # Limit to the top 3 recent orders
+        limitby=(0, 3),  # Limit to the top 3 recent orders
     )
+<<<<<<< HEAD
+=======
+
+>>>>>>> analytics
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
-        state_name = state.state_name if state else 'N/A'
+        state_name = state.state_name if state else "N/A"
 
         # Calculate days ago
         current_datetime = datetime.datetime.now()
@@ -30,10 +35,10 @@ def index():
 
         # Prepare the order details
         order_details = {
-            'id': order.orders.id,  # Directly access the id field of the orders table
-            'name': f"{order.customers.first_name} {order.customers.last_name}",
-            'state': state_name,
-            'days_ago': days_ago
+            "id": order.orders.id,  # Directly access the id field of the orders table
+            "name": f"{order.customers.first_name} {order.customers.last_name}",
+            "state": state_name,
+            "days_ago": days_ago,
         }
         recent_orders.append(order_details)
 
@@ -52,6 +57,7 @@ def index():
     ).count()
 
     return dict(recent_orders=recent_orders, rows=rows, open_calls_count=open_calls_count)
+
 
 
 def about():
@@ -79,9 +85,19 @@ def productz():
 def cannalytics():
     strain_sold = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     category_sold = "SELECT SUM(o.quantity) as howmany, category FROM orders o JOIN products p ON o.product_id = p.id GROUP BY category"
+    products_sold = "SELECT SUM(o.quantity) as howmany, product_name FROM orders o JOIN products p ON o.product_id = p.id GROUP BY product_name"
+    customer_orders = "SELECT COUNT(o.id) as howmany, c.first_name, c.last_name FROM orders o JOIN customers c ON o.customer_id = c.id GROUP BY c.first_name, c.last_name"
+
     strain_rows = db.executesql(strain_sold, as_dict=True)
     category_rows = db.executesql(category_sold, as_dict=True)
-    return dict(strain_rows=strain_rows, category_rows=category_rows)
+    product_rows = db.executesql(products_sold, as_dict=True)
+    customer_orders_rows = db.executesql(customer_orders, as_dict=True)
+    return dict(
+        strain_rows=strain_rows,
+        category_rows=category_rows,
+        product_rows=product_rows,
+        customer_orders_rows=customer_orders_rows
+    )
 
 
 def dataadmin():
