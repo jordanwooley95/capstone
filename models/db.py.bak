@@ -6,6 +6,8 @@
 # -------------------------------------------------------------------------
 from gluon.contrib.appconfig import AppConfig
 from gluon.tools import Auth
+from gluon.tools import Crud
+
 
 # -------------------------------------------------------------------------
 # This scaffolding model makes your app work on Google App Engine too
@@ -131,6 +133,8 @@ response.google_analytics_id = configuration.get('google.analytics_id')
 if configuration.get('scheduler.enabled'):
     from gluon.scheduler import Scheduler
     scheduler = Scheduler(db, heartbeat=configuration.get('scheduler.heartbeat'))
+
+crud = Crud(db)
 
 # -------------------------------------------------------------------------
 # Define your tables below (or better in another model file) for example

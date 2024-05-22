@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+
+<div class="container-fluid main-container">
+    <h2>Order Details</h2>
+    <div>
+        <div class="web2py_grid">
+            <div class="form_header row_buttons">
+                <a class="button btn btn-default btn-secondary" href="{{=URL('default', 'orders')}}">
+                    <span class="icon arrowleft icon-arrow-left glyphicon glyphicon-arrow-left"></span>
+                    <span class="buttontext button" title="Back">Back</span>
+                </a>
+                <a class="button btn btn-default btn-secondary" href="{{=URL('default', 'orders', args=['edit', orders.id])}}">
+                    <span class="icon pen icon-pencil glyphicon glyphicon-pencil"></span>
+                    <span class="buttontext button" title="Edit">Edit</span>
+                </a>
+            </div>
+        </div>

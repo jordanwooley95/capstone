@@ -7,6 +7,14 @@
 
 # ---- example index page ----
 
+def vieworder():
+    response.view = "default/vieworder.html"
+    orderid=request.vars.orderid
+    sqlstmt = "SELECT first_name,last_name,product_name,price,strain, strftime('%B %d, %Y', ordered_on) AS order_date, quantity FROM orders o JOIN products p ON o.product_id = p.id JOIN customers c ON c.id=o.customer_id WHERE o.id="+str(orderid)
+    rows=db.executesql(sqlstmt,as_dict = True)
+    #form=crud.read(db.orders,orderid)
+    return locals()
+
 def index():
     import datetime
 
