@@ -2,6 +2,7 @@
 
 <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 
+<div style="width: 100%">
 <div class="container m-auto" style="width: 80%">
     <h2 class="container" style="text-transform: capitalize; color: dark-grey">
         Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
@@ -79,7 +80,9 @@
     <div class="container text-center my-4">
         <div id="pie" style="display: inline-block;"></div>
     </div>
-
+    </div>
+    
+    </div>
     <script>
     xdata = [];
     ydata = [];
