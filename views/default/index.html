@@ -14,28 +14,20 @@
             <h4>Inquiries</h4>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" style="text-decoration: none; color: inherit;">
-                        Open Calls
-                    </a>
+                    Open
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=open_calls_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'personal', args=['Call', 'New'])}}" style="text-decoration: none; color: inherit;">
-                        New Calls
-                    </a>
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_calls_count}}</span>
+                    New Calls
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">3</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'personal', args=['Email', 'New'])}}" style="text-decoration: none; color: inherit;">
-                        New Emails
-                    </a>
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_emails_count}}</span>
+                    New Emails
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">2</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'personal', args=['In person', 'New'])}}" style="text-decoration: none; color: inherit;">
-                        New in-person Inquiries
-                    </a>
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
+                    New in-person Inquiries
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">1</span>
                 </li>
             </ul>
         </div>
@@ -47,8 +39,8 @@
                 <!-- First item -->
                 <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[0]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=order['name']}}</h6>
-                        <small>{{=order['days_ago']}} days ago</small>
+                        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+                        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
                     </div>
                     <p class="mb-1">{{=recent_orders[0]['state']}}</p>
                 </a>
@@ -68,7 +60,6 @@
                     </div>
                     <p class="mb-1">{{=recent_orders[2]['state']}}</p>
                 </a>
-                {{pass}}
             </div>
         </div>
 
@@ -92,25 +83,24 @@
     </div>
     </div>
     <script>
-        xdata = [];
-        ydata = [];
-        myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
-        {{ for row in rows: }}
-               xdata.push("{{=row['strain']}}");
-               ydata.push({{=row['howmany']}});
-        {{pass}}
-        var data = [{
-            values: ydata,
-            labels: xdata,
-            type: 'pie',
-            marker: {
-                  colors: myColors}
-        }];
-        var layout = {
-           height: 600,
-           width: 500,
-           title: 'Sales By Strain'
-        };
-        Plotly.newPlot('pie', data, layout);
-    </script>
-</div>
+    xdata = [];
+    ydata = [];
+    myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
+    {{ for row in rows: }}
+           xdata.push("{{ =row['strain'] }}");
+           ydata.push({{ =row['howmany'] }});
+    {{ pass }}
+    var data = [{
+        values: ydata,
+        labels: xdata,
+        type: 'pie',
+        marker: {
+              colors: myColors}
+    }];
+    var layout = {
+       height: 600,
+       width: 500,
+       title: 'Sales By Strain'
+    };
+    Plotly.newPlot('pie', data, layout);
+</script>
