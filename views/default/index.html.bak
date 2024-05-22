@@ -13,20 +13,28 @@
             <h4>Inquiries</h4>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Open
+                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                        Open
+                    </a>
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=open_calls_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New Calls
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">3</span>
+                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                        New Calls
+                    </a>
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_calls_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New Emails
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">2</span>
+                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                        New Emails
+                    </a>
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_emails_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    New in-person Inquiries
-                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">1</span>
+                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                        New in-person Inquiries
+                    </a>
+                    <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
                 </li>
             </ul>
         </div>
@@ -35,30 +43,16 @@
         <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
             <h4>New Orders</h4>
             <div class="list-group">
-                <!-- First item -->
-                <a href="http://127.0.0.1:8000/crm/default/orders/view/orders/499?order=~orders.ordered_on&_signature=08672077bc78574d1241d525d7e356e6ba33788f" target="_blank" class="list-group-item list-group-item-action">
+                <!-- Loop through recent orders -->
+                {{for order in recent_orders:}}
+                <a href="{{=URL('default', 'orders', 'view', args=[order['id']])}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+                        <h6 class="mb-1">{{=order['name']}}</h6>
+                        <small>{{=order['days_ago']}} days ago</small>
                     </div>
-                    <p class="mb-1">{{=recent_orders[0]['state']}}</p>
+                    <p class="mb-1">{{=order['state']}}</p>
                 </a>
-                <!-- Second item -->
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
-                        <small>{{=recent_orders[1]['days_ago']}} days ago</small>
-                    </div>
-                    <p class="mb-1">{{=recent_orders[1]['state']}}</p>
-                </a>
-                <!-- Third item -->
-                <a href="#" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
-                        <small>{{=recent_orders[2]['days_ago']}} days ago</small>
-                    </div>
-                    <p class="mb-1">{{=recent_orders[2]['state']}}</p>
-                </a>
+                {{pass}}
             </div>
         </div>
 
@@ -79,26 +73,26 @@
     <div class="container text-center my-4">
         <div id="pie" style="display: inline-block;"></div>
     </div>
-
     <script>
-    xdata = [];
-    ydata = [];
-    myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
-    {{ for row in rows: }}
-           xdata.push("{{ =row['strain'] }}");
-           ydata.push({{ =row['howmany'] }});
-    {{ pass }}
-    var data = [{
-        values: ydata,
-        labels: xdata,
-        type: 'pie',
-        marker: {
-              colors: myColors}
-    }];
-    var layout = {
-       height: 600,
-       width: 500,
-       title: 'Sales By Strain'
-    };
-    Plotly.newPlot('pie', data, layout);
-</script>
+        xdata = [];
+        ydata = [];
+        myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
+        {{ for row in rows: }}
+               xdata.push("{{=row['strain']}}");
+               ydata.push({{=row['howmany']}});
+        {{pass}}
+        var data = [{
+            values: ydata,
+            labels: xdata,
+            type: 'pie',
+            marker: {
+                  colors: myColors}
+        }];
+        var layout = {
+           height: 600,
+           width: 500,
+           title: 'Sales By Strain'
+        };
+        Plotly.newPlot('pie', data, layout);
+    </script>
+</div>

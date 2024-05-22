@@ -7,7 +7,6 @@
 
 # ---- example index page ----
 
-
 def index():
     import datetime
 
@@ -19,7 +18,6 @@ def index():
         orderby=~db.orders.ordered_on,
         limitby=(0, 3)  # Limit to the top 3 recent orders
     )
-    
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
@@ -38,11 +36,53 @@ def index():
             'days_ago': days_ago
         }
         recent_orders.append(order_details)
+
     # Fetch the aggregate data
     sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     rows = db.executesql(sqlstmt, as_dict=True)
+    
+    # Get the logged-in user's ID
+    user_id = auth.user_id
+    
+    # Query the events table to count the number of open calls and emails for the logged-in user
+    open_calls_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'Open') &
+        ((db.events.event_type == 'Call') | (db.events.event_type == 'Email'))
+    ).count()
 
-    return dict(recent_orders=recent_orders, rows=rows)
+    # Query the events table to count the number of new emails for the logged-in user
+    new_emails_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Email')
+    ).count()
+
+    # Query the events table to count the number of new in-person inquiries for the logged-in user
+    new_in_person_inquiries_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'In-person')
+    ).count()
+
+    # Query the events table to count the number of new calls for the logged-in user
+    new_calls_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Call')
+    ).count()
+
+    return dict(
+        recent_orders=recent_orders, 
+        rows=rows, 
+        open_calls_count=open_calls_count, 
+        new_emails_count=new_emails_count,
+        new_in_person_inquiries_count=new_in_person_inquiries_count,
+        new_calls_count=new_calls_count
+    )
+
+
+
 
 def about():
     return dict(message="About us")
@@ -61,12 +101,6 @@ def personal():
     )
     rows = db.executesql(sqlstmt_events, as_dict=True)
     return dict(rows=rows)
-
-
-
-
-
-
 
 def productz():
     return dict(message="Our products")

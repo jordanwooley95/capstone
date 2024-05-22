@@ -51,7 +51,37 @@ def index():
         ((db.events.event_type == 'Call') | (db.events.event_type == 'Email'))
     ).count()
 
-    return dict(recent_orders=recent_orders, rows=rows, open_calls_count=open_calls_count)
+    # Query the events table to count the number of new emails for the logged-in user
+    new_emails_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Email')
+    ).count()
+
+    # Query the events table to count the number of new in-person inquiries for the logged-in user
+    new_in_person_inquiries_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'In-person')
+    ).count()
+
+    # Query the events table to count the number of new calls for the logged-in user
+    new_calls_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Call')
+    ).count()
+
+    return dict(
+        recent_orders=recent_orders, 
+        rows=rows, 
+        open_calls_count=open_calls_count, 
+        new_emails_count=new_emails_count,
+        new_in_person_inquiries_count=new_in_person_inquiries_count,
+        new_calls_count=new_calls_count
+    )
+
+
 
 
 def about():
@@ -60,17 +90,30 @@ def about():
 @auth.requires_login()
 def personal():
     user_id = auth.user_id
+    event_type = request.args(0)
+    status = request.args(1)
+    
+    # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
         "SELECT user_id, status, event_type, COUNT(*) AS event_count "
         "FROM events "
         f"WHERE user_id = {user_id} "
-        "AND status = 'Open' "
-        "AND (event_type = 'Call' OR event_type = 'Email') "
-        "AND comm_type IN ('Phone', 'Email', 'In person') "  # Corrected field name
+    )
+    
+    # Add conditions for event_type and status if provided
+    if event_type:
+        sqlstmt_events += f"AND event_type = '{event_type}' "
+    if status:
+        sqlstmt_events += f"AND status = '{status}' "
+    
+    sqlstmt_events += (
+        "AND comm_type IN ('Phone', 'Email', 'In person') "
         "GROUP BY user_id, status, event_type"
     )
+
     rows = db.executesql(sqlstmt_events, as_dict=True)
     return dict(rows=rows)
+
 
 def productz():
     return dict(message="Our products")

@@ -1,25 +1,27 @@
 {{extend 'layout.html'}}
 
-<div class="container">
-    <h1>Personal Profile</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Status</th>
-                <th>Event Type</th>
-                <th>Event Count</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in rows %}
-            <tr>
-                <td>{{=row['user_id']}}</td>
-                <td>{{=row['status']}}</td>
-                <td>{{=row['event_type']}}</td>
-                <td>{{=row['event_count']}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<h1>Open Call Status</h1>
+{{ if rows: }}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Status</th>
+            <th>Event Type</th>
+            <th>Event Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ for row in rows: }}
+        <tr>
+            <td>{{=row['user_id']}}</td>
+            <td>{{=row['status']}}</td>
+            <td>{{=row['event_type']}}</td>
+            <td>{{=row['event_count']}}</td>
+        </tr>
+        {{ pass }}
+    </tbody>
+</table>
+{{ else: }}
+<p>No data found.</p>
+{{ pass }}
