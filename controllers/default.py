@@ -18,10 +18,7 @@ def index():
         orderby=~db.orders.ordered_on,
         limitby=(0, 3)  # Limit to the top 3 recent orders
     )
-<<<<<<< HEAD
-=======
 
->>>>>>> analytics
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
