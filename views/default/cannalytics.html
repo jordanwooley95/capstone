@@ -1,134 +1,58 @@
 {{extend 'layout.html'}}
 <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <style>
-	#container {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		padding: 0 100px;
-	}
-	#tester,
-	#tester2 {
-		width: 45%;
-		height: 250px;
-		margin-bottom: 50px;
-        margin-top: 50px;
-	}
-
-	#tester3,
-    #tester4 {
-		width: 100%;
-		height: 350px;
-		margin-bottom: 50px;
-        margin-top: 50px;
-	}
+  #container {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 100px;
+  }
+  #tester, #tester2 {
+      width: 45%;
+      height: 250px;
+  }
 </style>
 <div id="container">
-	<div id="tester"></div>
-	<div id="tester2"></div>
-	<div id="tester3"></div>
-	<div id="tester4"></div>
+  <div id="tester"></div>
+  <div id="tester2"></div>
 </div>
 <script>
-	// first graph
+	// First graph
 	xdata = [];
 	ydata = [];
 	{{ for strain_row in strain_rows: }}
-	    xdata.push("{{ =strain_row['strain'] }}");
-	    ydata.push({{ =strain_row['howmany'] }});
+	       xdata.push("{{ =strain_row['strain'] }}");
+	       ydata.push({{ =strain_row['howmany'] }});
 	{{ pass }}
 	TESTER = document.getElementById('tester');
 	Plotly.newPlot( TESTER, [{
-	    x: xdata,
-	    y: ydata,
-	    type: 'bar',
-	    marker: {
-	        color: 'rgb(76,175,80)'
-	    }
-	}],{
-	    margin: { t: 0 },
-	    xaxis: {
-	        title: 'Strain',
-	     },
-	    hoverlabel: {
-	        bgcolor: 'rgb(255, 255, 255)'
+	x: xdata,
+	y: ydata,
+	type: 'bar' }], {
+	margin: { t: 0 },
+	xaxis: {
+	    title: 'Strain',
+	},
+	yaxis: {
+	    title: 'Amount Sold',
 	} } );
 
 	// Second graph
 	xdata2 = [];
-	ydata2 = [];
+  ydata2 = [];
 	{{ for category_row in category_rows: }}
 	       xdata2.push("{{ =category_row['category'] }}");
 	       ydata2.push({{ =category_row['howmany'] }});
 	{{ pass }}
 	TESTER2 = document.getElementById('tester2');
 	Plotly.newPlot( TESTER2, [{
-	    x: xdata2,
-	    y: ydata2,
-	    type: 'bar',
-	    marker: {
-	        color: 'rgb(76,175,80)'
-	   	}
-	   }],{
-	       margin: { t: 0 },
-	    xaxis: {
-	        title: 'Category',
-	    },
-	    hoverlabel: {
-	        bgcolor: 'rgb(255, 255, 255)'
-	    } } );
-
-	// Third graph
-	xdata3 = [];
-	ydata3 = [];
-	{{ for product_row in product_rows: }}
-	    xdata3.push("{{ =product_row['product_name'] }}");
-	    ydata3.push({{ =product_row['howmany'] }});
-	{{ pass }}
-	TESTER3 = document.getElementById('tester3');
-	Plotly.newPlot( TESTER3, [{
-	    x: xdata3,
-	    y: ydata3,
-	    type: 'bar',
-	    marker: {
-	        color: 'rgb(76,175,80)'
-	       }
-	       }], {
-	    margin: { t: 0 },
-	    xaxis: {
-	        title: 'Product Name',
-	        tickangle: -45,
-	        automargin: true
-	    },
-
-	    hoverlabel: {
-	        bgcolor: 'rgb(255, 255, 255)'
-	    } } );
-
-    // Fourth graph
-    var xdata4 = [];
-    var ydata4 = [];
-    {{ for customer_orders_row in customer_orders_rows: }}
-    xdata4.push("{{ =customer_orders_row['first_name'] }} {{ =customer_orders_row['last_name'] }}");
-    ydata4.push({{ =customer_orders_row['howmany'] }});
-    {{ pass }}  
-    var TESTER4 = document.getElementById('tester4');
-    Plotly.newPlot( TESTER4, [{
-        x: xdata4,
-        y: ydata4,
-        type: 'bar',
-        marker: {
-            color: 'rgb(76,175,80)'
-        } }], {
-        margin: { t: 0 },
-        xaxis: {
-            title: 'Customer Orders',
-            tickangle: 45,
-            automargin: true
-        },
-        hoverlabel: {
-            bgcolor: 'rgb(255, 255, 255)'
-        } } );
+	x: xdata2,
+	y: ydata2,
+	type: 'bar' }], {
+	margin: { t: 0 },
+	xaxis: {
+	    title: 'Category',
+	},
+	yaxis: {
+	    title: 'Amount Sold',
+	} } );
 </script>
-
