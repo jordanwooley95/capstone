@@ -82,6 +82,62 @@ def productz():
     return dict(message="Our products")
 
 
+def get_state_abbr():
+    state_abbreviations = {
+        "Alabama": "AL",
+        "Alaska": "AK",
+        "Arizona": "AZ",
+        "Arkansas": "AR",
+        "California": "CA",
+        "Colorado": "CO",
+        "Connecticut": "CT",
+        "Delaware": "DE",
+        "Florida": "FL",
+        "Georgia": "GA",
+        "Hawaii": "HI",
+        "Idaho": "ID",
+        "Illinois": "IL",
+        "Indiana": "IN",
+        "Iowa": "IA",
+        "Kansas": "KS",
+        "Kentucky": "KY",
+        "Louisiana": "LA",
+        "Maine": "ME",
+        "Maryland": "MD",
+        "Massachusetts": "MA",
+        "Michigan": "MI",
+        "Minnesota": "MN",
+        "Mississippi": "MS",
+        "Missouri": "MO",
+        "Montana": "MT",
+        "Nebraska": "NE",
+        "Nevada": "NV",
+        "New Hampshire": "NH",
+        "New Jersey": "NJ",
+        "New Mexico": "NM",
+        "New York": "NY",
+        "North Carolina": "NC",
+        "North Dakota": "ND",
+        "Ohio": "OH",
+        "Oklahoma": "OK",
+        "Oregon": "OR",
+        "Pennsylvania": "PA",
+        "Rhode Island": "RI",
+        "South Carolina": "SC",
+        "South Dakota": "SD",
+        "Tennessee": "TN",
+        "Texas": "TX",
+        "Utah": "UT",
+        "Vermont": "VT",
+        "Virginia": "VA",
+        "Washington": "WA",
+        "West Virginia": "WV",
+        "Wisconsin": "WI",
+        "Wyoming": "WY",
+    }
+    return state_abbreviations
+
+
 def cannalytics():
     # Queries
     sold_by_state = (
@@ -118,6 +174,13 @@ def cannalytics():
     category_rows = db.executesql(category_sold, as_dict=True)
     product_rows = db.executesql(products_sold, as_dict=True)
     customer_orders_rows = db.executesql(customer_orders, as_dict=True)
+
+    # get state abbreviations
+    state_abbrs = get_state_abbr()
+
+    # Convert state names to abbreviations for state map
+    for row in sold_by_state_rows:
+        row["state_name"] = state_abbrs.get(row["state_name"], row["state_name"])
 
     return dict(
         strain_rows=strain_rows,
