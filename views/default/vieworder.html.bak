@@ -1,29 +1,49 @@
 {{extend 'layout.html'}}
+
+<style>
+    /* Custom CSS for hover color */
+    .table-hover tbody tr:hover {
+        background-color: #9BD45C;
+    }
+    /* Custom CSS for bold labels */
+    .label-bold {
+        font-weight: bold;
+    }
+    /* Custom CSS to remove bottom margin */
+    .no-bottom-margin {
+        margin-bottom: 0;
+    }
+</style>
+
 {{for row in rows:}}
-<table>
-    <tr>
-        <td>Customer Name</td>
-        <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
-    </tr>
-    <tr>
-        <td>Product Name</td>
-        <td>{{=row["product_name"]}}</td>
-    </tr>
-    <tr>
-        <td>Strain</td>
-         <td>{{=row["strain"]}}</td>
-    </tr>
-    <tr>
-        <td>Price</td>
-         <td>${{=round(row["price"], 2)}}</td>
-    </tr>
-    <tr>
-        <td>Quantity</td>
-         <td>{{=row["quantity"]}}</td>
-    </tr>
-    <tr>
-        <td>Order Date</td>
-         <td>{{=row["order_date"]}}</td>
-    </tr>
-</table>
+<div style="display: flex; justify-content: center;">
+    <div class="card" style="width: 23rem;">
+        <table class="table table-hover no-bottom-margin">
+            <tr>
+                <td><span class="label-bold">Customer Name:</span></td>
+                <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
+            </tr>
+            <tr>
+                <td><span class="label-bold">Product Name:</span></td>
+                <td>{{=row["product_name"]}}</td>
+            </tr>
+            <tr>
+                <td><span class="label-bold">Strain:</span></td>
+                <td>{{=row["strain"]}}</td>
+            </tr>
+            <tr>
+                <td><span class="label-bold">Price:</span></td>
+                <td>${{="%.2f" % row["price"]}}</td>
+            </tr>
+            <tr>
+                <td><span class="label-bold">Quantity:</span></td>
+                <td>{{=row["quantity"]}}</td>
+            </tr>
+            <tr>
+                <td><span class="label-bold">Order Date:</span></td>
+                <td>{{=row["order_date"]}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 {{pass}}
