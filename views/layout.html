@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{=T.accepted_language or 'en'}}">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -11,85 +12,91 @@
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
     <style>
-      nav li a {
-        color: #6c757d;
-        text-decoration: none;
-      }
+        nav li a {
+            color: #6c757d;
+            text-decoration: none;
+        }
 
-      nav li a:hover {
-        color: #9bd45c;
-    }
+        nav li a:hover {
+            color: #9bd45c;
+        }
     </style>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
-    <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="75")}}</a>
-    <div class="container" style="color: grey">
-        <ul class="nav nav-tabs m-auto">
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'index')}}">Dashboard</a>
-            </li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
+        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="75")}}</a>
+        <div class="container" style="color: grey">
+            <ul class="nav nav-tabs m-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'index')}}">Dashboard</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'dataadmin')}}">Data Admin</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'dataadmin')}}">Data Admin</a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'cannalytics')}}">Cannalytics</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'productz')}}">Products</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'about')}}">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-secondary" href="{{=URL('default', 'personal')}}">Personal Profile</a>
-            </li>
-        </ul>
-        <!-- Login -->
-        <ul class="nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    {{if auth.user:}}
-                    <a class="dropdown-item" href="{{=URL('default','user/profile')}}">{{=T('Profile')}}</a>
-                    {{if 'change_password' not in auth.settings.actions_disabled:}}
-                    <a class="dropdown-item" href="{{=URL('default','user/change_password')}}">{{=T('Change Password')}}</a>
-                    {{pass}}
-                    <a class="dropdown-item" href="{{=URL('default','user/logout')}}">{{=T('Logout')}}</a>
-                    {{else:}}
-                    <a class="dropdown-item" href="{{=URL('default','user/login')}}">{{=T('Login')}}</a>
-                    {{if 'register' not in auth.settings.actions_disabled:}}
-                    <a class="dropdown-item" href="{{=URL('default','user/register')}}">{{=T('Sign up')}}</a>
-                    {{pass}} {{if 'retrieve_password' not in auth.settings.actions_disabled:}}
-                    <a class="dropdown-item" href="{{=URL('default','user/retrieve_password')}}">{{=T('Lost Password')}}</a>
-                    {{pass}} {{pass}}
-                </div>
-            </li>
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'cannalytics')}}">Cannalytics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'productz')}}">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'about')}}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-secondary" href="{{=URL('default', 'personal')}}">Personal Profile</a>
+                </li>
+            </ul>
+            <!-- Login -->
+            <ul class="nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {{if auth.user:}}
+                        <a class="dropdown-item" href="{{=URL('default','user/profile')}}">{{=T('Profile')}}</a>
+                        {{if 'change_password' not in auth.settings.actions_disabled:}}
+                        <a class="dropdown-item" href="{{=URL('default','user/change_password')}}">{{=T('Change Password')}}</a>
+                        {{pass}}
+                        <a class="dropdown-item" href="{{=URL('default','user/logout')}}">{{=T('Logout')}}</a>
+                        {{else:}}
+                        <a class="dropdown-item" href="{{=URL('default','user/login')}}">{{=T('Login')}}</a>
+                        {{if 'register' not in auth.settings.actions_disabled:}}
+                        <a class="dropdown-item" href="{{=URL('default','user/register')}}">{{=T('Sign up')}}</a>
+                        {{pass}} {{if 'retrieve_password' not in auth.settings.actions_disabled:}}
+                        <a class="dropdown-item" href="{{=URL('default','user/retrieve_password')}}">{{=T('Lost Password')}}</a>
+                        {{pass}} {{pass}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Favicons -->
+    {{include 'web2py_ajax.html'}}
+    <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
+    <!--<h1>This is the layout.html template</h1>-->
+
+    <!-- Main ========================================= -->
+    <!-- Begin page content -->
+    <div class="container-fluid main-container">{{include}} {{=response.toolbar() if response.show_toolbar else ''}}
     </div>
-</nav>
-
-<!-- Favicons -->
-{{include 'web2py_ajax.html'}}
-<!-- this includes jquery.js, calendar.js/.css and web2py.js -->
-<!--<h1>This is the layout.html template</h1>-->
-
-<!-- Main ========================================= -->
-<!-- Begin page content -->
-<div class="container-fluid main-container">{{include}} {{=response.toolbar() if response.show_toolbar else ''}}</div>
 </body>
 
 <!-- Footer section -->
-<footer class="footer" style="background-color: #333; color: #fff; padding-top: 10px; position: fixed; text-align: center; width: 100%; height: 70px; bottom: 0">
+<footer class="footer"
+    style="background-color: #333; color: #fff; padding-top: 10px; position: fixed; text-align: center; width: 100%; height: 70px; bottom: 0">
     <div class="container">
         <p style="margin-bottom: 5px;">&copy; 2024 Joint Ventures. All rights reserved.</p>
         <div style="margin-top: -5px;">
-            <a href="#" style="color: #fff; text-decoration: none; margin-right: 5px;"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="color: #fff; text-decoration: none; margin-right: 5px;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #fff; text-decoration: none; margin-right: 5px;"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: #fff; text-decoration: none; margin-right: 5px;"><i
+                    class="fab fa-twitter"></i></a>
             <a href="#" style="color: #fff; text-decoration: none;"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
@@ -100,8 +107,7 @@
 <script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var tabs = document.querySelectorAll(".nav-link");
-        var currentUrl = document.addEventListener("DOMContentLoaded", function () {
+
         var tabs = document.querySelectorAll(".nav-link");
         var currentUrl = window.location.href;
 
