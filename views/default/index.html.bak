@@ -14,25 +14,25 @@
             <h4>Inquiries</h4>
             <ul class="list-group">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
-                        Open
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" style="text-decoration: none; color: inherit;">
+                        Open Calls
                     </a>
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=open_calls_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                    <a href="{{=URL('default', 'personal', args=['Call', 'New'])}}" style="text-decoration: none; color: inherit;">
                         New Calls
                     </a>
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_calls_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                    <a href="{{=URL('default', 'personal', args=['Email', 'New'])}}" style="text-decoration: none; color: inherit;">
                         New Emails
                     </a>
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_emails_count}}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{{=URL('default', 'profile', args=[auth.user_id])}}" style="text-decoration: none; color: inherit;">
+                    <a href="{{=URL('default', 'personal', args=['In person', 'New'])}}" style="text-decoration: none; color: inherit;">
                         New in-person Inquiries
                     </a>
                     <span class="badge badge-primary badge-pill" style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
