@@ -1,3 +1,244 @@
 {{extend 'layout.html'}}
-<h1>This is the default/products.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+<!DOCTYPE html>
+<html>
+    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Products</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+    <style>
+    .jumbotron-bg {
+      background-image: url('/crm/static/images/products-hero4.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+      background-size: cover; /* Cover the entire jumbotron with the background image */
+      background-position: center; /* Center the background image within the jumbotron */
+      color: white; /* Set text color to white for better readability */
+        /*background-color: black;*/
+    }
+    
+    </style>
+<body>
+<!-- Hero-->
+<div class="jumbotron jumbotron-fluid jumbotron-bg">
+  <div class="container">
+    <h1 class="display-3">The Big 3</h1>
+    <p class="lead">Our top 3 performing products this quarter</p>
+       <a class="btn btn-dark btn-med m-auto" href="products.html" role="button">Product Database &#10095 </a>
+  </div>
+</div>
+
+<!-- Alert-->
+<div class="alert alert-success text-center " id="datetime" role="alert">
+  Last Update: 05-24-2024 01:08:32 -- See ya next quarter!
+</div>
+</br>
+</br>
+
+<!--products-->
+<!--Beach Wedding-->
+
+<div class="card-deck" style="width:80%; margin:auto;">
+  <div class="card bg-dark">
+   {{=IMG(_src=URL('static', 'images/lusterpod.jpg'), _alt="cannabis-luster-pod-oil", _width="100%")}}
+    <div class="card-body">
+      <h5 class=text-white>#1 Beach Wedding &nbsp <span class="badge badge-success">Top Seller!</span></h5>
+      <p class="card-text text-muted" >Luster Pod-Oil: Hybrid </p>
+      <p class="card-text"><h6 style="color: #9bd45c">237 Sold</h6></p>
+       <!-- Button to trigger the modal -->
+       <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal">Product Details</a>
+    </div>
+  </div>
+
+<!-- Beach Wedding Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Beach Wedding</h5>
+        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+          <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {{=IMG(_src=URL('static', 'images/lusterpod.jpg'), _alt="cannabis-luster-pod-oil", _width="100%")}}
+        
+        <b>Category:</b> Luster Pod</br>
+        <b>Strain:</b> Hybrid</br>
+        <b>Description:</b> Extracted Cannabis Oil</br>
+        <b>Thc Content:</b> 73.30</br>
+        <b>Cbd Content:</b> 0.01</br>
+        <b>Price:</b> $35.00</br>
+        <b>Stock Quantity:</b> 1</br>
+      </div>
+      <div class="modal-footer bg-dark">
+       </div>
+    </div>
+  </div>
+</div>
+
+<!--Runtz-->
+  <div class="card bg-dark">
+{{=IMG(_src=URL('static', 'images/runtz.jpg'), _alt="runtz-cannabis-flower", _width="100%")}}    <div class="card-body">
+      <h5 class="text-white"> #2 Runtz</h5>
+      <p class="card-text text-muted">Flower: Sativa</p>
+      <p class="card-text"><h6 style="color: #9bd45c">177 Sold</h6></p>
+      <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal2">Product Details</a>
+    </div>
+  </div>
+
+<!-- Runtz Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Runtz</h5>
+        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+          <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {{=IMG(_src=URL('static', 'images/Runtz.jpg'), _alt="runtz-cannabis-flower", _width="100%")}}
+          </br>
+        </br>
+      
+        <b>Category:</b> Flower</br>
+        <b>Strain:</b> Sativa</br>
+        <b>Description:</b> Premium Flower, Hand Trimmed</br>
+        <b>Thc Content:</b> 22.96</br>
+        <b>Cbd Content:</b> 0.06</br>
+        <b>Price:</b> $20.00</br>
+        <b>Stock Quantity:</b> 1</br>
+      </div>
+      <div class="modal-footer bg-dark">
+       </div>
+    </div>
+  </div>
+</div>
+
+<!--Boscotti-->
+  <div class="card bg-dark">
+    {{=IMG(_src=URL('static', 'images/biscotti2.jpg'), _alt="biscotti-cannabis-flower", _width="100%")}}
+    <div class="card-body">
+      <h5 class="text-white">#3 Biscotti</h5>
+      <p class="card-text text-muted">Flower: Hybrid</p>
+      <p class="card-text"><h6 style="color: #9bd45c">160 Sold</h6></p>
+     <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal3">Product Details</a>
+    </div>
+    </div></br>
+
+</div>
+</br>
+</br>
+</br>
+
+<!-- Biscotti Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Biscotti</h5>
+        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+          <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {{=IMG(_src=URL('static', 'images/biscotti2.jpg'), _alt="biscotti-cannabis-flower", _width="100%")}}
+          </br>
+        </br>
+       
+        <b>Category:</b> Flower</br>
+        <b>Strain:</b> Hybrid</br>
+        <b>Description:</b> Top Quality Flower</br>
+        <b>Thc Content:</b> $18.92</br>
+        <b>Cbd Content:</b> 0.00</br>
+        <b>Price:</b> $35.00</br>
+        <b>Stock Quantity:</b> 4</br>
+      </div>
+      <div class="modal-footer bg-dark">
+       </div>
+    </div>
+  </div>
+</div>
+ <div>
+     
+     <!--Honorable Mention-->
+<section style="background-color:black; width: 100%; padding-bottom: 100px; padding-top:60px; padding-left: 50px; padding-right:50px;">
+    <div class="text-center text-white"><h4 style="color:white text-center " class="display-4">
+              Honorable Mention
+          </h4>
+</div>
+</br>
+<div>
+    <div class= "container" style="background-color: black">
+    </div>
+    
+    <!--Kiva-->
+    <div class="card m-auto" style="width:80%;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+     {{=IMG(_src=URL('static', 'images/cookies.jpg'), _alt="choc-chunk-cookies", _width="100%")}}
+    </div>
+    <div class="col-md-8" style="background-color:white">
+      <div class="card-body">
+        
+        <h3 style="color:black">
+          Kiva Confections
+        </h3>
+        <h5 class="card-title" style="color:black">Peanut Butter Choc Chunk</h5>
+        <p class="card-text text-dark">Gluten Free Baked Cookie: Hybrid</p>
+        <p class="card-text"><span class="badge badge-success">149 Sold</span></p>
+        <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal4">Product Details</a>
+    </div>
+  </div>
+</div>
+        
+        <!-- Kiva Modal -->
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Peanut Butter Choc Chunk Cookies</h5>
+        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+          <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          {{=IMG(_src=URL('static', 'images/cookies.jpg'), _alt="cannabis-cookies", _width="100%")}}
+          </br>
+        </br>
+        <b>Category:</b> Cookie</br>
+        <b>Strain:</b> Hybrid</br>
+        <b>Description:</b> Gluten Free Baked Cookie</br>
+        <b>Thc Content:</b> 18.00</br>
+        <b>Cbd Content:</b> 0.05</br>
+        <b>Price:</b> $30.00</br>
+        <b>Stock Quantity:</b> 2</br>
+      </div>
+      <div class="modal-footer bg-dark">
+       </div>
+    </div>
+  </div>
+</div>
+</section>
+     
+     
+<script>
+// Get the current date and time
+var now = new Date();
+
+// Format the date and time as a string
+var dateString = now.toLocaleDateString(); // Format: MM/DD/YYYY
+var timeString = now.toLocaleTimeString(); // Format: HH:MM:SS AM/PM
+
+// Create a string with the formatted date and time
+var dateTimeString = dateString + ' ' + timeString;
+
+// Display the date and time on the web page
+document.getElementById('datetime').innerText = 'Last Updated: ' + dateTimeString + " " + "-- You're up to date. See ya next quarter!";
+</script>
+     </body>
+</html>
+<!--{{=BEAUTIFY(response._vars)}}-->
