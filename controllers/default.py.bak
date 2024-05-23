@@ -11,7 +11,7 @@ def vieworder():
     response.view = "default/vieworder.html"
     orderid=request.vars.orderid
     sqlstmt = "SELECT first_name,last_name,product_name,price,strain, strftime('%B %d, %Y', ordered_on) AS order_date, quantity FROM orders o JOIN products p ON o.product_id = p.id JOIN customers c ON c.id=o.customer_id WHERE o.id="+str(orderid)
-    row=db.executesql(sqlstmt,as_dict = True)
+    rows=db.executesql(sqlstmt,as_dict = True)
     #form=crud.read(db.orders,orderid)
     return locals()
 
@@ -26,6 +26,7 @@ def index():
         orderby=~db.orders.ordered_on,
         limitby=(0, 3)  # Limit to the top 3 recent orders
     )
+
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
@@ -48,8 +49,49 @@ def index():
     # Fetch the aggregate data
     sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     rows = db.executesql(sqlstmt, as_dict=True)
+    
+    # Get the logged-in user's ID
+    user_id = auth.user_id
+    
+    # Query the events table to count the number of open calls and emails for the logged-in user
+    open_calls_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'Open') &
+        ((db.events.event_type == 'Call') | (db.events.event_type == 'Email'))
+    ).count()
 
-    return dict(recent_orders=recent_orders, rows=rows)
+    # Query the events table to count the number of new emails for the logged-in user
+    new_emails_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Email')
+    ).count()
+
+    # Query the events table to count the number of new in-person inquiries for the logged-in user
+    new_in_person_inquiries_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'In-person')
+    ).count()
+
+    # Query the events table to count the number of new calls for the logged-in user
+    new_calls_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'New') &
+        (db.events.event_type == 'Call')
+    ).count()
+
+    return dict(
+        recent_orders=recent_orders, 
+        rows=rows, 
+        open_calls_count=open_calls_count, 
+        new_emails_count=new_emails_count,
+        new_in_person_inquiries_count=new_in_person_inquiries_count,
+        new_calls_count=new_calls_count
+    )
+
+
+
 
 def about():
     return dict(message="About us")
@@ -57,17 +99,30 @@ def about():
 @auth.requires_login()
 def personal():
     user_id = auth.user_id
+    event_type = request.args(0)
+    status = request.args(1)
+    
+    # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
         "SELECT user_id, status, event_type, COUNT(*) AS event_count "
         "FROM events "
         f"WHERE user_id = {user_id} "
-        "AND status = 'Open' "
-        "AND (event_type = 'Call' OR event_type = 'Email') "
-        "AND comm_type IN ('Phone', 'Email', 'In person') "  # Corrected field name
+    )
+    
+    # Add conditions for event_type and status if provided
+    if event_type:
+        sqlstmt_events += f"AND event_type = '{event_type}' "
+    if status:
+        sqlstmt_events += f"AND status = '{status}' "
+    
+    sqlstmt_events += (
+        "AND comm_type IN ('Phone', 'Email', 'In person') "
         "GROUP BY user_id, status, event_type"
     )
+
     rows = db.executesql(sqlstmt_events, as_dict=True)
     return dict(rows=rows)
+
 
 def productz():
     return dict(message="Our products")
