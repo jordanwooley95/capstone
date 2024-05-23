@@ -153,12 +153,12 @@
 </div>
 
 <!-- Honorable Mention -->
-<section style="background-color:black; width: 100%; padding: 60px 50px 100px 50px; margin-bottom: 100px; margin-left:-15px;">
+<section style="background-color:black; width: 102%; padding: 60px 50px 100px 50px; margin-bottom: 100px; margin-left:-15px;">
   <div class="text-center text-white">
     <h4 class="display-4">Honorable Mention</h4>
   </div>
   <br>
-  <div class="container" style="background-color: black; "></div>
+  <div class="container" style="background-color: black;"></div>
   <div class="card m-auto" style="width:80%;">
     <div class="row no-gutters">
       <div class="col-md-4">
