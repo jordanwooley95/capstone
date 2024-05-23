@@ -16,9 +16,9 @@
 </style>
 
 {{for row in rows:}}
-<div style="display: flex; justify-content: center;">
+<div style="display: flex; justify-content: center; margin-top: 2rem;">
     <div class="card" style="width: 23rem;">
-        <table class="table table-hover no-bottom-margin">
+        <table class="table table-hover no-bottom-margin" style="border: black solid 4px">
             <tr>
                 <td><span class="label-bold">Customer Name:</span></td>
                 <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
