@@ -45,8 +45,6 @@
 
     {{ for state_row in sold_by_state_rows: }}
         locations.push("{{ =state_row['state_name'] }}");
-        {{print(state_row['howmany'])}}
-        {{print(state_row['state_name'])}}
         z.push({{ =state_row['howmany'] }});
         text.push({{ =state_row['howmany'] }});
     {{ pass }}
