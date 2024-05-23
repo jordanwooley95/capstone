@@ -15,6 +15,7 @@ def vieworder():
     #form=crud.read(db.orders,orderid)
     return locals()
 
+
 def index():
     import datetime
 
@@ -49,15 +50,15 @@ def index():
     # Fetch the aggregate data
     sqlstmt = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
     rows = db.executesql(sqlstmt, as_dict=True)
-    
+
     # Get the logged-in user's ID
     user_id = auth.user_id
-    
+
     # Query the events table to count the number of open calls and emails for the logged-in user
     open_calls_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.status == 'Open') &
-        ((db.events.event_type == 'Call') | (db.events.event_type == 'Email'))
+        (db.events.user_id == user_id)
+        & (db.events.status == "Open")
+        & ((db.events.event_type == "Call") | (db.events.event_type == "Email"))
     ).count()
 
     # Query the events table to count the number of new emails for the logged-in user
@@ -96,6 +97,7 @@ def index():
 def about():
     return dict(message="About us")
 
+
 @auth.requires_login()
 def personal():
     user_id = auth.user_id
@@ -128,12 +130,113 @@ def productz():
     return dict(message="Our products")
 
 
+def get_state_abbr():
+    state_abbreviations = {
+        "Alabama": "AL",
+        "Alaska": "AK",
+        "Arizona": "AZ",
+        "Arkansas": "AR",
+        "California": "CA",
+        "Colorado": "CO",
+        "Connecticut": "CT",
+        "Delaware": "DE",
+        "Florida": "FL",
+        "Georgia": "GA",
+        "Hawaii": "HI",
+        "Idaho": "ID",
+        "Illinois": "IL",
+        "Indiana": "IN",
+        "Iowa": "IA",
+        "Kansas": "KS",
+        "Kentucky": "KY",
+        "Louisiana": "LA",
+        "Maine": "ME",
+        "Maryland": "MD",
+        "Massachusetts": "MA",
+        "Michigan": "MI",
+        "Minnesota": "MN",
+        "Mississippi": "MS",
+        "Missouri": "MO",
+        "Montana": "MT",
+        "Nebraska": "NE",
+        "Nevada": "NV",
+        "New Hampshire": "NH",
+        "New Jersey": "NJ",
+        "New Mexico": "NM",
+        "New York": "NY",
+        "North Carolina": "NC",
+        "North Dakota": "ND",
+        "Ohio": "OH",
+        "Oklahoma": "OK",
+        "Oregon": "OR",
+        "Pennsylvania": "PA",
+        "Rhode Island": "RI",
+        "South Carolina": "SC",
+        "South Dakota": "SD",
+        "Tennessee": "TN",
+        "Texas": "TX",
+        "Utah": "UT",
+        "Vermont": "VT",
+        "Virginia": "VA",
+        "Washington": "WA",
+        "West Virginia": "WV",
+        "Wisconsin": "WI",
+        "Wyoming": "WY",
+    }
+    return state_abbreviations
+
+
 def cannalytics():
-    strain_sold = "SELECT SUM(o.quantity) as howmany, strain FROM orders o JOIN products p ON o.product_id = p.id GROUP BY strain"
-    category_sold = "SELECT SUM(o.quantity) as howmany, category FROM orders o JOIN products p ON o.product_id = p.id GROUP BY category"
+    # Queries
+    sold_by_state = (
+        "SELECT SUM(o.quantity) as howmany, s.state_name "
+        " FROM orders o JOIN customers c ON o.customer_id = c.id "
+        " JOIN states s ON c.state_id = s.id GROUP BY s.state_name"
+    )
+    strain_sold = (
+        "SELECT SUM(o.quantity) as howmany, strain "
+        " FROM orders o JOIN products p ON o.product_id = p.id "
+        " GROUP BY strain"
+    )
+    category_sold = (
+        "SELECT SUM(o.quantity) as howmany, category "
+        " FROM orders o JOIN products p ON o.product_id = p.id "
+        " GROUP BY category"
+    )
+    products_sold = (
+        "SELECT SUM(o.quantity) as howmany, product_name"
+        " FROM orders o JOIN products p ON o.product_id = p.id "
+        " GROUP BY product_name"
+    )
+    customer_orders = (
+        "SELECT COUNT(o.id) as howmany, c.first_name, c.last_name"
+        " FROM orders o JOIN customers c ON o.customer_id = c.id "
+        " GROUP BY c.first_name, c.last_name"
+        " ORDER BY howmany DESC"
+        " LIMIT 10"
+    )
+
+    # Execute the queries
+    sold_by_state_rows = db.executesql(sold_by_state, as_dict=True)
     strain_rows = db.executesql(strain_sold, as_dict=True)
     category_rows = db.executesql(category_sold, as_dict=True)
-    return dict(strain_rows=strain_rows, category_rows=category_rows)
+    product_rows = db.executesql(products_sold, as_dict=True)
+    customer_orders_rows = db.executesql(customer_orders, as_dict=True)
+
+    # get state abbreviations
+    state_abbrs = get_state_abbr()
+
+    # Convert state names to abbreviations for state map
+    for row in sold_by_state_rows:
+        row["state_name"] = state_abbrs.get(row["state_name"], row["state_name"])
+
+    return dict(
+        strain_rows=strain_rows,
+        category_rows=category_rows,
+        product_rows=product_rows,
+        customer_orders_rows=customer_orders_rows,
+        sold_by_state_rows=sold_by_state_rows,
+    )
 
 
 def dataadmin():

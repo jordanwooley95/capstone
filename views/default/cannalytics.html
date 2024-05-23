@@ -1,42 +1,129 @@
 {{extend 'layout.html'}}
 <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 <style>
-  #container {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 100px;
-  }
-  #tester, #tester2 {
-      width: 45%;
-      height: 250px;
-  }
+	#container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 0 100px;
+	}
+	#tester,
+	#tester2 {
+		width: 45%;
+		height: 250px;
+		margin-bottom: 50px;
+        margin-top: 50px;
+	}
+
+    #state_map {
+        width: 100%;
+        height: 500px;
+        margin-top: 0;
+        margin-bottom: 50px;
+        cursor: crosshair;
+    }
+	#tester3,
+    #tester4 {
+		width: 100%;
+		height: 350px;
+		margin-bottom: 50px;
+        margin-top: 50px;
+	}
 </style>
 <div id="container">
-  <div id="tester"></div>
-  <div id="tester2"></div>
+    <div id="state_map"></div>
+	<div id="tester"></div>
+	<div id="tester2"></div>
+	<div id="tester3"></div>
+	<div id="tester4"></div>
 </div>
 <script>
-	// First graph
+    // state map
+    var locations = [];
+    var z = [];
+    var text = [];
+
+    {{ for state_row in sold_by_state_rows: }}
+        locations.push("{{ =state_row['state_name'] }}");
+        {{print(state_row['howmany'])}}
+        {{print(state_row['state_name'])}}
+        z.push({{ =state_row['howmany'] }});
+        text.push({{ =state_row['howmany'] }});
+    {{ pass }}
+
+    var data = [{
+        type: 'choropleth',
+        locationmode: 'USA-states',
+        locations: locations,
+        z: z,
+        colorscale: [
+            [0, 'rgb(144, 238, 144)'], // Light green for the lowest values
+            [1, 'rgb(0, 100, 0)'] // Dark green for the highest values
+        ],
+        colorbar: {
+            title: 'Number of Orders',
+            thickness: 20,
+        },
+        marker: {
+            line:{
+                color: 'rgb(255,255,255)',
+                width: 2
+            }
+        }
+    }];
+
+    var layout = {
+        title: 'Sales by State',
+        geo:{
+            scope: 'usa',
+            showlakes: true,
+            lakecolor: 'rgb(255,255,255)'
+        },
+        margin: {
+        l: 0,
+        r: 0,
+        t: 30,
+        b: 10
+        },
+        autosize: true,
+        responsive: true
+    };
+
+    var config = {
+    scrollZoom: false,
+    displayModeBar: false,
+    };
+
+    Plotly.newPlot('state_map', data, layout, config);
+
+	// strains graph
 	xdata = [];
 	ydata = [];
 	{{ for strain_row in strain_rows: }}
-	       xdata.push("{{ =strain_row['strain'] }}");
-	       ydata.push({{ =strain_row['howmany'] }});
+	    xdata.push("{{ =strain_row['strain'] }}");
+	    ydata.push("{{ =strain_row['howmany'] }}");
 	{{ pass }}
 	TESTER = document.getElementById('tester');
-	Plotly.newPlot( TESTER, [{
-	x: xdata,
-	y: ydata,
-	type: 'bar' }], {
-	margin: { t: 0 },
-	xaxis: {
-	    title: 'Strain',
-	},
-	yaxis: {
-	    title: 'Amount Sold',
-	} } );
+	var config = {displayModeBar: false};
 
-	// Second graph
+    Plotly.newPlot(TESTER, [{
+        x: xdata,
+        y: ydata,
+        type: 'bar',
+        marker: {
+            color: 'rgb(76,175,80)'
+        }
+    }],{
+        margin: { t: 10 },
+        xaxis: {
+            title: 'Strain',
+        },
+        hoverlabel: {
+            bgcolor: 'rgb(255, 255, 255)'
+        } 
+    }, config);
+
+	// categories graph
 	xdata2 = [];
   ydata2 = [];
 	{{ for category_row in category_rows: }}
@@ -45,14 +132,73 @@
 	{{ pass }}
 	TESTER2 = document.getElementById('tester2');
 	Plotly.newPlot( TESTER2, [{
-	x: xdata2,
-	y: ydata2,
-	type: 'bar' }], {
-	margin: { t: 0 },
-	xaxis: {
-	    title: 'Category',
-	},
-	yaxis: {
-	    title: 'Amount Sold',
-	} } );
+	    x: xdata2,
+	    y: ydata2,
+	    type: 'bar',
+	    marker: {
+	        color: 'rgb(76,175,80)'
+	   	}
+	   }],{
+	       margin: { t: 10 },
+	    xaxis: {
+	        title: 'Category',
+	    },
+	    hoverlabel: {
+	        bgcolor: 'rgb(255, 255, 255)'
+	    }
+     },config );
+
+	//  products graph
+	xdata3 = [];
+	ydata3 = [];
+	{{ for product_row in product_rows: }}
+	    xdata3.push("{{ =product_row['product_name'] }}");
+	    ydata3.push({{ =product_row['howmany'] }});
+	{{ pass }}
+	TESTER3 = document.getElementById('tester3');
+	Plotly.newPlot( TESTER3, [{
+	    x: xdata3,
+	    y: ydata3,
+	    type: 'bar',
+	    marker: {
+	        color: 'rgb(76,175,80)'
+	       }
+	       }], {
+	    margin: { t: 10 },
+	    xaxis: {
+	        title: 'Product Name',
+	        tickangle: -45,
+	        automargin: true
+	    },
+
+	    hoverlabel: {
+	        bgcolor: 'rgb(255, 255, 255)'
+	    } 
+    }, config);
+
+    // Top 10 customers graph
+    var xdata4 = [];
+    var ydata4 = [];
+    {{ for customer_orders_row in customer_orders_rows: }}
+    xdata4.push("{{ =customer_orders_row['first_name'] }} {{ =customer_orders_row['last_name'] }}");
+    ydata4.push({{ =customer_orders_row['howmany'] }});
+    {{ pass }}  
+    var TESTER4 = document.getElementById('tester4');
+    Plotly.newPlot( TESTER4, [{
+        x: xdata4,
+        y: ydata4,
+        type: 'bar',
+        marker: {
+            color: 'rgb(76,175,80)'
+        } }], {
+        margin: { t: 10 },
+        xaxis: {
+            title: 'Top 10 Customers',
+            tickangle: 45,
+            automargin: true,
+        },
+        hoverlabel: {
+            bgcolor: 'rgb(255, 255, 255)'
+        }
+    }, config );
 </script>
