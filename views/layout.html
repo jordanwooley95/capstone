@@ -13,9 +13,17 @@
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
     <style>
         .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 1000; /* Ensure the navbar is above all other elements */
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensure the navbar is above all other elements */
+            padding: 0 !important;
+        }
+
+        .navbar-expand-lg {
+            flex-flow: row nowrap;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
         }
 
         nav li a {
@@ -41,6 +49,10 @@
 
         .nav-tabs .nav-link:hover {
             border-color: #9bd45c #9bd45c #fff;
+        }
+
+        .main-container {
+            margin-top: 0;
         }
     </style>
 </head>
