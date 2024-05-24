@@ -12,6 +12,47 @@
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
     <style>
+
+        div.container {
+            margin-bottom: -20.5px;
+        }
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e6de;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #9bd45c;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensure the navbar is above all other elements */
+            padding: 0 !important;
+        }
+
+        ul.nav.nav-tabs.m-auto {
+            margin: 0 !important;
+        }
+
+        .navbar-brand {
+            display: inline-block;
+            padding-top: .3125rem;
+            padding-bottom: .3125rem;
+            line-height: inherit;
+            white-space: nowrap;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar-expand-lg {
+            flex-flow: row nowrap;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+        }
+
         nav li a {
             color: #6c757d;
             text-decoration: none;
@@ -20,12 +61,28 @@
         nav li a:hover {
             color: #9bd45c;
         }
+        
+        .nav-tabs {
+            border-bottom: 1px solid #e0e6de;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #9bd45c;
+        }
+        .nav-tabs .nav-link.active {
+            color: #495057;
+            background-color: #fff;
+            border-color: #9bd45c #9bd45c #fff;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border-color: #9bd45c #9bd45c #fff;            
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
-        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="75")}}</a>
+        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="50")}}</a>
         <div class="container" style="color: grey">
             <ul class="nav nav-tabs m-auto">
                 <li class="nav-item">
