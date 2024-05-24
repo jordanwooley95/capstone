@@ -12,14 +12,24 @@
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
     <style>
+
         div.container {
-            margin-bottom: -20px;
+            margin-bottom: -20.5px;
         }
         .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid #e0e6de;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: #9bd45c;
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure the navbar is above all other elements */
             padding: 0 !important;
+        }
+
+        ul.nav.nav-tabs.m-auto {
+            margin: 0 !important;
         }
 
         .navbar-brand {
