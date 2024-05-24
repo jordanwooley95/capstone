@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for hover color */
+        .table-hover tbody tr:hover {
+            background-color: #9BD45C;
+        }
+        /* Custom CSS for bold labels */
+        .label-bold {
+            font-weight: bold;
+        }
+        /* Custom CSS to remove bottom margin */
+        .no-bottom-margin {
+            margin-bottom: 0;
+        }
+        /* Custom CSS for card header */
+        .card-header {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {{for row in rows:}}
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-user"></i> Customer Order</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderless table-hover no-bottom-margin">
+                            <tbody>
+                                <tr>
+                                    <td><span class="label-bold">Customer Name:</span></td>
+                                    <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-bold">Product Name:</span></td>
+                                    <td>{{=row["product_name"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-bold">Strain:</span></td>
+                                    <td>{{=row["strain"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-bold">Price:</span></td>
+                                    <td>${{="%.2f" % row["price"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-bold">Quantity:</span></td>
+                                    <td>{{=row["quantity"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="label-bold">Order Date:</span></td>
+                                    <td>{{=row["order_date"]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{pass}}
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

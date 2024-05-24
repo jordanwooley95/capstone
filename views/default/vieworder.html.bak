@@ -1,49 +1,100 @@
-{{extend 'layout.html'}}
-
-<style>
-    /* Custom CSS for hover color */
-    .table-hover tbody tr:hover {
-        background-color: #9BD45C;
-    }
-    /* Custom CSS for bold labels */
-    .label-bold {
-        font-weight: bold;
-    }
-    /* Custom CSS to remove bottom margin */
-    .no-bottom-margin {
-        margin-bottom: 0;
-    }
-</style>
-
-{{for row in rows:}}
-<div style="display: flex; justify-content: center; margin-top: 2rem;">
-    <div class="card" style="width: 23rem;">
-        <table class="table table-hover no-bottom-margin" style="border: black solid 4px">
-            <tr>
-                <td><span class="label-bold">Customer Name:</span></td>
-                <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
-            </tr>
-            <tr>
-                <td><span class="label-bold">Product Name:</span></td>
-                <td>{{=row["product_name"]}}</td>
-            </tr>
-            <tr>
-                <td><span class="label-bold">Strain:</span></td>
-                <td>{{=row["strain"]}}</td>
-            </tr>
-            <tr>
-                <td><span class="label-bold">Price:</span></td>
-                <td>${{="%.2f" % row["price"]}}</td>
-            </tr>
-            <tr>
-                <td><span class="label-bold">Quantity:</span></td>
-                <td>{{=row["quantity"]}}</td>
-            </tr>
-            <tr>
-                <td><span class="label-bold">Order Date:</span></td>
-                <td>{{=row["order_date"]}}</td>
-            </tr>
-        </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders - CRM</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for bold labels */
+        .label-bold {
+            font-weight: bold;
+        }
+        /* Custom CSS for card */
+        .custom-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+            background-color: #ffffff; /* White background */
+        }
+        .custom-card-header {
+            background-color: #4CAF50; /* Dark green for card header */
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 15px; /* Add padding to the header */
+            text-align: center; /* Center align text */
+        }
+        .custom-card-body {
+            padding: 20px; /* Add padding to the body */
+        }
+        /* Custom CSS for table */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .custom-table th,
+        .custom-table td {
+            padding: 12px; /* Increase padding for better spacing */
+            border-bottom: 1px solid #ddd; /* Add border between rows */
+        }
+        .custom-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9; /* Alternate row colors */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        {{for row in rows:}}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card custom-card">
+                    <div class="card-header custom-card-header">
+                        <h5 class="mb-0"><i class="fas fa-shopping-cart mr-2"></i> Customer Order</h5> <!-- Add icon to card header -->
+                    </div>
+                    <div class="card-body custom-card-body">
+                        <table class="custom-table">
+                            <tbody>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Customer Name:</span></th>
+                                    <td>{{=row["first_name"]}} {{=row["last_name"]}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Product Name:</span></th>
+                                    <td>{{=row["product_name"]}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Strain:</span></th>
+                                    <td>{{=row["strain"]}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Price:</span></th>
+                                    <td>${{="%.2f" % row["price"]}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Quantity:</span></th>
+                                    <td>{{=row["quantity"]}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right"><span class="label-bold">Order Date:</span></th>
+                                    <td>{{=row["order_date"]}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{pass}}
     </div>
-</div>
-{{pass}}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>
