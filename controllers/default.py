@@ -35,7 +35,7 @@ def index():
         # Calculate days ago
         current_datetime = datetime.datetime.now()
         order_datetime = order.orders.ordered_on
-        days_ago = abs((current_datetime - order_datetime)).days
+        days_ago = (current_datetime - order_datetime).days
 
         # Prepare the order details
         order_details = {
