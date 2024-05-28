@@ -4,7 +4,7 @@
             margin-top: -20px;
         }
         .container {
-            opacity: 0.5;
+            opacity: 0.6;
             height: 450px;
             position: relative;
             text-align: center;
@@ -17,12 +17,12 @@
             padding: 20px;
         }
         .section2 {
-            margin-bottom: 10px;
-            padding: 5px;
+            margin-bottom: 50px;
+            padding: 10px;
             border: 2px solid purple;
             background-color: #f0f0f0;
-            color: #333;
-            padding: 5px;
+            color: white;
+            padding: 20px;
         }
         .text-overlay {
             position: absolute;
@@ -42,13 +42,13 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         .image-container {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
          .rounded-image {
             border-radius: 50%;
             overflow: hidden;
-            width: 200px;
-            height: 250px;
+            width: 300px;
+            height: 350px;
         }
         .bordered-image {
             border: 2px solid green;
@@ -56,23 +56,6 @@
         }
         .slidetime {
             transition: opacity 9s ease-in-out;
-        }
-        .image-popup {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        }
-        .enlarged-image {
-        max-width: 80%;
-        max-height: 80%;
-        cursor: pointer;
         }
     </style>
     <div class="body">
@@ -111,64 +94,51 @@
   <a class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
     <button type="button" class="btn btn-outline-dark">Next</button>
     <span class="sr-only">Next</span>
-  </a></div></div></div>
+  </a></div></div></div>        
 <ul class="list-unstyled">
+  <li class="media">
       <div class="section2">
-      <li class="media">
       <div class="image-container">
-       <img class="rounded-image bordered-image" src="{{=URL('static', 'images/cara.jpg')}}" onclick="showImagePopup('{{=URL('static','images/cara.jpg')}}')"class="mr-3" alt="Cara"></div>
-      <div class="media-body">
+      <img class="rounded-image bordered-image" src="{{=URL('static', 'images/cara.jpg')}}" class="mr-3" alt="Cara"></div>
+    <div class="media-body">
       <h5 class="mt-0 mb-1 title">Cara Colker-Eybel</h5>
       <p>Whatever Title you would like</p>
-          </div></li></div>
+          </div></div>
+  </li>
+  <li class="media my-4">
       <div class="section2">
-      <li class="media">
       <div class="image-container">
-      <img class="rounded-image bordered-image" src="{{=URL('static', 'images/jordan.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/jordan.jpg')}}')" class="mr-3" alt="Jordan"></div>
-      <div class="media-body">
+      <img class="rounded-image bordered-image" src="{{=URL('static', 'images/jordan.jpg')}}" class="mr-3" alt="Jordan"></div>
+    <div class="media-body">
       <h5 class="mt-0 mb-1 title">Jordan Wooley</h5>
       <p>Whatever Title you would like</p>
-          </div>
-          </li></div>
-      <div class="section2">
-      <li class="media">
-      <div class="image-container">
-      <img class="rounded-image bordered-image" src="{{=URL('static', 'images/briana.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/briana.jpg')}}')" class="mr-3" alt="Briana"></div>
-      <div class="media-body">
+          </div></div>
+          </li>
+  <li class="media">
+    <div class="section2">
+    <div class="image-container">
+      <img class="rounded-image bordered-image" src="{{=URL('static', 'images/briana.jpg')}}" class="mr-3" alt="Briana"></div>
+    <div class="media-body">
       <h5 class="mt-0 mb-1 title">Briana Robinson</h5>
       <p>Whatever Title you would like</p>
         </div></div>
-          </li></div>
-      <div class="section2">
-      <li class="media">
-      <div class="image-container">
-        <img class="rounded-image bordered-image" src="{{=URL('static', 'images/aazaz.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/aazaz.jpg')}}')" class="mr-3" alt="Aazaz"></div>
-      <div class="media-body">
+        </li>
+  <li class="media">
+    <div class="section2">
+    <div class="image-container">
+        <img class="rounded-image bordered-image" src="{{=URL('static', 'images/aazaz.jpg')}}" class="mr-3" alt="Aazaz"></div>
+    <div class="media-body">
       <h5 class="mt-0 mb-1 title">Aazaz Peer</h5>
       <p>Whatever Title you would like</p>
-        </div>
-          </li></div>
-      <div class="section2">
-      <li class="media">
-      <div class="image-container">
-        <img class="rounded-image bordered-image" src="{{=URL('static', 'images/jeanitha.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/jeanitha.jpg')}}')" class="mr-3" alt="jeanitha"></div>
-      <div class="media-body">
+        </div></div>
+          </li>
+  <li class="media">
+    <div class="section2"> 
+    <div class="image-container">
+        <img class="rounded-image bordered-image" src="{{=URL('static', 'images/jeanitha.jpg')}}" class="mr-3" alt="jeanitha"></div>
+    <div class="media-body">
       <h5 class="mt-0 mb-1 title">Jeanitha Houze</h5>
       <p>Whatever Title you would like</p>
-        </div>
-          </li></div>
+        </div></div>
+        </li>
 </ul></div>
-<script>
-    function showImagePopup(imageUrl) {
-        var popup = document.createElement('div');
-        popup.className = 'image-popup';
-        var img = document.createElement('img');
-        img.src = imageUrl;
-        img.className = 'enlarged-image'
-        popup.appendChild(img);
-        document.body.appendChild(popup);
-        popup.onclick = function() {
-            document.body.removeChild(popup);
-        };
-    }
-</script>
