@@ -37,12 +37,12 @@
             <h4>New Orders</h4>
             <div class="list-group">
                 <!-- First item -->
-                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[2]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
+                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[0]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
-                        <small>{{=recent_orders[2]['days_ago']}} days ago</small>
+                        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+                        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
                     </div>
-                    <p class="mb-1">{{=recent_orders[2]['state']}}</p>
+                    <p class="mb-1">{{=recent_orders[0]['state']}}</p>
                 </a>
                 <!-- Second item -->
                 <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[1]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
@@ -53,12 +53,12 @@
                     <p class="mb-1">{{=recent_orders[1]['state']}}</p>
                 </a>
                 <!-- Third item -->
-                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[0]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
+                <a href="{{=URL('default','vieworder', vars=dict(orderid=recent_orders[2]['id']))}}" target="_blank" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+                        <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
+                        <small>{{=recent_orders[2]['days_ago']}} days ago</small>
                     </div>
-                    <p class="mb-1">{{=recent_orders[0]['state']}}</p>
+                    <p class="mb-1">{{=recent_orders[2]['state']}}</p>
                 </a>
             </div>
         </div>
