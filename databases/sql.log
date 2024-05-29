@@ -122,3 +122,10 @@ CREATE TABLE "orders"(
     "ordered_on" TIMESTAMP
 );
 success!
+timestamp: 2024-05-29T12:22:18.108140
+CREATE TABLE "shoutouts"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "textcontent" TEXT,
+    "created_on" TIMESTAMP
+);
+success!

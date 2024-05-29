@@ -6,6 +6,26 @@
 
 
 # ---- example index page ----
+def delete_shoutout():
+    if request.env.request_method == 'POST':
+        shoutout_id = request.post_vars.id
+        db(db.shoutouts.id == shoutout_id).delete()
+    return dict()
+
+def add_shoutout():
+    if request.method == 'POST':
+        shoutout_text = request.vars.shoutout
+        db.shoutouts.insert(textcontent=shoutout_text)
+        redirect(URL('default', 'shoutouts'))
+    return dict()
+
+def shoutouts():
+    shoutouts = db().select(
+        db.shoutouts.ALL,
+        orderby=~db.shoutouts.created_on
+    )
+    return dict(shoutouts=shoutouts)
+
 
 def vieworder():
     response.view = "default/vieworder.html"
@@ -97,7 +117,7 @@ def index():
         open_calls_count=open_calls_count, 
         new_emails_count=new_emails_count,
         new_in_person_inquiries_count=new_in_person_inquiries_count,
-        new_calls_count=new_calls_count
+        new_calls_count=new_calls_count,
     )
 
 
