@@ -17,12 +17,7 @@
             
         }
         .navbar {
-            border-bottom: 1px solid #e0e6de;
-            border-bottom-width: 2px;
-            border-bottom-style: solid;
-            border-bottom-color: #9bd45c;
-
-            background-color: #fff;
+            background-color: #e0e6de !important;
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure the navbar is above all other elements */
@@ -31,7 +26,7 @@
 
         ul.nav.nav-tabs.m-auto {
             margin:0,auto,0 !important;
-            margin-bottom: 0px !important;
+            margin-bottom: -2px !important;
         }
 
         .navbar-brand {
@@ -63,7 +58,7 @@
             border-bottom: 1px solid #e0e6de;
             border-bottom-width: 1px;
             border-bottom-style: solid;
-            border-bottom-color: #9bd45c;
+            border-bottom-color: #e0e6de;
         }
         .nav-tabs .nav-link.active {
             color: #495057;
@@ -72,7 +67,8 @@
         }
 
         .nav-tabs .nav-link:hover {
-            border-color: #9bd45c #9bd45c #fff;            
+            border-color: #9bd45c #9bd45c #fff;
+            background-color: #fff;         
         }
 
         @media (max-width: 991.98px) {
@@ -91,7 +87,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 100%">
-        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="50")}}</a>
+        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3_gray.png'), _alt="Logo", _height="50")}}</a>
         
             <ul class="nav nav-tabs m-auto">
                 <li class="nav-item">
@@ -116,7 +112,7 @@
                 </li>
             </ul>
             <!-- Login -->
-            <ul class="nav">
+            <ul class="nav" style="background-color: #e0e6de;">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
