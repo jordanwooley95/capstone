@@ -14,37 +14,34 @@
     <style>
 
         div.container {
-            margin-bottom: -20.5px;
+            
         }
         .navbar {
-            background-color: #fff;
             border-bottom: 1px solid #e0e6de;
-            border-bottom-width: 1px;
+            border-bottom-width: 2px;
             border-bottom-style: solid;
             border-bottom-color: #9bd45c;
+
+            background-color: #fff;
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure the navbar is above all other elements */
-            padding: 0 !important;
+            padding: 2px !important;
         }
 
         ul.nav.nav-tabs.m-auto {
-            margin:0,auto,0,auto !important;
+            margin:0,auto,0 !important;
+            margin-bottom: 0px !important;
         }
 
         .navbar-brand {
-            display: inline-block;
+            margin-right: 0 !important;
             padding-top: .3125rem;
             padding-bottom: .3125rem;
             line-height: inherit;
             white-space: nowrap;
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
         
         .navbar-expand-lg {
             flex-flow: row nowrap;
@@ -77,13 +74,25 @@
         .nav-tabs .nav-link:hover {
             border-color: #9bd45c #9bd45c #fff;            
         }
+
+        @media (max-width: 991.98px) {
+            .navbar-expand-lg {
+            flex-direction: column;
+        }
+
+        @media (max-width: 991.98px) {
+        .nav-item.dropdown .dropdown-item {
+            font-size: 10px;
+        }
+}
+}
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 100%">
         <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="50")}}</a>
-        <div class="container" style="color: grey">
+        
             <ul class="nav nav-tabs m-auto">
                 <li class="nav-item">
                     <a class="nav-link text-secondary" href="{{=URL('default', 'index')}}">Dashboard</a>
@@ -130,7 +139,6 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </nav>
 
     <!-- Favicons -->
