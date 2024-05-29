@@ -12,13 +12,14 @@
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
     <style>
+        
         .navbar {
             background-color: #e0e6de !important;
-            
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure the navbar is above all other elements */
             padding: 2px !important;
+            margin-bottom: 0 !important;
         }
 
         ul.nav.nav-tabs.m-auto {
@@ -51,18 +52,18 @@
             color: #9bd45c;
         }
         
-        .nav-tabs {
-        }
         .nav-tabs .nav-link.active {
             color: #495057;
             background-color: #fff;
             border-color: #9bd45c #9bd45c #fff;
+            border-bottom-color: #fff;
             border-bottom-width: 0;
         }
 
         .nav-tabs .nav-link:hover {
             border-color: #9bd45c #9bd45c #fff;
-            background-color: #fff;         
+            background-color: #fff;
+            border-bottom-width: 0;         
         }
 
         @media (max-width: 991.98px) {
