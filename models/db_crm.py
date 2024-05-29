@@ -2,6 +2,12 @@
 import os
 
 db.define_table(
+    "shoutouts",
+    Field("textcontent", "text"),
+    Field("created_on", "datetime", default=request.now)
+)
+
+db.define_table(
     "states",
     Field("state_name", notnull=True),
     format="%(state_name)s",

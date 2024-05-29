@@ -6,6 +6,26 @@
 
 
 # ---- example index page ----
+def delete_shoutout():
+    if request.env.request_method == 'POST':
+        shoutout_id = request.post_vars.id
+        db(db.shoutouts.id == shoutout_id).delete()
+    return dict()
+
+def add_shoutout():
+    if request.method == 'POST':
+        shoutout_text = request.vars.shoutout
+        db.shoutouts.insert(textcontent=shoutout_text)
+        redirect(URL('default', 'shoutouts'))
+    return dict()
+
+def shoutouts():
+    shoutouts = db().select(
+        db.shoutouts.ALL,
+        orderby=~db.shoutouts.created_on
+    )
+    return dict(shoutouts=shoutouts)
+
 
 def vieworder():
     response.view = "default/vieworder.html"
@@ -40,10 +60,6 @@ def index():
         current_datetime = datetime.datetime.now()
         order_datetime = order.orders.ordered_on
         days_ago = (current_datetime - order_datetime).days
-        
-        #Format Price
-        price = recent_orders[0]['price']
-        formatted_price = "${:.2f}".format(price)
 
         # Prepare the order details
         order_details = {
@@ -53,7 +69,7 @@ def index():
             'days_ago': days_ago,
             'product': order.products.product_name,
             'strain': order.products.strain,
-            'price': formatted_price,
+            'price': order.products.price,
             'quantity': order.orders.quantity,
             'date': order.orders.ordered_on,
             'stock': order.products.stock_quantity
@@ -101,7 +117,7 @@ def index():
         open_calls_count=open_calls_count, 
         new_emails_count=new_emails_count,
         new_in_person_inquiries_count=new_in_person_inquiries_count,
-        new_calls_count=new_calls_count
+        new_calls_count=new_calls_count,
     )
 
 
