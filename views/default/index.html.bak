@@ -65,9 +65,7 @@
             <span style="color:#9bd45c" aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" style="color:black">
-          <br><br>
-            
+        <div class="modal-body" style="color:black">     
           <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
           <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
           <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
@@ -103,7 +101,6 @@
           </button>
         </div>
         <div class="modal-body" style="color:black">
-          <br><br>
             
           <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
           <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
@@ -132,7 +129,7 @@
         </div>
         
         <!-- Third Item Modal -->
-<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header bg-dark">
@@ -141,16 +138,14 @@
             <span style="color:#9bd45c" aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" style="color:black">
-          <br><br>
-            
-          <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
-          <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
-          <b>Strain:</b> {{=recent_orders[1]['strain']}}<br>
+        <div class="modal-body" style="color:black">   
+          <b>Customer Name:</b> {{=recent_orders[2]['name']}}<br>
+          <b>Product Name:</b> {{=recent_orders[2]['product']}}<br>
+          <b>Strain:</b> {{=recent_orders[2]['strain']}}<br>
           <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
-          <b>Quantity:</b> {{=recent_orders[1]['quantity']}}<br>
-          <b>Order Date:</b> {{=recent_orders[1]['date']}}<br>
-          <b>Stock Quantity:</b> {{=recent_orders[1]['stock']}}<br>
+          <b>Quantity:</b> {{=recent_orders[2]['quantity']}}<br>
+          <b>Order Date:</b> {{=recent_orders[2]['date']}}<br>
+          <b>Stock Quantity:</b> {{=recent_orders[2]['stock']}}<br>
            
         </div>
         <div class="modal-footer bg-dark"></div>
