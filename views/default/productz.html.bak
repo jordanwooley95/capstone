@@ -2,11 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Featured Products</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     html, body {
       margin: 0;
@@ -47,7 +43,7 @@
       <h5 class="text-white">#1 Beach Wedding <span class="badge badge-success">Top Seller!</span></h5>
       <p class="card-text text-muted">Luster Pod-Oil: Hybrid</p>
       <p class="card-text"><h6 style="color: #9bd45c">237 Sold</h6></p>
-      <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal">Product Details</a>
+      <a href="#" type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal">Product Details</a>
     </div>
   </div>
   <!-- Beach Wedding Modal -->
@@ -153,7 +149,7 @@
 </div>
 
 <!-- Honorable Mention -->
-<section style="background-color:black; width: 103%; padding: 60px 50px 100px 50px; margin-bottom: 100px; margin-left:-15px;">
+<section style="background-color:black; width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;">
   <div class="text-center text-white">
     <h4 class="display-4">Honorable Mention</h4>
   </div>

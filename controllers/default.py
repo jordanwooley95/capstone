@@ -22,8 +22,11 @@ def index():
     # Fetch the top 3 most recent orders
     recent_orders = []
     orders = db().select(
-        db.orders.ALL, db.customers.ALL,
-        join=db.orders.on(db.orders.customer_id == db.customers.id),
+        db.orders.ALL, db.customers.ALL, db.products.ALL,
+        join=[
+            db.orders.on(db.orders.customer_id == db.customers.id),
+            db.products.on(db.orders.product_id == db.products.id)
+        ],
         orderby=~db.orders.ordered_on,
         limitby=(0, 3)  # Limit to the top 3 recent orders
     )
@@ -43,7 +46,13 @@ def index():
             'id': order.orders.id,  # Directly access the id field of the orders table
             'name': f"{order.customers.first_name} {order.customers.last_name}",
             'state': state_name,
-            'days_ago': days_ago
+            'days_ago': days_ago,
+            'product': order.products.product_name,
+            'strain': order.products.strain,
+            'price': order.products.price,
+            'quantity': order.orders.quantity,
+            'date': order.orders.ordered_on,
+            'stock': order.products.stock_quantity
         }
         recent_orders.append(order_details)
 
