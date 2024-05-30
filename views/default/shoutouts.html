@@ -1,35 +1,40 @@
 {{extend 'layout.html'}}
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joint Ventures Shoutouts</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        .main-container {
+            margin-top: 0;
+        }
+
         body {
             background-color: white;
             font-family: 'Arial', sans-serif;
         }
-        .shoutout-card {
-    background-color: #C9DF56; 
-    color: #333; /* Dark text color */
-    margin: 10px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    width: 210px;
-    height: 210px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
-.shoutout-card:hover {
-    transform: translateY(-2px); /* Add hover effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
-}
+        .shoutout-card {
+            background-color: #C9DF56;
+            color: #333;
+            /* Dark text color */
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 210px;
+            height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .shoutout-card:hover {
+            transform: translateY(-2px);
+            /* Add hover effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            /* Increase box shadow on hover */
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -37,6 +42,7 @@
             padding: 20px;
             justify-content: center;
         }
+
         .delete-btn {
             position: absolute;
             bottom: 17px;
@@ -54,38 +60,47 @@
             font-size: 12px;
             font-weight: bold;
         }
+
         .delete-btn:hover {
             background-color: #c62828;
         }
+
         .modal-content {
             background-color: white;
         }
-        .modal-header, .modal-footer {
+
+        .modal-header,
+        .modal-footer {
             background-color: #2e7d32;
             color: white;
         }
+
         .btn-primary {
             background-color: #42a5f5;
             border: none;
             font-size: 18px;
             padding: 10px 20px;
         }
+
         .btn-primary:hover {
             background-color: #1e88e5;
         }
+
         .btn-secondary {
             background-color: #757575;
             border: none;
         }
+
         .btn-secondary:hover {
             background-color: #616161;
         }
+
         .like-btn {
-        
+
             border: none;
             color: white;
             cursor: pointer;
-           
+
             width: 30px;
             height: 30px;
             display: flex;
@@ -93,151 +108,185 @@
             justify-content: center;
             font-size: 16px;
         }
+
         .like-btn:hover {
             background-color: rgba(0, 200, 6);
         }
+
         .likes-container {
             display: flex;
             align-items: center;
         }
+
         .likes-count {
-    margin-left: 3px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #FF6F61; /* Fun color that contrasts well with the shoutout background */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow for better visibility */
-}
-        
-       .jumbotron-bg {
-    background-image: url('/crm/static/images/celebrate.jpeg');
-    background-size: cover;
-    background-position: center; /* Adjusted to center the background image */
-    color: white;
-    width: 100vw;
-    margin-left: -15px;
-    margin-right: 0;
-    padding-top: 50px; /* Adjusted padding to make the jumbotron shorter */
-    padding-bottom: 50px; /* Adjusted padding to make the jumbotron shorter */
-}
+            margin-left: 3px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF6F61;
+            /* Fun color that contrasts well with the shoutout background */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            /* Add a subtle text shadow for better visibility */
+        }
 
-.jumbotron .container {
-    text-align: center; /* Center align the content */
-    padding-top: 30px; /* Adjusted padding to maintain spacing */
-    padding-bottom: 30px; /* Adjusted padding to maintain spacing */
-}
+        .jumbotron-bg {
+            background-image: url('/crm/static/images/celebrate.jpeg');
+            background-size: cover;
+            background-position: center;
+            /* Adjusted to center the background image */
+            color: white;
+            width: 100vw;
+            margin-left: -15px;
+            margin-right: 0;
+            padding-top: 50px;
+            /* Adjusted padding to make the jumbotron shorter */
+            padding-bottom: 50px;
+            /* Adjusted padding to make the jumbotron shorter */
+        }
 
-.jumbotron h1.display-3 {
-    font-size: 3rem; /* Increase font size */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility */
-    color: white; /* Vibrant green color for the title */
-}
+        .jumbotron .container {
+            text-align: center;
+            /* Center align the content */
+            padding-top: 30px;
+            /* Adjusted padding to maintain spacing */
+            padding-bottom: 30px;
+            /* Adjusted padding to maintain spacing */
+        }
 
-.jumbotron p.lead {
-    font-size: 1.5rem; /* Increase font size */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility */
-    color: white; /* Light green color for the lead text */
-}
+        .jumbotron h1.display-3 {
+            font-size: 3rem;
+            /* Increase font size */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            /* Add text shadow for better visibility */
+            color: white;
+            /* Vibrant green color for the title */
+        }
 
-.jumbotron .btn {
-    font-size: 1.2rem; /* Increase button font size */
-    padding: 15px 30px; /* Increase button padding */
-    border-radius: 30px; /* Round button corners */
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add box shadow for depth */
-    background-color: #64DD17; /* Vibrant green color for the button */
-    border: none; /* Remove button border */
-    color: #FFFFFF; /* Button text color */
-}
+        .jumbotron p.lead {
+            font-size: 1.5rem;
+            /* Increase font size */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            /* Add text shadow for better visibility */
+            color: white;
+            /* Light green color for the lead text */
+        }
 
-.jumbotron .btn:hover {
-    transform: translateY(-2px); /* Add hover effect */
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
-    background-color: #76FF03; /* Lighter shade of green on hover */
-}
+        .jumbotron .btn {
+            font-size: 1.2rem;
+            /* Increase button font size */
+            padding: 15px 30px;
+            /* Increase button padding */
+            border-radius: 30px;
+            /* Round button corners */
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Add box shadow for depth */
+            background-color: #64DD17;
+            /* Vibrant green color for the button */
+            border: none;
+            /* Remove button border */
+            color: #FFFFFF;
+            /* Button text color */
+        }
 
-.jumbotron .btn::after {
-    content: "\1F64C"; /* Emoji for "High Five" */
-    margin-left: 10px; /* Spacing between emoji and text */
-}
+        .jumbotron .btn:hover {
+            transform: translateY(-2px);
+            /* Add hover effect */
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            /* Increase box shadow on hover */
+            background-color: #76FF03;
+            /* Lighter shade of green on hover */
+        }
+
+        .jumbotron .btn::after {
+            content: "\1F64C";
+            /* Emoji for "High Five" */
+            margin-left: 10px;
+            /* Spacing between emoji and text */
+        }
     </style>
 </head>
+
 <body>
-    
-    <!-- Hero-->       
-<div class="jumbotron jumbotron-fluid jumbotron-bg">
-  <div class="container">
-    <h1 class="display-3">Joint Ventures HIGH fives</h1>
-    <p class="lead">Show your fellow stOWNers some love! </p>
-    <button class="btn btn-dark btn-med m-auto" data-toggle="modal" data-target="#addShoutoutModal"> Give a HIGH five </button>
-  </div>
-</div>
+
+    <!-- Hero-->
+    <div class="jumbotron jumbotron-fluid jumbotron-bg">
+        <div class="container">
+            <h1 class="display-3">Joint Ventures HIGH fives</h1>
+            <p class="lead">Show your fellow stOWNers some love! </p>
+            <button class="btn btn-dark btn-med m-auto" data-toggle="modal" data-target="#addShoutoutModal"> Give a HIGH
+                five </button>
+        </div>
+    </div>
 
     <div class="grid-container">
         {{for shoutout in shoutouts:}}
-            <div class="shoutout-card" data-id="{{=shoutout.id}}">
-                <div class="shoutout-content">
-                    {{=shoutout.textcontent}}
-                </div>
-                <div class="shoutout-actions">
-                    <div class="likes-container">
-                        <button class="like-btn" onclick="likeShoutout({{=shoutout.id}})">❤️</button>
-                        <span class="likes-count" id="likes-{{=shoutout.id}}">{{=shoutout.likes}}</span>
-                    </div>
-                    <button class="delete-btn" onclick="deleteShoutout({{=shoutout.id}})">delete</button>
-                </div>
+        <div class="shoutout-card" data-id="{{=shoutout.id}}">
+            <div class="shoutout-content">
+                {{=shoutout.textcontent}}
             </div>
+            <div class="shoutout-actions">
+                <div class="likes-container">
+                    <button class="like-btn" onclick="likeShoutout({{=shoutout.id}})">❤️</button>
+                    <span class="likes-count" id="likes-{{=shoutout.id}}">{{=shoutout.likes}}</span>
+                </div>
+                <button class="delete-btn" onclick="deleteShoutout({{=shoutout.id}})">delete</button>
+            </div>
+        </div>
         {{pass}}
     </div>
-</div>
+    </div>
 
-<!-- Shoutout Modal -->
-<div class="modal fade" id="addShoutoutModal" tabindex="-1" role="dialog" aria-labelledby="addShoutoutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <form action="{{=URL('default', 'add_shoutout')}}" method="post">
-            <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="addShoutoutModalLabel">Share Some Love 💚</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="shoutoutText">Who deserves a shoutout?</label>
-                    <textarea class="form-control" id="shoutoutText" name="shoutout" rows="3" placeholder="Write shoutout here!" required></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-success">High Five!</button>
+    <!-- Shoutout Modal -->
+    <div class="modal fade" id="addShoutoutModal" tabindex="-1" role="dialog" aria-labelledby="addShoutoutModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form action="{{=URL('default', 'add_shoutout')}}" method="post">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="addShoutoutModalLabel">Share Some Love 💚</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="shoutoutText">Who deserves a shoutout?</label>
+                            <textarea class="form-control" id="shoutoutText" name="shoutout" rows="3"
+                                placeholder="Write shoutout here!" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-success">High Five!</button>
+                    </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    function deleteShoutout(id) {
-            $.post("{{=URL('default', 'delete_shoutout')}}", {id: id}, function() {
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function deleteShoutout(id) {
+            $.post("{{=URL('default', 'delete_shoutout')}}", { id: id }, function () {
                 location.reload();
             });
         }
 
-   function likeShoutout(id) {
-        // Increment the like count on the client-side
-        let likeCountElem = $('#likes-' + id);
-        let currentLikes = parseInt(likeCountElem.text());
-        likeCountElem.text(currentLikes + 1);
+        function likeShoutout(id) {
+            // Increment the like count on the client-side
+            let likeCountElem = $('#likes-' + id);
+            let currentLikes = parseInt(likeCountElem.text());
+            likeCountElem.text(currentLikes + 1);
 
-        // Send the like request to the server
-        $.post("{{=URL('default', 'like_shoutout')}}", {id: id}, function(response) {
-            // Ensure the count is accurate by updating it with the server response
-            likeCountElem.text(response.likes);
-        });
-    }
+            // Send the like request to the server
+            $.post("{{=URL('default', 'like_shoutout')}}", { id: id }, function (response) {
+                // Ensure the count is accurate by updating it with the server response
+                likeCountElem.text(response.likes);
+            });
+        }
 
-</script>
+    </script>
 
 </body>
+
 </html>
