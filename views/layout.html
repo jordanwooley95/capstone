@@ -11,8 +11,7 @@
     <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
-    <style>
-        
+    <style>        
         .navbar {
             background-color: #e0e6de !important;
             position: sticky;
@@ -20,27 +19,37 @@
             z-index: 1000; /* Ensure the navbar is above all other elements */
             padding: 2px !important;
             margin-bottom: 0 !important;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .nav {
+            width: 10% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         ul.nav.nav-tabs.m-auto {
+            width: auto !important;
             border-bottom-width: 0 !important;
             border-bottom-color: #fff !important;
-            margin:0,auto,0 !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
             margin-bottom: -1.6px !important;
         }
 
         .navbar-brand {
-            margin-right: 0 !important;
-            padding-top: .3125rem;
-            padding-bottom: .3125rem;
+            width: 10% !important;
             line-height: inherit;
             white-space: nowrap;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
         
         .navbar-expand-lg {
             flex-flow: row nowrap;
-            flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-start;
         }
@@ -66,18 +75,6 @@
             background-color: #fff;
             border-bottom-width: 0;         
         }
-
-        @media (max-width: 991.98px) {
-            .navbar-expand-lg {
-            flex-direction: column;
-        }
-
-        @media (max-width: 991.98px) {
-        .nav-item.dropdown .dropdown-item {
-            font-size: 10px;
-        }
-}
-}
     </style>
 </head>
 
