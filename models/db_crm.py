@@ -4,7 +4,8 @@ import os
 db.define_table(
     "shoutouts",
     Field("textcontent", "text"),
-    Field("created_on", "datetime", default=request.now)
+    Field("created_on", "datetime", default=request.now),
+    Field('likes', 'integer', default=0),
 )
 
 db.define_table(
