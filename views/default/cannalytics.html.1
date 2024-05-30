@@ -120,7 +120,7 @@
         },
         hoverlabel: {
             bgcolor: 'rgb(255, 255, 255)'
-        }
+        } 
     }, config);
 
 	// categories graph
@@ -173,7 +173,7 @@
 
 	    hoverlabel: {
 	        bgcolor: 'rgb(255, 255, 255)'
-	    }
+	    } 
     }, config);
 
     // Top 10 customers graph
@@ -182,7 +182,7 @@
     {{ for customer_orders_row in customer_orders_rows: }}
     xdata4.push("{{ =customer_orders_row['first_name'] }} {{ =customer_orders_row['last_name'] }}");
     ydata4.push({{ =customer_orders_row['howmany'] }});
-    {{ pass }}
+    {{ pass }}  
     var TESTER4 = document.getElementById('tester4');
     Plotly.newPlot( TESTER4, [{
         x: xdata4,

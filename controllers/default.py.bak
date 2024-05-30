@@ -26,6 +26,17 @@ def shoutouts():
     )
     return dict(shoutouts=shoutouts)
 
+def like_shoutout():
+    shoutout_id = request.vars.id
+    shoutout = db.shoutouts(shoutout_id)
+    if shoutout:
+        # Increment the like count for the shoutout
+        shoutout.update_record(likes=shoutout.likes + 1)
+        # Return the updated like count as JSON response
+        return response.json({'likes': shoutout.likes})
+    else:
+        return "Shoutout not found"
+
 
 def vieworder():
     response.view = "default/vieworder.html"
