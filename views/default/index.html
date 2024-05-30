@@ -47,39 +47,41 @@
             <h4>New Orders</h4>
             <div class="list-group">
                 
-                <!-- First item -->
-                <a href="#" type="button" data-toggle="modal" data-target="#Modal1" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
-                    </div>
-                    <p class="mb-1">{{=recent_orders[0]['state']}}</p>
-                </a>
-                
-              <!-- First Item Modal -->
+               <!-- First item -->
+<a href="#" type="button" data-toggle="modal" data-target="#Modal1" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+        <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+    </div>
+    <p class="mb-1">{{=recent_orders[0]['state']}}</p>
+</a>
+
+<!-- First Item Modal -->
 <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customer Order <span style="color: #2ecc71"><i class="fas fa-cannabis"></i></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color: #9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">     
+                <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+            </div>
+            <div class="modal-footer" style="background-color: #2ecc71">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body" style="color:black">     
-          <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-          <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-          <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-          <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-          <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-          <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-          <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
-           
-        </div>
-        <div class="modal-footer bg-dark"></div>
-      </div>
     </div>
-  </div>
+</div>
+
                 
                     
                 <!-- Second item -->
@@ -94,29 +96,29 @@
                  <!-- Second Item Modal -->
 <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customer Order <span style="color: #2ecc71"><i class="fas fa-cannabis"></i></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color: #9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">     
+                <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
+                <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
+                <b>Strain:</b> {{=recent_orders[1]['strain']}}<br>
+                <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
+                <b>Quantity:</b> {{=recent_orders[1]['quantity']}}<br>
+                <b>Order Date:</b> {{=recent_orders[1]['date']}}<br>
+                <b>Stock Quantity:</b> {{=recent_orders[1]['stock']}}<br>
+            </div>
+            <div class="modal-footer" style="background-color: #2ecc71">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body" style="color:black">
-            
-          <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
-          <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
-          <b>Strain:</b> {{=recent_orders[1]['strain']}}<br>
-          <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
-          <b>Quantity:</b> {{=recent_orders[1]['quantity']}}<br>
-          <b>Order Date:</b> {{=recent_orders[1]['date']}}<br>
-          <b>Stock Quantity:</b> {{=recent_orders[1]['stock']}}<br>
-           
-        </div>
-        <div class="modal-footer bg-dark"></div>
-      </div>
     </div>
-  </div>
-                
+</div>
+    
                 
                 <!-- Third item -->
                 <a href="#" type="button" data-toggle="modal" data-target="#Modal3" class="list-group-item list-group-item-action">
@@ -132,27 +134,29 @@
         <!-- Third Item Modal -->
 <div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Customer Order <span style="color: #2ecc71"><i class="fas fa-cannabis"></i></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color: #9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">     
+                <b>Customer Name:</b> {{=recent_orders[2]['name']}}<br>
+                <b>Product Name:</b> {{=recent_orders[2]['product']}}<br>
+                <b>Strain:</b> {{=recent_orders[2]['strain']}}<br>
+                <b>Price:</b> ${{="{:.2f}".format(recent_orders[2]['price'])}}<br>
+                <b>Quantity:</b> {{=recent_orders[2]['quantity']}}<br>
+                <b>Order Date:</b> {{=recent_orders[2]['date']}}<br>
+                <b>Stock Quantity:</b> {{=recent_orders[2]['stock']}}<br>
+            </div>
+            <div class="modal-footer" style="background-color: #2ecc71">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body" style="color:black">   
-          <b>Customer Name:</b> {{=recent_orders[2]['name']}}<br>
-          <b>Product Name:</b> {{=recent_orders[2]['product']}}<br>
-          <b>Strain:</b> {{=recent_orders[2]['strain']}}<br>
-          <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
-          <b>Quantity:</b> {{=recent_orders[2]['quantity']}}<br>
-          <b>Order Date:</b> {{=recent_orders[2]['date']}}<br>
-          <b>Stock Quantity:</b> {{=recent_orders[2]['stock']}}<br>
-           
-        </div>
-        <div class="modal-footer bg-dark"></div>
-      </div>
     </div>
-  </div>
+</div>
+
 
          <!-- Shoutouts Column -->
         <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
