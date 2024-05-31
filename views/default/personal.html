@@ -1,27 +1,87 @@
 {{extend 'layout.html'}}
+<html>
 
-<h1>Events Overview</h1>
-{{ if rows: }}
-<table class="table table-striped">
-    <thead>
+<head>
+    <title>Personal Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: white;
+        }
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: col;
+            margin-bottom: 100px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+            
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        p {
+            text-align: center;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            border-radius: 10px;
+            width: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="/crm/static/images/aazaz.jpg" alt="Aazaz" width="200">
+    </div>
+    <table class="main-table">
         <tr>
-            <th>User ID</th>
-            <th>Status</th>
-            <th>Event Type</th>
-            <th>Event Count</th>
+            <td>
+                <h1>Personal Events</h1>
+                {{if rows:}}
+                    <table class="content-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Status</th>
+                                <th>Event Type</th>
+                                <th>Event Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{for row in rows:}}
+                                <tr>
+                                    <td>{{=row['user_id']}}</td>
+                                    <td>{{=row['status']}}</td>
+                                    <td>{{=row['event_type']}}</td>
+                                    <td>{{=row['event_count']}}</td>
+                                </tr>
+                            {{pass}}
+                        </tbody>
+                    </table>
+                {{else:}}
+                    <p>No events found.</p>
+                {{pass}}
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        {{ for row in rows: }}
-        <tr>
-            <td>{{=row['user_id']}}</td>
-            <td>{{=row['status']}}</td>
-            <td>{{=row['event_type']}}</td>
-            <td>{{=row['event_count']}}</td>
-        </tr>
-        {{ pass }}
-    </tbody>
-</table>
-{{ else: }}
-<p>No data found.</p>
-{{ pass }}
+    </table>
+</body>
+</html>
