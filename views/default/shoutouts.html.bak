@@ -15,14 +15,11 @@
         .shoutout-card {
             background-color: #C9DF56;
             color: #333;
-            /* Dark text color */
             margin: 10px;
-            padding: 20px;
+            padding: 20px 20px 20px 20px; /* Adjusted padding to include space for the toolbar */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
-            width: 210px;
-            height: 210px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -30,9 +27,7 @@
 
         .shoutout-card:hover {
             transform: translateY(-2px);
-            /* Add hover effect */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            /* Increase box shadow on hover */
         }
 
         .grid-container {
@@ -43,26 +38,34 @@
             justify-content: center;
         }
 
-        .delete-btn {
+        .shoutout-toolbar {
             position: absolute;
-            bottom: 17px;
-            right: 10px;
-            background-color: #d32f2f;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
-            width: 60px;
-            height: 30px;
+            top: 0;
+            left: 0;
+            right: 0;
             display: flex;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
+            background-color: #90A93B;
+            height: 25px; /* Adjusted toolbar height */
+            padding: 0 5px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
 
+        .delete-btn {
+    background-color: #f0f0f0; /* Off-white color */
+    border: none;
+    color: #333; /* Dark gray text color */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
         .delete-btn:hover {
-            background-color: #c62828;
+            color: #c62828;
         }
 
         .modal-content {
@@ -96,11 +99,9 @@
         }
 
         .like-btn {
-
             border: none;
             color: white;
             cursor: pointer;
-
             width: 30px;
             height: 30px;
             display: flex;
@@ -123,84 +124,58 @@
             font-size: 16px;
             font-weight: bold;
             color: #FF6F61;
-            /* Fun color that contrasts well with the shoutout background */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            /* Add a subtle text shadow for better visibility */
         }
 
         .jumbotron-bg {
             background-image: url('/crm/static/images/celebrate.jpeg');
             background-size: cover;
             background-position: center;
-            /* Adjusted to center the background image */
             color: white;
             width: 100vw;
             margin-left: -15px;
             margin-right: 0;
             padding-top: 50px;
-            /* Adjusted padding to make the jumbotron shorter */
             padding-bottom: 50px;
-            /* Adjusted padding to make the jumbotron shorter */
         }
 
         .jumbotron .container {
             text-align: center;
-            /* Center align the content */
             padding-top: 30px;
-            /* Adjusted padding to maintain spacing */
             padding-bottom: 30px;
-            /* Adjusted padding to maintain spacing */
         }
 
         .jumbotron h1.display-3 {
             font-size: 3rem;
-            /* Increase font size */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            /* Add text shadow for better visibility */
             color: white;
-            /* Vibrant green color for the title */
         }
 
         .jumbotron p.lead {
             font-size: 1.5rem;
-            /* Increase font size */
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            /* Add text shadow for better visibility */
             color: white;
-            /* Light green color for the lead text */
         }
 
         .jumbotron .btn {
             font-size: 1.2rem;
-            /* Increase button font size */
             padding: 15px 30px;
-            /* Increase button padding */
             border-radius: 30px;
-            /* Round button corners */
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            /* Add box shadow for depth */
             background-color: #64DD17;
-            /* Vibrant green color for the button */
             border: none;
-            /* Remove button border */
             color: #FFFFFF;
-            /* Button text color */
         }
 
         .jumbotron .btn:hover {
             transform: translateY(-2px);
-            /* Add hover effect */
             box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
-            /* Increase box shadow on hover */
             background-color: #76FF03;
-            /* Lighter shade of green on hover */
         }
 
         .jumbotron .btn::after {
             content: "\1F64C";
-            /* Emoji for "High Five" */
             margin-left: 10px;
-            /* Spacing between emoji and text */
         }
     </style>
 </head>
@@ -220,7 +195,10 @@
     <div class="grid-container">
         {{for shoutout in shoutouts:}}
         <div class="shoutout-card" data-id="{{=shoutout.id}}">
-            <div class="shoutout-content">
+            <div class="shoutout-toolbar">
+                <button class="delete-btn" onclick="deleteShoutout({{=shoutout.id}})">✖</button>
+            </div>
+            <div class="shoutout-content" style="padding-top: 30px;">
                 {{=shoutout.textcontent}}
             </div>
             <div class="shoutout-actions">
@@ -228,11 +206,9 @@
                     <button class="like-btn" onclick="likeShoutout({{=shoutout.id}})">❤️</button>
                     <span class="likes-count" id="likes-{{=shoutout.id}}">{{=shoutout.likes}}</span>
                 </div>
-                <button class="delete-btn" onclick="deleteShoutout({{=shoutout.id}})">delete</button>
             </div>
         </div>
         {{pass}}
-    </div>
     </div>
 
     <!-- Shoutout Modal -->
@@ -284,9 +260,7 @@
                 likeCountElem.text(response.likes);
             });
         }
-
     </script>
 
 </body>
-
 </html>
