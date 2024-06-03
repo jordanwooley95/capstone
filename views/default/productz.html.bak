@@ -8,6 +8,9 @@
       margin: 0;
       padding: 0;
     }
+    .main-container {
+            margin-top: 0;
+    }
     .jumbotron-bg {
       background-image: url('/crm/static/images/products-hero4.jpg');
       background-size: cover;
@@ -43,7 +46,7 @@
       <h5 class="text-white">#1 Beach Wedding <span class="badge badge-success">Top Seller!</span></h5>
       <p class="card-text text-muted">Luster Pod-Oil: Hybrid</p>
       <p class="card-text"><h6 style="color: #9bd45c">237 Sold</h6></p>
-      <a href="#" type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal">Product Details</a>
+      <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white" data-toggle="modal" data-target="#exampleModal">Product Details</a>
     </div>
   </div>
   <!-- Beach Wedding Modal -->
@@ -149,7 +152,7 @@
 </div>
 
 <!-- Honorable Mention -->
-<section style="background-color:black; width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;">
+<section style="background-color:black; width: 103%; padding: 60px 50px 100px 100px; margin-left:-15px;">
   <div class="text-center text-white">
     <h4 class="display-4">Honorable Mention</h4>
   </div>
