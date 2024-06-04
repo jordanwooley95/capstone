@@ -282,6 +282,12 @@ def cannalytics():
         " FROM orders o JOIN products p ON o.product_id = p.id "
         " GROUP BY strain"
     )
+    money_made = (
+        "SELECT date(ordered_on) AS ordered_on, SUM(o.quantity * price) as total_order_amount "
+        " FROM orders o JOIN products p ON o.product_id = p.id "
+        " Where date(ordered_on)>'2024-05-15' "
+        " GROUP BY date(ordered_on) "
+    )
     category_sold = (
         "SELECT SUM(o.quantity) as howmany, category "
         " FROM orders o JOIN products p ON o.product_id = p.id "
@@ -306,6 +312,7 @@ def cannalytics():
     category_rows = db.executesql(category_sold, as_dict=True)
     product_rows = db.executesql(products_sold, as_dict=True)
     customer_orders_rows = db.executesql(customer_orders, as_dict=True)
+    money_made_rows = db.executesql(money_made, as_dict=True)
 
     # get state abbreviations
     state_abbrs = get_state_abbr()
@@ -320,6 +327,7 @@ def cannalytics():
         product_rows=product_rows,
         customer_orders_rows=customer_orders_rows,
         sold_by_state_rows=sold_by_state_rows,
+        money_made_rows=money_made_rows
     )
 
 
