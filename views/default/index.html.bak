@@ -60,53 +60,168 @@
 
         <!-- Inquiries Column -->
         <div class="row">
+            <!-- New Orders Column -->
             <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
                 <h4>Inquiries</h4>
-                 <!-- First item -->
-            <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" target="_blank" class="list-group-item list-group-item-action rounded">
-                <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-1">Calls</h6>
-                    <small class="badge badge-primary badge-pill" style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
+                <div class="list-group">
+
+                    <!-- First item -->
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                        class="list-group-item list-group-item-action"  target = "_blank">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Calls</h6>
+                            <small class="badge badge-primary badge-pill" 
+                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
+                        </div>
+                        <p class="mb-1">Recent</p>
+                    </a>
+
+                   <!-- First Item Modal This is only for style, does not work-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <br>
+                <div style="text-align: left;">
+                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
                 </div>
-                <p class="mb-1">Recent</p>
-            </a>
+            </div>
+            <div class="modal-footer bg-dark"></div>
+        </div>
+    </div>
+</div>
+
 
                   <!-- Second item -->
-                   <a href="{{=URL('default', 'personal', args=['Email', 'Open'])}}" type="button"
-                       target = "_blank"
-                        class="list-group-item list-group-item-action">
+                    <a href="{{=URL('default', 'personal', args=['Email', 'Open'])}}" type="button"
+                        class="list-group-item list-group-item-action"  target = "_blank">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Emails</h6>
                             <small class="badge badge-primary badge-pill" 
                             style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_emails_count}}</small>
                         </div>
-                     <p class="mb-1">Recent</p>
+                        <p class="mb-1">Recent</p>
                     </a>
-                     <!-- Third item -->
-                    <a href="{{=URL('default', 'personal', args=['Email', 'Closed'])}}" type="button"
-                       target = "_blank"
-                        class="list-group-item list-group-item-action">
+
+                   <!-- Second Item Modal This is only for style, does not work-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <br>
+                <div style="text-align: left;">
+                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark"></div>
+        </div>
+    </div>
+</div>
+                     
+                   <!-- Third item -->
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Closed'])}}" type="button"
+                        class="list-group-item list-group-item-action"  target = "_blank">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Calls</h6>
-                            <small class="badge badge-primary badge-pill"
+                            <small class="badge badge-primary badge-pill" 
                             style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=old_calls_count}}</small>
                         </div>
-                     <p class="mb-1">Closed</p>
+                        <p class="mb-1">Closed</p>
                     </a>
+
+                   <!-- Third Item Modal This is only for style, does not work-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <br>
+                <div style="text-align: left;">
+                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark"></div>
+        </div>
+    </div>
+</div>
                 
                 <!-- Fourth item -->
                     <a href="{{=URL('default', 'personal', args=['Email', 'Closed'])}}" type="button"
-                       target = "_blank"
-                        class="list-group-item list-group-item-action">
+                        class="list-group-item list-group-item-action"  target = "_blank">
                         <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">Emails</h6>
-                            <small class="badge badge-primary badge-pill"
+                            <h6 class="mb-1">Email</h6>
+                            <small class="badge badge-primary badge-pill" 
                             style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=old_emails_count}}</small>
                         </div>
-                     <p class="mb-1">Closed</p>
+                        <p class="mb-1">Closed</p>
                     </a>
-                     
-             
+
+                   <!-- Fourth Item Modal This is only for style, does not work-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <br>
+                <div style="text-align: left;">
+                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark"></div>
+        </div>
+    </div>
+</div>
+                </div>        
             </div>
 
             <!-- New Orders Column -->
