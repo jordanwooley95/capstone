@@ -68,11 +68,11 @@
                     <h6 class="mb-1">Calls</h6>
                     <small class="badge badge-primary badge-pill" style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
                 </div>
-                <p class="mb-1">Open</p>
+                <p class="mb-1">Recent</p>
             </a>
 
                   <!-- Second item -->
-                   <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                   <a href="{{=URL('default', 'personal', args=['Email', 'Open'])}}" type="button"
                        target = "_blank"
                         class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
@@ -80,10 +80,10 @@
                             <small class="badge badge-primary badge-pill" 
                             style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_emails_count}}</small>
                         </div>
-                     <p class="mb-1">Open</p>
+                     <p class="mb-1">Recent</p>
                     </a>
                      <!-- Third item -->
-                    <a href="{{=URL('default', 'personal', args=['Call', 'Closed'])}}" type="button"
+                    <a href="{{=URL('default', 'personal', args=['Email', 'Closed'])}}" type="button"
                        target = "_blank"
                         class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
