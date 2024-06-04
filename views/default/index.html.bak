@@ -77,7 +77,7 @@
                         <p class="mb-1">Recent</p>
                     </a>
 
-                   <!-- First Item Modal This is only for style, does not work-->         
+                   <!-- First Item Modal-->         
 <div class="modal fade" id="Modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -93,20 +93,18 @@
                 <div style="text-align: left;">
                     
         {{ for event in events: }}
-                     {{ if event['status'] == 'Open': }}
-                    <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
-                    <b>Call Status:</b> {{=event['status']}}<br>
-                    <b>Strain:</b> {{=event['event_type']}}<br>
-                    <b>Price:</b> {{=event['event_count']}}<br>
-                    <b>Quantity:</b> {{=event['first_name']}}<br>
-                   <br>
-       
-                    {{ pass }}
-                     {{ pass }}
-                    
-  
-
+                    {{ if event['event_type'] == 'Call' and event['status'] == 'Open': }}
+                        <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
+                        <b>Call Status:</b> {{=event['status']}}<br>
+                        <b>Contact Number:</b> {{=event['phone_number']}}<br>
+                        <b>Birthday:</b> {{=event['birthday']}}<br>
+                       <br>
+                                    
+         {{ pass }}
+         {{ pass }}
+                
                 </div>
+                
             </div>
             <div class="modal-footer bg-dark"></div>
         </div>
@@ -115,8 +113,8 @@
 
 
                   <!-- Second item -->
-                    <a href="{{=URL('default', 'personal', args=['Email', 'Open'])}}" type="button"
-                        class="list-group-item list-group-item-action"  target = "_blank">
+                    <a href="#" type="button" data-toggle="modal" data-target="#Modal5"
+                        class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Emails</h6>
                             <small class="badge badge-primary badge-pill" 
@@ -126,7 +124,7 @@
                     </a>
 
                    <!-- Second Item Modal This is only for style, does not work-->
-<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
@@ -139,13 +137,16 @@
                 <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                    {{ for event in events: }}
+                    {{ if event['event_type'] == 'Email' and event['status'] == 'Open': }}
+                        <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
+                        <b>Call Status:</b> {{=event['status']}}<br>
+                        <b>Contact Number:</b> {{=event['phone_number']}}<br>
+                        <b>Birthday:</b> {{=event['birthday']}}<br>
+                       <br>
+                                    
+         {{ pass }}
+         {{ pass }}
                 </div>
             </div>
             <div class="modal-footer bg-dark"></div>
@@ -154,8 +155,8 @@
 </div>
                      
                    <!-- Third item -->
-                    <a href="{{=URL('default', 'personal', args=['Call', 'Closed'])}}" type="button"
-                        class="list-group-item list-group-item-action"  target = "_blank">
+                    <a href="#" type="button" data-toggle="modal" data-target="#Modal6"
+                        class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Calls</h6>
                             <small class="badge badge-primary badge-pill" 
@@ -164,8 +165,8 @@
                         <p class="mb-1">Closed</p>
                     </a>
 
-                   <!-- Third Item Modal This is only for style, does not work-->
-<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <!-- Third Item Modal-->
+<div class="modal fade" id="Modal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
@@ -178,13 +179,16 @@
                 <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                    {{ for event in events: }}
+                    {{ if event['event_type'] == 'Call' and event['status'] == 'Closed': }}
+                        <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
+                        <b>Call Status:</b> {{=event['status']}}<br>
+                        <b>Contact Number:</b> {{=event['phone_number']}}<br>
+                        <b>Birthday:</b> {{=event['birthday']}}<br>
+                       <br>
+                                    
+         {{ pass }}
+         {{ pass }}
                 </div>
             </div>
             <div class="modal-footer bg-dark"></div>
@@ -193,8 +197,8 @@
 </div>
                 
                 <!-- Fourth item -->
-                    <a href="{{=URL('default', 'personal', args=['Email', 'Closed'])}}" type="button"
-                        class="list-group-item list-group-item-action rounded"  target = "_blank">
+                   <a href="#" type="button" data-toggle="modal" data-target="#Modal7"
+                        class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Email</h6>
                             <small class="badge badge-primary badge-pill" 
@@ -203,8 +207,8 @@
                         <p class="mb-1">Closed</p>
                     </a>
 
-                   <!-- Fourth Item Modal This is only for style, does not work-->
-<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <!-- Fourth Item Modal-->
+<div class="modal fade" id="Modal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
