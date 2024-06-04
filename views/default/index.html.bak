@@ -88,7 +88,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <i class="fas fa-history" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
                     
@@ -135,7 +135,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <i class="fas fa-history" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
@@ -144,6 +144,7 @@
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Email:</b> {{=event['email']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
+                        <b>Comments:</b> {{=event['comments']}}<br>
                        <br>
                                     
          {{ pass }}
@@ -177,7 +178,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <i class="fas fa-times-circle" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
@@ -186,6 +187,7 @@
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Number:</b> {{=event['phone_number']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
+                        <b>Comments:</b> {{=event['comments']}}<br>
                        <br>
                                     
          {{ pass }}
@@ -228,6 +230,7 @@
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Email:</b> {{=event['email']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
+                        <b>Comments:</b> {{=event['comments']}}<br>
                        <br>
                                     
          {{ pass }}
