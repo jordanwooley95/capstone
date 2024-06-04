@@ -73,6 +73,12 @@
             margin-bottom: 50px;
             margin-top: 50px;
         }
+         #tester5 {
+            width: 100%;
+            height: 350px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -91,6 +97,7 @@
         <div id="tester2"></div>
         <div id="tester3"></div>
         <div id="tester4"></div>
+        <div id="tester5"></div>
     </div>
     <script>
         // state map
@@ -254,5 +261,33 @@
                 bgcolor: 'rgb(255, 255, 255)'
             }
         }, config );
+        
+        // money made each day graph
+        var xdata5 = [];
+        var ydata5 = [];
+        {{ for money_row in money_made_rows: }}
+            xdata5.push("{{ =money_row['ordered_on'] }}");
+            ydata5.push({{ =money_row['total_order_amount'] }});
+        {{ pass }}
+        var TESTER5 = document.getElementById('tester5');
+        Plotly.newPlot(TESTER5, [{
+            x: xdata5,
+            y: ydata5,
+            type: 'line',
+            marker: {
+                color: 'rgb(76,175,80)'
+            }
+        }], {
+            margin: { t: 10 },
+            xaxis: {
+                title: 'Sales Per Day',
+            },
+            yaxis: {
+                title: 'Total Order Amount',
+            },
+            hoverlabel: {
+                bgcolor: 'rgb(255, 255, 255)'
+            }
+        }, config);
     </script>
 </body>
