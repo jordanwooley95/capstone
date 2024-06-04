@@ -33,11 +33,13 @@
     .card {
         width: 100%; /* Ensure the cards take full width of their column */
     }
-    }
+    
     #jumbotron {
             min-height: 122px;
             max-height: 122px;
         }
+        
+        
 
     </style>
 </head>
@@ -62,12 +64,12 @@
                 <h4>Inquiries</h4>
                  <!-- First item -->
                     <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
-                       target = "_blank"
+                       target = "_blank" 
                         class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Calls</h6>
                             <small class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_calls_count}}</small>
+                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
                         </div>
                      <p class="mb-1">Open</p>
                     </a>
@@ -77,8 +79,8 @@
                         class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Emails</h6>
-                            <small class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_emails_count}}</small>
+                            <small class="badge badge-primary badge-pill" 
+                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_emails_count}}</small>
                         </div>
                      <p class="mb-1">Open</p>
                     </a>
@@ -89,7 +91,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Calls</h6>
                             <small class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=old_calls_count}}</small>
+                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=old_calls_count}}</small>
                         </div>
                      <p class="mb-1">Closed</p>
                     </a>
@@ -101,7 +103,7 @@
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Emails</h6>
                             <small class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=old_emails_count}}</small>
+                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=old_emails_count}}</small>
                         </div>
                      <p class="mb-1">Closed</p>
                     </a>
