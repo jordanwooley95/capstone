@@ -20,14 +20,28 @@
       margin-left: -15px;
       margin-right: 0;
     }
+
+    #jumbotron {
+      min-height: 105.2px;
+      max-height: 105.2px;
+      display: flex;
+    }
+
+    .text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
 <!-- Hero-->       
 <div class="jumbotron jumbotron-fluid jumbotron-bg">
-  <div class="container">
-    <h1 class="display-3">The Big 3</h1>
+  <div class="container" id="jumbotron">
+    <div class="text-container">
+    <h5 class="display-4">The Big 3</h5>
     <p class="lead">Our top 3 performing products this quarter</p>
+</div>
     <a class="btn btn-dark btn-med m-auto" href="products.html" role="button">Product Database &#10095 </a>
   </div>
 </div>

@@ -1,305 +1,325 @@
 {{extend 'layout.html'}}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Dashboard</title>
 
 
 
-<!--Jumbotron styling-->
+    <!--Jumbotron styling-->
     <style>
-        html, body {
+        html,
+        body {
 
-      margin:0px;
-      padding-bottom: 5%;
-    }
-    .main-container {
+            margin: 0px;
+            padding-bottom: 5%;
+        }
+
+        .main-container {
             margin-top: 0;
-    }
+        }
 
-    .jumbotron-bg {
-      background-image: url('/crm/static/images/dataadmin-hero.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
-      background-size: cover; /* Cover the entire jumbotron with the background image */
-      background-position: center; /* Center the background image within the jumbotron */
-      color: white; /* Set text color to white for better readability */
-      width: 100vw;
-      margin-left: -15px;
-      margin-right: 0;
+        .jumbotron-bg {
+            background-image: url('/crm/static/images/dataadmin-hero.jpg');
+            /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            /* Cover the entire jumbotron with the background image */
+            background-position: center;
+            /* Center the background image within the jumbotron */
+            color: white;
+            /* Set text color to white for better readability */
+            width: 100vw;
+            margin-left: -15px;
+            margin-right: 0;
 
-     h5 {
-        display: inline;
-    }
+            h5 {
+                display: inline;
+            }
 
-    .card {
-        width: 100%; /* Ensure the cards take full width of their column */
-    }
-    }
+            .card {
+                width: 100%;
+                /* Ensure the cards take full width of their column */
+            }
+        }
 
+        #jumbotron {
+            min-height: 105.2px;
+            max-height: 105.2px;
+        }
     </style>
 </head>
-    <body>
+
+<body>
 
 
-<!-- Hero-->
-<div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;" >
-  <div class="container">
-    <h1 class="display-4" style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}</h1>
-      <p class="lead">Admin Dashboard</p>
-  </div>
-</div>
-<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
-
-<div style="width: 100%">
-    <div class="container m-auto" style="width: 80%">
-
-        <!-- Inquiries Column -->
-        <div class="row">
-            <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
-                <h4>Inquiries</h4>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            Open Calls
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=open_calls_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Call', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New Calls
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_calls_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Email', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New Emails
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_emails_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['In person', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New in-person Inquiries
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- New Orders Column -->
-            <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
-                <h4>New Orders</h4>
-                <div class="list-group">
-
-                    <!-- First item -->
-                    <a href="#" type="button" data-toggle="modal" data-target="#Modal1"
-                        class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                            <small>{{=recent_orders[0]['days_ago']}} days ago</small>
-                        </div>
-                        <p class="mb-1">{{=recent_orders[0]['state']}}</p>
-                    </a>
-
-                   <!-- First Item Modal -->
-<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
-                <br>
-                <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
-                </div>
-            </div>
-            <div class="modal-footer bg-dark"></div>
+    <!-- Hero-->
+    <div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;">
+        <div id="jumbotron" class="container">
+            <h1 class="display-4" style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}</h1>
+            <p class="lead">Admin Dashboard</p>
         </div>
     </div>
-</div>
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 
+    <div style="width: 100%">
+        <div class="container m-auto" style="width: 80%">
 
-                    <!-- Second item -->
-                    <a href="#" type="button" data-toggle="modal" data-target="#Modal2"
-                        class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
-                            <small>{{=recent_orders[1]['days_ago']}} days ago</small>
+            <!-- Inquiries Column -->
+            <div class="row">
+                <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
+                    <h4>Inquiries</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}"
+                                style="text-decoration: none; color: inherit;">
+                                Open Calls
+                            </a>
+                            <span class="badge badge-primary badge-pill"
+                                style="background-color: #8e65ab">{{=open_calls_count}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{=URL('default', 'personal', args=['Call', 'New'])}}"
+                                style="text-decoration: none; color: inherit;">
+                                New Calls
+                            </a>
+                            <span class="badge badge-primary badge-pill"
+                                style="background-color: #8e65ab">{{=new_calls_count}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{=URL('default', 'personal', args=['Email', 'New'])}}"
+                                style="text-decoration: none; color: inherit;">
+                                New Emails
+                            </a>
+                            <span class="badge badge-primary badge-pill"
+                                style="background-color: #8e65ab">{{=new_emails_count}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{=URL('default', 'personal', args=['In person', 'New'])}}"
+                                style="text-decoration: none; color: inherit;">
+                                New in-person Inquiries
+                            </a>
+                            <span class="badge badge-primary badge-pill"
+                                style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- New Orders Column -->
+                <div class="col-sm border border-dark rounded container bg-dark m-3 p-3" style="color: white">
+                    <h4>New Orders</h4>
+                    <div class="list-group">
+
+                        <!-- First item -->
+                        <a href="#" type="button" data-toggle="modal" data-target="#Modal1"
+                            class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+                                <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+                            </div>
+                            <p class="mb-1">{{=recent_orders[0]['state']}}</p>
+                        </a>
+
+                        <!-- First Item Modal -->
+                        <div class="modal fade" id="Modal1" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark">
+                                        <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                                        <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                                        <br>
+                                        <div style="text-align: left;">
+                                            <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
+                                            <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
+                                            <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
+                                            <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
+                                            <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
+                                            <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
+                                            <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer bg-dark"></div>
+                                </div>
+                            </div>
                         </div>
-                        <p class="mb-1">{{=recent_orders[1]['state']}}</p>
-                    </a>
-
-                    <!-- Second Item Modal -->
-                    <!-- First Item Modal -->
-<div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
-                <br>
-                <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[1]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[1]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[1]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[1]['stock']}}<br>
-                </div>
-            </div>
-            <div class="modal-footer bg-dark"></div>
-        </div>
-    </div>
-</div>
 
 
-                    <!-- Third item -->
-                    <a href="#" type="button" data-toggle="modal" data-target="#Modal3"
-                        class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
-                            <small>{{=recent_orders[2]['days_ago']}} days ago</small>
+                        <!-- Second item -->
+                        <a href="#" type="button" data-toggle="modal" data-target="#Modal2"
+                            class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">{{=recent_orders[1]['name']}}</h6>
+                                <small>{{=recent_orders[1]['days_ago']}} days ago</small>
+                            </div>
+                            <p class="mb-1">{{=recent_orders[1]['state']}}</p>
+                        </a>
+
+                        <!-- Second Item Modal -->
+                        <!-- First Item Modal -->
+                        <div class="modal fade" id="Modal2" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-dark">
+                                        <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                                        <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                                        <br>
+                                        <div style="text-align: left;">
+                                            <b>Customer Name:</b> {{=recent_orders[1]['name']}}<br>
+                                            <b>Product Name:</b> {{=recent_orders[1]['product']}}<br>
+                                            <b>Strain:</b> {{=recent_orders[1]['strain']}}<br>
+                                            <b>Price:</b> ${{="{:.2f}".format(recent_orders[1]['price'])}}<br>
+                                            <b>Quantity:</b> {{=recent_orders[1]['quantity']}}<br>
+                                            <b>Order Date:</b> {{=recent_orders[1]['date']}}<br>
+                                            <b>Stock Quantity:</b> {{=recent_orders[1]['stock']}}<br>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer bg-dark"></div>
+                                </div>
+                            </div>
                         </div>
-                        <p class="mb-1">{{=recent_orders[2]['state']}}</p>
-                    </a>
+
+
+                        <!-- Third item -->
+                        <a href="#" type="button" data-toggle="modal" data-target="#Modal3"
+                            class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">{{=recent_orders[2]['name']}}</h6>
+                                <small>{{=recent_orders[2]['days_ago']}} days ago</small>
+                            </div>
+                            <p class="mb-1">{{=recent_orders[2]['state']}}</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Third Item Modal -->
+                <!-- First Item Modal -->
+                <div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark">
+                                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
+                                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                                <br>
+                                <div style="text-align: left;">
+                                    <b>Customer Name:</b> {{=recent_orders[2]['name']}}<br>
+                                    <b>Product Name:</b> {{=recent_orders[2]['product']}}<br>
+                                    <b>Strain:</b> {{=recent_orders[2]['strain']}}<br>
+                                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[2]['price'])}}<br>
+                                    <b>Quantity:</b> {{=recent_orders[2]['quantity']}}<br>
+                                    <b>Order Date:</b> {{=recent_orders[2]['date']}}<br>
+                                    <b>Stock Quantity:</b> {{=recent_orders[2]['stock']}}<br>
+                                </div>
+                            </div>
+                            <div class="modal-footer bg-dark"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Shoutouts Column -->
+                <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
+                    <h4 style="color: white">Shoutout</h4>
+                    <div class="card" style="width: 18rem">
+                        {{=IMG(_src=URL('static', 'images/CC17.jpg'), _alt="stock-image-woman", _width="100%")}}
+                        <div class="card-body">
+                            <h5 class="card-title">Cleveland Codes Cohort 17</h5>
+                            <p class="card-text">GREAT job team!</p>
+                            <a href="shoutouts.html" target="_blank" class="btn btn-dark">Show some love</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Third Item Modal -->
-            <!-- First Item Modal -->
-<div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span style="color:#9bd45c" aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
-                <br>
-                <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[2]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[2]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[2]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[2]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[2]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[2]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[2]['stock']}}<br>
-                </div>
-            </div>
-            <div class="modal-footer bg-dark"></div>
         </div>
-    </div>
-</div>
+        </br>
+
+        <!-- Cannalytics Columns-->
+        <div class="container" style="width: 80%">
+            <div class="row">
+                <div class="col text-center" style="display: inline-block;width: 45%; vertical-align:top;">
+                    <div id="pie"></div>
 
 
-            <!-- Shoutouts Column -->
-            <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
-                <h4 style="color: white">Shoutout</h4>
-                <div class="card" style="width: 18rem">
-                    {{=IMG(_src=URL('static', 'images/CC17.jpg'), _alt="stock-image-woman", _width="100%")}}
-                    <div class="card-body">
-                        <h5 class="card-title">Cleveland Codes Cohort 17</h5>
-                        <p class="card-text">GREAT job team!</p>
-                        <a href="shoutouts.html" target="_blank" class="btn btn-dark">Show some love</a>
+                </div>
+                <div class="col" style="display: inline-block;width: 45%; vertical-align:top;">
+
+                    <div class="card">
+                        <div class="card-body">
+                            {{=IMG(_src=URL('static', 'images/Cannalytics-image.jpg'), _alt="stock-image-graph", _width="100%")}}
+                            </br>
+                            </br>
+                            <h5 class="card-title">Cannalytics</h5>
+                            <p class="card-text">View charts and graphs to gain insight on how we're doing! </p>
+                            <a href="http:/crm/default/cannalytics" class="btn btn-dark">Go to Cannalytics</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!--Featured Brand-->
+        </br>
+        <div class="container m-auto text-center" style="width: 80%">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <h3 style="color:white;">Featured Brand</h3>
+                    <p class="lead" style="color:#9bd45c;">Houseplant</p>
+                    <p class="card-text"><small class="text-muted">Owners: Evan Goldberg and Seth Rogan &nbsp| Chino
+                            Hills. California</small></p>
+                    <p class="card-text m-auto" style="color:white; width:80%;">"We wanted to create a space where
+                        people can find products that are not only top-notch but also beautifully designed. By doing so,
+                        we're dispelling those outdated ideas and stereotypes about people who enjoy a good smoke. We
+                        aspire to bring elegance and sophistication into every joint and every session."</p>
+                    </br>
+
+
+                </div>
+                {{=IMG(_src=URL('static', 'images/Houseplant-Seth.jpg'), _alt="stock-image-woman", _width="100%")}}
+            </div>
         </div>
-    </br>
-
-<!-- Cannalytics Columns-->
-<div class="container" style="width: 80%">
-  <div class="row" >
-    <div class="col text-center" style="display: inline-block;width: 45%; vertical-align:top;">
-        <div id="pie" ></div>
-
-
-    </div>
-    <div class="col" style="display: inline-block;width: 45%; vertical-align:top;">
-
-         <div class="card">
-      <div class="card-body">
-           {{=IMG(_src=URL('static', 'images/Cannalytics-image.jpg'), _alt="stock-image-graph", _width="100%")}}
-          </br>
-             </br>
-        <h5 class="card-title">Cannalytics</h5>
-        <p class="card-text">View charts and graphs to gain insight on how we're doing! </p>
-        <a href="http:/crm/default/cannalytics" class="btn btn-dark">Go to Cannalytics</a>
-      </div>
-    </div>
-    </div>
-  </div>
     </div>
 
-<!--Featured Brand-->
-</br>
-<div class="container m-auto text-center" style="width: 80%">
-<div class="card bg-dark" >
-  <div class="card-body">
-    <h3 style="color:white;">Featured Brand</h3>
-    <p class="lead" style="color:#9bd45c;">Houseplant</p>
-    <p class="card-text"><small class="text-muted">Owners: Evan Goldberg and Seth Rogan &nbsp| Chino Hills. California</small></p>
-    <p class="card-text m-auto" style="color:white; width:80%;">"We wanted to create a space where people can find products that are not only top-notch but also beautifully designed. By doing so, we're dispelling those outdated ideas and stereotypes about people who enjoy a good smoke. We aspire to bring elegance and sophistication into every joint and every session."</p>
-      </br>
-      
-      
-  </div>
-  {{=IMG(_src=URL('static', 'images/Houseplant-Seth.jpg'), _alt="stock-image-woman", _width="100%")}}
-</div>
-</div>
 
-
-   <!--Pie Chart Javascript-->
-
-<script>
-    xdata = [];
-    ydata = [];
-    myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
-    {{ for row in rows: }}
-           xdata.push("{{ =row['strain'] }}");
-           ydata.push({{ =row['howmany'] }});
-    {{ pass }}
-    var data = [{
-        values: ydata,
-        labels: xdata,
-        type: 'pie',
-        marker: {
-              colors: myColors}
-    }];
-    var layout = {
-       height: 500,
-       width: 400,
-       title: 'Sales By Strain'
-    };
-    Plotly.newPlot('pie', data, layout);
-</script>
+    <!--Pie Chart Javascript-->
+    <script>
+        xdata = [];
+        ydata = [];
+        myColors = ["#9BD45C", "#4D4B4B", "#8E65AB"];
+        {{ for row in rows: }}
+               xdata.push("{{ =row['strain'] }}");
+               ydata.push({{ =row['howmany'] }});
+        {{ pass }}
+        var data = [{
+            values: ydata,
+            labels: xdata,
+            type: 'pie',
+            marker: {
+                  colors: myColors}
+        }];
+        var layout = {
+           height: 500,
+           width: 400,
+           title: 'Sales By Strain'
+        };
+        Plotly.newPlot('pie', data, layout);
+    </script>
 </body>
 </html>
