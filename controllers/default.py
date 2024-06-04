@@ -291,6 +291,8 @@ def cannalytics():
         "SELECT SUM(o.quantity) as howmany, product_name"
         " FROM orders o JOIN products p ON o.product_id = p.id "
         " GROUP BY product_name"
+        " ORDER BY howmany DESC "
+        " LIMIT 10"
     )
     customer_orders = (
         "SELECT COUNT(o.id) as howmany, c.first_name, c.last_name"
