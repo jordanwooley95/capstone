@@ -187,8 +187,8 @@ def personal():
     
     # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
-        "SELECT user_id, customer_id, customers.first_name, customers.last_name, status, event_type, COUNT(*) AS event_count "
-        "FROM events JOIN customers ON (events.customer_id = customers.id) "
+        "SELECT user_id, customer_id, status, event_type, COUNT(*) AS event_count "
+        "FROM events "
         f"WHERE user_id = {user_id} "
     )
     
