@@ -95,9 +95,10 @@
         {{ for event in events: }}
                     {{ if event['event_type'] == 'Call' and event['status'] == 'Open': }}
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
-                        <b>Call Status:</b> {{=event['status']}}<br>
+                        <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Number:</b> {{=event['phone_number']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
+                        <b>Comments:</b> {{=event['comments']}}<br>
                        <br>
                                     
          {{ pass }}
@@ -128,7 +129,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Recent Emails Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span style="color:#9bd45c" aria-hidden="true">&times;</span>
                 </button>
@@ -140,8 +141,8 @@
                     {{ for event in events: }}
                     {{ if event['event_type'] == 'Email' and event['status'] == 'Open': }}
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
-                        <b>Call Status:</b> {{=event['status']}}<br>
-                        <b>Contact Number:</b> {{=event['phone_number']}}<br>
+                        <b>Status:</b> {{=event['status']}}<br>
+                        <b>Contact Email:</b> {{=event['email']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
                        <br>
                                     
@@ -170,7 +171,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Closed Calls Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span style="color:#9bd45c" aria-hidden="true">&times;</span>
                 </button>
@@ -182,7 +183,7 @@
                     {{ for event in events: }}
                     {{ if event['event_type'] == 'Call' and event['status'] == 'Closed': }}
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
-                        <b>Call Status:</b> {{=event['status']}}<br>
+                        <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Number:</b> {{=event['phone_number']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
                        <br>
@@ -212,7 +213,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Closed Emails Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span style="color:#9bd45c" aria-hidden="true">&times;</span>
                 </button>
@@ -221,13 +222,16 @@
                 <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                    {{ for event in events: }}
+                    {{ if event['event_type'] == 'Email' and event['status'] == 'Closed': }}
+                        <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
+                        <b>Status:</b> {{=event['status']}}<br>
+                        <b>Contact Email:</b> {{=event['email']}}<br>
+                        <b>Birthday:</b> {{=event['birthday']}}<br>
+                       <br>
+                                    
+         {{ pass }}
+         {{ pass }}
                 </div>
             </div>
             <div class="modal-footer bg-dark"></div>

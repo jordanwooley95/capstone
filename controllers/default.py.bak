@@ -152,7 +152,7 @@ def index():
     
     # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
-        "SELECT user_id, product_id, birthday, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type "
+        "SELECT user_id, comments, email, birthday, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type "
         "FROM events JOIN customers ON (events.customer_id = customers.id) "
         f"WHERE user_id = {user_id} "
     )
