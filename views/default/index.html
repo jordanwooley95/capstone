@@ -58,6 +58,7 @@
 <div style="width: 100%">
     <div class="container m-auto" style="width: 80%">
 
+
         <!-- Inquiries Column -->
         <div class="row">
             <!-- New Orders Column -->
@@ -66,8 +67,8 @@
                 <div class="list-group">
 
                     <!-- First item -->
-                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
-                        class="list-group-item list-group-item-action"  target = "_blank">
+                    <a href="#" type="button" data-toggle="modal" data-target="#Modal4"
+                        class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h6 class="mb-1">Calls</h6>
                             <small class="badge badge-primary badge-pill" 
@@ -76,12 +77,12 @@
                         <p class="mb-1">Recent</p>
                     </a>
 
-                   <!-- First Item Modal This is only for style, does not work-->
-<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <!-- First Item Modal This is only for style, does not work-->         
+<div class="modal fade" id="Modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Customer Order</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Recent Calls Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span style="color:#9bd45c" aria-hidden="true">&times;</span>
                 </button>
@@ -90,13 +91,21 @@
                 <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
-                    <b>Customer Name:</b> {{=recent_orders[0]['name']}}<br>
-                    <b>Product Name:</b> {{=recent_orders[0]['product']}}<br>
-                    <b>Strain:</b> {{=recent_orders[0]['strain']}}<br>
-                    <b>Price:</b> ${{="{:.2f}".format(recent_orders[0]['price'])}}<br>
-                    <b>Quantity:</b> {{=recent_orders[0]['quantity']}}<br>
-                    <b>Order Date:</b> {{=recent_orders[0]['date']}}<br>
-                    <b>Stock Quantity:</b> {{=recent_orders[0]['stock']}}<br>
+                    
+        {{ for event in events: }}
+                     {{ if event['status'] == 'Open': }}
+                    <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
+                    <b>Call Status:</b> {{=event['status']}}<br>
+                    <b>Customer Contact:</b> {{=event['phone_number']}}<br>
+                    <b>Price:</b> {{=event['event_count']}}<br>
+                    <b>Quantity:</b> {{=event['first_name']}}<br>
+                   <br>
+       
+                    {{ pass }}
+                     {{ pass }}
+                    
+  
+
                 </div>
             </div>
             <div class="modal-footer bg-dark"></div>

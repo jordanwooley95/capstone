@@ -47,6 +47,8 @@ def vieworder():
 
 def index():
     import datetime
+    
+
 
     # Fetch the top 3 most recent orders
     recent_orders = []
@@ -143,6 +145,32 @@ def index():
         (db.events.user_id == user_id) &
         (db.events.comm_type == 'In person')
     ).count()
+    
+    
+    # Build the SQL statement dynamically based on the provided filters
+    user_id = auth.user_id
+    event_type = request.args(0)
+    status = request.args(1)
+    
+    # Build the SQL statement dynamically based on the provided filters
+    sqlstmt_events = (
+        "SELECT user_id, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type, COUNT(*) AS event_count "
+        "FROM events JOIN customers ON (events.customer_id = customers.id) "
+        f"WHERE user_id = {user_id} "
+    )
+    
+    # Add conditions for event_type and status if provided
+    if event_type:
+        sqlstmt_events += f"AND event_type = '{event_type}' "
+    if status:
+        sqlstmt_events += f"AND status = '{status}' "
+    
+    sqlstmt_events += (
+        "AND comm_type IN ('Phone', 'Email', 'In person') "
+        "GROUP BY user_id, status, event_type"
+    )
+
+    events = db.executesql(sqlstmt_events, as_dict=True)
 
     return dict(
         recent_orders=recent_orders, 
@@ -154,9 +182,9 @@ def index():
         all_emails_count=all_emails_count,
         all_in_person_inquiries_count = all_in_person_inquiries_count,
         old_calls_count = old_calls_count,
-        old_emails_count = old_emails_count
+        old_emails_count = old_emails_count,
+        events=events
     )
-
 
 
 
@@ -172,8 +200,8 @@ def personal():
     
     # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
-        "SELECT user_id, status, event_type, COUNT(*) AS event_count "
-        "FROM events "
+        "SELECT user_id, customer_id, customers.first_name, customers.last_name, status, event_type, COUNT(*) AS event_count "
+        "FROM events JOIN customers ON (events.customer_id = customers.id) "
         f"WHERE user_id = {user_id} "
     )
     
