@@ -94,12 +94,13 @@
                     
         {{ for event in events: }}
                     {{ if event['event_type'] == 'Call' and event['status'] == 'Open': }}
+                    <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Number:</b> {{=event['phone_number']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
-                        <b>Comments:</b> {{=event['comments']}}<br>
-                       <br>
+                        <b>Comments:</b> {{=event['comments']}}
+                       
                                     
          {{ pass }}
          {{ pass }}
@@ -140,12 +141,13 @@
                 <div style="text-align: left;">
                     {{ for event in events: }}
                     {{ if event['event_type'] == 'Email' and event['status'] == 'Open': }}
+                    <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Email:</b> {{=event['email']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
-                        <b>Comments:</b> {{=event['comments']}}<br>
-                       <br>
+                        <b>Comments:</b> {{=event['comments']}}
+                       
                                     
          {{ pass }}
          {{ pass }}
@@ -178,7 +180,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fas fa-times-circle" style="color: #A9A9A9; font-size: 200px;"></i>
+                <i class="fas fa-check-circle" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
@@ -187,8 +189,8 @@
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Number:</b> {{=event['phone_number']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
-                        <b>Comments:</b> {{=event['comments']}}<br>
-                       <br>
+                        <b>Comments:</b> {{=event['comments']}}
+                       <hr>
                                     
          {{ pass }}
          {{ pass }}
@@ -221,7 +223,7 @@
                 </button>
             </div>
             <div class="modal-body d-flex flex-column align-items-center" style="color: black;">
-                <i class="fa-solid fa-user" style="color: #A9A9A9; font-size: 200px;"></i>
+                <i class="fas fa-check-circle" style="color: #A9A9A9; font-size: 200px;"></i>
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
@@ -230,8 +232,8 @@
                         <b>Status:</b> {{=event['status']}}<br>
                         <b>Contact Email:</b> {{=event['email']}}<br>
                         <b>Birthday:</b> {{=event['birthday']}}<br>
-                        <b>Comments:</b> {{=event['comments']}}<br>
-                       <br>
+                        <b>Comments:</b> {{=event['comments']}}
+                       <hr>
                                     
          {{ pass }}
          {{ pass }}
