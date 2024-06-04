@@ -34,8 +34,6 @@ def like_shoutout():
         shoutout.update_record(likes=shoutout.likes + 1)
         # Return the updated like count as JSON response
         return response.json({'likes': shoutout.likes})
-    else:
-        return "Shoutout not found"
 
 
 def vieworder():
@@ -95,40 +93,67 @@ def index():
     user_id = auth.user_id
 
     # Query the events table to count the number of open calls and emails for the logged-in user
-    open_calls_count = db(
+    new_calls_count = db(
         (db.events.user_id == user_id)
         & (db.events.status == "Open")
-        & ((db.events.event_type == "Call") | (db.events.event_type == "Email"))
+        & ((db.events.event_type == "Call"))
+    ).count()
+    
+    old_calls_count = db(
+        (db.events.user_id == user_id)
+        & (db.events.status == "Closed")
+        & ((db.events.event_type == "Call"))
     ).count()
 
     # Query the events table to count the number of new emails for the logged-in user
     new_emails_count = db(
         (db.events.user_id == user_id) &
-        (db.events.status == 'New') &
+        (db.events.status == 'Open') &
         (db.events.event_type == 'Email')
     ).count()
+    
+    old_emails_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.status == 'Closed') &
+        (db.events.event_type == 'Email')
+    ).count()
+
 
     # Query the events table to count the number of new in-person inquiries for the logged-in user
     new_in_person_inquiries_count = db(
         (db.events.user_id == user_id) &
-        (db.events.status == 'New') &
-        (db.events.event_type == 'In-person')
+        (db.events.comm_type == 'In person')&
+        (db.events.status == 'Open')
     ).count()
+    
+    
 
     # Query the events table to count the number of new calls for the logged-in user
-    new_calls_count = db(
+    all_calls_count = db(
         (db.events.user_id == user_id) &
-        (db.events.status == 'New') &
         (db.events.event_type == 'Call')
+    ).count()
+    
+    all_emails_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.event_type == 'Email')
+    ).count()
+    
+    all_in_person_inquiries_count = db(
+        (db.events.user_id == user_id) &
+        (db.events.comm_type == 'In person')
     ).count()
 
     return dict(
         recent_orders=recent_orders, 
         rows=rows, 
-        open_calls_count=open_calls_count, 
+        new_calls_count=new_calls_count, 
         new_emails_count=new_emails_count,
         new_in_person_inquiries_count=new_in_person_inquiries_count,
-        new_calls_count=new_calls_count,
+        all_calls_count=all_calls_count,
+        all_emails_count=all_emails_count,
+        all_in_person_inquiries_count = all_in_person_inquiries_count,
+        old_calls_count = old_calls_count
     )
 
 
@@ -164,6 +189,9 @@ def personal():
 
     rows = db.executesql(sqlstmt_events, as_dict=True)
     return dict(rows=rows)
+
+
+
 
 
 def productz():

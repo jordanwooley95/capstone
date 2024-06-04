@@ -60,39 +60,52 @@
         <div class="row">
             <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
                 <h4>Inquiries</h4>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            Open Calls
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=open_calls_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Call', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New Calls
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_calls_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['Email', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New Emails
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_emails_count}}</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="{{=URL('default', 'personal', args=['In person', 'New'])}}"
-                            style="text-decoration: none; color: inherit;">
-                            New in-person Inquiries
-                        </a>
-                        <span class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab">{{=new_in_person_inquiries_count}}</span>
-                    </li>
+                 <!-- First item -->
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                       target = "_blank"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Calls</h6>
+                            <small class="badge badge-primary badge-pill"
+                            style="background-color: #8e65ab">{{=new_calls_count}}</small>
+                        </div>
+                     <p class="mb-1">Open</p>
+                    </a>
+                  <!-- Second item -->
+                   <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                       target = "_blank"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Emails</h6>
+                            <small class="badge badge-primary badge-pill"
+                            style="background-color: #8e65ab">{{=new_emails_count}}</small>
+                        </div>
+                     <p class="mb-1">Open</p>
+                    </a>
+                     <!-- Third item -->
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                       target = "_blank"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Calls</h6>
+                            <small class="badge badge-primary badge-pill"
+                            style="background-color: #8e65ab">{{=old_calls_count}}</small>
+                        </div>
+                     <p class="mb-1">Closed</p>
+                    </a>
+                
+                <!-- Fourth item -->
+                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
+                       target = "_blank"
+                        class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Emails</h6>
+                            <small class="badge badge-primary badge-pill"
+                            style="background-color: #8e65ab">{{=old_emails_count}}</small>
+                        </div>
+                     <p class="mb-1">Closed</p>
+                    </a>
+                     
                 </ul>
             </div>
 
