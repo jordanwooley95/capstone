@@ -39,9 +39,7 @@
             max-height: 122px;
         }
         
-        .list-group-item-action {
-    border-bottom: 1px solid #ccc;
-}
+        
 
     </style>
 </head>
@@ -65,16 +63,14 @@
             <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #9bd45c">
                 <h4>Inquiries</h4>
                  <!-- First item -->
-                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
-                       target = "_blank" 
-                        class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">Calls</h6>
-                            <small class="badge badge-primary badge-pill"
-                            style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
-                        </div>
-                     <p class="mb-1">Open</p>
-                    </a>
+            <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" target="_blank" class="list-group-item list-group-item-action rounded">
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Calls</h6>
+                    <small class="badge badge-primary badge-pill" style="background-color: #8e65ab; padding: 5px 10px; font-size: 0.8rem;">{{=new_calls_count}}</small>
+                </div>
+                <p class="mb-1">Open</p>
+            </a>
+
                   <!-- Second item -->
                    <a href="{{=URL('default', 'personal', args=['Call', 'Open'])}}" type="button"
                        target = "_blank"
@@ -110,7 +106,7 @@
                      <p class="mb-1">Closed</p>
                     </a>
                      
-                </ul>
+             
             </div>
 
             <!-- New Orders Column -->
