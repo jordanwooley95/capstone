@@ -49,7 +49,7 @@
 <!-- Hero-->
 <div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;" >
   <div class="container" id="jumbotron">
-    <h1 class="display-4" style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}</h1>
+    <h1 class="display-4" style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}Guest{{pass}}</h1>
       <p class="lead">Admin Dashboard</p>
   </div>
 </div>
