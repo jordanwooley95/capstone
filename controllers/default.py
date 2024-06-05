@@ -151,12 +151,17 @@ def index():
     user_id = auth.user_id
     
     # Build the SQL statement dynamically based on the provided filters
+    # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
-        "SELECT user_id, events.comments, email, birthday, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type "
+        "SELECT events.comments, email, birthday, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type "
         "FROM events JOIN customers ON (events.customer_id = customers.id) "
-        f"WHERE user_id = {user_id} "
     )
-    
+
+    if user_id is not None:
+        user_id = auth.user_id
+        sqlstmt_events += f"WHERE user_id = {user_id} "
+
+    # execute query
     events = db.executesql(sqlstmt_events, as_dict=True)
 
     return dict(
