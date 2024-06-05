@@ -7,24 +7,24 @@
 
 # ---- example index page ----
 def delete_shoutout():
-    if request.env.request_method == 'POST':
+    if request.env.request_method == "POST":
         shoutout_id = request.post_vars.id
         db(db.shoutouts.id == shoutout_id).delete()
     return dict()
 
+
 def add_shoutout():
-    if request.method == 'POST':
+    if request.method == "POST":
         shoutout_text = request.vars.shoutout
         db.shoutouts.insert(textcontent=shoutout_text)
-        redirect(URL('default', 'shoutouts'))
+        redirect(URL("default", "shoutouts"))
     return dict()
 
+
 def shoutouts():
-    shoutouts = db().select(
-        db.shoutouts.ALL,
-        orderby=~db.shoutouts.created_on
-    )
+    shoutouts = db().select(db.shoutouts.ALL, orderby=~db.shoutouts.created_on)
     return dict(shoutouts=shoutouts)
+
 
 def like_shoutout():
     shoutout_id = request.vars.id
@@ -33,39 +33,42 @@ def like_shoutout():
         # Increment the like count for the shoutout
         shoutout.update_record(likes=shoutout.likes + 1)
         # Return the updated like count as JSON response
-        return response.json({'likes': shoutout.likes})
+        return response.json({"likes": shoutout.likes})
 
 
 def vieworder():
     response.view = "default/vieworder.html"
-    orderid=request.vars.orderid
-    sqlstmt = "SELECT first_name,last_name,product_name,price,strain, ordered_on AS order_date, quantity FROM orders o JOIN products p ON o.product_id = p.id JOIN customers c ON c.id=o.customer_id WHERE o.id="+str(orderid)
-    rows=db.executesql(sqlstmt,as_dict = True)
-    #form=crud.read(db.orders,orderid)
+    orderid = request.vars.orderid
+    sqlstmt = (
+        "SELECT first_name,last_name,product_name,price,strain, ordered_on AS order_date, quantity FROM orders o JOIN products p ON o.product_id = p.id JOIN customers c ON c.id=o.customer_id WHERE o.id="
+        + str(orderid)
+    )
+    rows = db.executesql(sqlstmt, as_dict=True)
+    # form=crud.read(db.orders,orderid)
     return locals()
 
 
 def index():
     import datetime
-    
-
 
     # Fetch the top 3 most recent orders
     recent_orders = []
     orders = db().select(
-        db.orders.ALL, db.customers.ALL, db.products.ALL,
+        db.orders.ALL,
+        db.customers.ALL,
+        db.products.ALL,
         join=[
             db.orders.on(db.orders.customer_id == db.customers.id),
-            db.products.on(db.orders.product_id == db.products.id)
+            db.products.on(db.orders.product_id == db.products.id),
         ],
         orderby=~db.orders.ordered_on,
-        limitby=(0, 3)  # Limit to the top 3 recent orders
+        limitby=(0, 3),  # Limit to the top 3 recent orders
     )
 
     for order in orders:
         # Fetch the state name for the customer
         state = db(db.states.id == order.customers.state_id).select().first()
-        state_name = state.state_name if state else 'N/A'
+        state_name = state.state_name if state else "N/A"
 
         # Calculate days ago
         current_datetime = datetime.datetime.now()
@@ -74,16 +77,16 @@ def index():
 
         # Prepare the order details
         order_details = {
-            'id': order.orders.id,  # Directly access the id field of the orders table
-            'name': f"{order.customers.first_name} {order.customers.last_name}",
-            'state': state_name,
-            'days_ago': days_ago,
-            'product': order.products.product_name,
-            'strain': order.products.strain,
-            'price': order.products.price,
-            'quantity': order.orders.quantity,
-            'date': order.orders.ordered_on,
-            'stock': order.products.stock_quantity
+            "id": order.orders.id,  # Directly access the id field of the orders table
+            "name": f"{order.customers.first_name} {order.customers.last_name}",
+            "state": state_name,
+            "days_ago": days_ago,
+            "product": order.products.product_name,
+            "strain": order.products.strain,
+            "price": order.products.price,
+            "quantity": order.orders.quantity,
+            "date": order.orders.ordered_on,
+            "stock": order.products.stock_quantity,
         }
         recent_orders.append(order_details)
 
@@ -100,7 +103,7 @@ def index():
         & (db.events.status == "Open")
         & ((db.events.event_type == "Call"))
     ).count()
-    
+
     old_calls_count = db(
         (db.events.user_id == user_id)
         & (db.events.status == "Closed")
@@ -109,48 +112,40 @@ def index():
 
     # Query the events table to count the number of new emails for the logged-in user
     new_emails_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.status == 'Open') &
-        (db.events.event_type == 'Email')
-    ).count()
-    
-    old_emails_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.status == 'Closed') &
-        (db.events.event_type == 'Email')
+        (db.events.user_id == user_id)
+        & (db.events.status == "Open")
+        & (db.events.event_type == "Email")
     ).count()
 
+    old_emails_count = db(
+        (db.events.user_id == user_id)
+        & (db.events.status == "Closed")
+        & (db.events.event_type == "Email")
+    ).count()
 
     # Query the events table to count the number of new in-person inquiries for the logged-in user
     new_in_person_inquiries_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.comm_type == 'In person')&
-        (db.events.status == 'Open')
+        (db.events.user_id == user_id)
+        & (db.events.comm_type == "In person")
+        & (db.events.status == "Open")
     ).count()
-    
-    
 
     # Query the events table to count the number of new calls for the logged-in user
     all_calls_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.event_type == 'Call')
+        (db.events.user_id == user_id) & (db.events.event_type == "Call")
     ).count()
-    
+
     all_emails_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.event_type == 'Email')
+        (db.events.user_id == user_id) & (db.events.event_type == "Email")
     ).count()
-    
+
     all_in_person_inquiries_count = db(
-        (db.events.user_id == user_id) &
-        (db.events.comm_type == 'In person')
+        (db.events.user_id == user_id) & (db.events.comm_type == "In person")
     ).count()
-    
-    
+
     # Build the SQL statement dynamically based on the provided filters
     user_id = auth.user_id
-    
-    # Build the SQL statement dynamically based on the provided filters
+
     # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
         "SELECT events.comments, email, birthday, customer_id, phone_number, customers.first_name, customers.last_name, status, event_type "
@@ -164,19 +159,18 @@ def index():
     events = db.executesql(sqlstmt_events, as_dict=True)
 
     return dict(
-        recent_orders=recent_orders, 
-        rows=rows, 
-        new_calls_count=new_calls_count, 
+        recent_orders=recent_orders,
+        rows=rows,
+        new_calls_count=new_calls_count,
         new_emails_count=new_emails_count,
         new_in_person_inquiries_count=new_in_person_inquiries_count,
         all_calls_count=all_calls_count,
         all_emails_count=all_emails_count,
-        all_in_person_inquiries_count = all_in_person_inquiries_count,
-        old_calls_count = old_calls_count,
-        old_emails_count = old_emails_count,
-        events=events
+        all_in_person_inquiries_count=all_in_person_inquiries_count,
+        old_calls_count=old_calls_count,
+        old_emails_count=old_emails_count,
+        events=events,
     )
-
 
 
 def about():
@@ -188,20 +182,20 @@ def personal():
     user_id = auth.user_id
     event_type = request.args(0)
     status = request.args(1)
-    
+
     # Build the SQL statement dynamically based on the provided filters
     sqlstmt_events = (
         "SELECT user_id, customer_id, status, event_type, COUNT(*) AS event_count "
         "FROM events "
         f"WHERE user_id = {user_id} "
     )
-    
+
     # Add conditions for event_type and status if provided
     if event_type:
         sqlstmt_events += f"AND event_type = '{event_type}' "
     if status:
         sqlstmt_events += f"AND status = '{status}' "
-    
+
     sqlstmt_events += (
         "AND comm_type IN ('Phone', 'Email', 'In person') "
         "GROUP BY user_id, status, event_type"
@@ -209,9 +203,6 @@ def personal():
 
     rows = db.executesql(sqlstmt_events, as_dict=True)
     return dict(rows=rows)
-
-
-
 
 
 def productz():
@@ -278,7 +269,7 @@ def cannalytics():
     # Queries
     sold_by_state = (
         "SELECT SUM(o.quantity * price) as howmany, s.state_name "
-        " FROM orders o " 
+        " FROM orders o "
         " JOIN customers c ON o.customer_id = c.id "
         " JOIN products p ON o.product_id = p.id "
         " JOIN states s ON c.state_id = s.id GROUP BY s.state_name"
@@ -335,7 +326,7 @@ def cannalytics():
         product_rows=product_rows,
         customer_orders_rows=customer_orders_rows,
         sold_by_state_rows=sold_by_state_rows,
-        money_made_rows=money_made_rows
+        money_made_rows=money_made_rows,
     )
 
 
