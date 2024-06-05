@@ -45,9 +45,9 @@
         <div class="container" id="jumbotron">
             <div class="text-container">
                 <h5 class="display-4">The Big 3</h5>
-                <p class="lead">Our top 3 performing products this quarter</p>
+                <p class="lead"> Our top performers, updated quarterly.</p>
             </div>
-            <a class="btn btn-dark btn-med m-auto" href="products.html" role="button">Product Database &#10095 </a>
+            
         </div>
     </div>
 
@@ -57,7 +57,15 @@
         Last Update: 05-24-2024 01:08:32 -- See ya next quarter!
     </div>
     <br><br>
-
+    
+     <div class="text-center">
+           
+            <h2 class="mb-3">Our Top 3 Performing Products This Quarter</h2>
+       
+         <i class="fa-solid fa-chevron-down fa-2xl" style="color: #c3c6cb;"></i>
+        </div>
+<br>
+    
     <!-- Products -->
     <div class="card-deck" style="width:80%; margin:auto;">
         <div class="card bg-dark">
@@ -154,7 +162,9 @@
         </div>
         <br>
     </div>
-    <br><br><br>
+    <br><br>
+
+    
 
     <!-- Biscotti Modal -->
     <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -181,24 +191,32 @@
                 <div class="modal-footer bg-dark"></div>
             </div>
         </div>
+        
     </div>
+<div class="text-center">
+    
 
+<a class="btn btn-secondary btn-med m-auto" href="products.html" role="button">View All Products &#10095 </a></div>
+
+<br><br>
+    
     <!-- Honorable Mention -->
-    <section style="background-color:black; width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;">
-        <div class="text-center text-white">
-            <h4 class="display-4">Honorable Mention</h4>
+    <section style="background-color:#F9F8F2; width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;">
+        <div class="text-center">
+           
+            <h2>Honorable Mention</h2>
         </div>
         <br>
-        <div class="container" style="background-color: black;"></div>
+        <div class="container" style="background-color: #F9F8F2;"></div>
         <div class="card m-auto" style="width:80%;">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    {{=IMG(_src=URL('static', 'images/cookies.jpg'), _alt="choc-chunk-cookies", _width="100%")}}
+                    {{=IMG(_src=URL('static', 'images/cookies-new.jpg'), _alt="choc-chunk-cookies", _width="100%")}}
                 </div>
                 <div class="col-md-8" style="background-color:white">
                     <div class="card-body">
-                        <h3 style="color:black">Kiva Confections</h3>
-                        <h5 class="card-title" style="color:black">Peanut Butter Choc Chunk</h5>
+                        <h4 style="color: #9bd45c">Kiva Confections</h4>
+                        <h5 class="card-title lead" style="color:black">Peanut Butter Choc Chunk</h5>
                         <p class="card-text text-dark">Gluten Free Baked Cookie: Hybrid</p>
                         <p class="card-text"><span class="badge badge-success">149 Sold</span></p>
                         <a type="button" class="btn btn-dark btn-med m-auto border border-white text-white"
@@ -207,7 +225,8 @@
                 </div>
             </div>
         </div>
-
+ <br>
+         <br>
         <!-- Kiva Modal -->
         <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -220,7 +239,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        {{=IMG(_src=URL('static', 'images/cookies.jpg'), _alt="cannabis-cookies", _width="100%")}}
+                        {{=IMG(_src=URL('static', 'images/cookies-new.jpg'), _alt="cannabis-cookies", _width="100%")}}
                         <br><br>
                         <b>Category:</b> Cookie<br>
                         <b>Strain:</b> Hybrid<br>
