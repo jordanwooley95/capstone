@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js" lang="{{=T.accepted_language or 'en'}}">
-     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}" />
@@ -12,45 +10,47 @@
     <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}" />
     <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
-    <script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
-    <style>
-
-        div.container {
-            margin-bottom: -20.5px;
-        }
+    <style>     
         .navbar {
-            background-color: #fff;
-            border-bottom: 1px solid #e0e6de;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            border-bottom-color: #9bd45c;
+            background-color: #e0e6de !important;
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure the navbar is above all other elements */
-            padding: 0 !important;
+            padding: 2px !important;
+            margin-bottom: 0 !important;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+
+        .nav {
+            width: 10% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin-bottom: -23px !important;
+
         }
 
         ul.nav.nav-tabs.m-auto {
-            margin:0,auto,0,auto !important;
+            width: auto !important;
+            border-bottom-width: 0 !important;
+            border-bottom-color: #fff !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin-bottom: -1.8px !important;
         }
 
         .navbar-brand {
-            display: inline-block;
-            padding-top: .3125rem;
-            padding-bottom: .3125rem;
+            width: 10% !important;
             line-height: inherit;
             white-space: nowrap;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
         
         .navbar-expand-lg {
             flex-flow: row nowrap;
-            flex-direction: row;
             flex-wrap: nowrap;
             justify-content: flex-start;
         }
@@ -64,28 +64,25 @@
             color: #9bd45c;
         }
         
-        .nav-tabs {
-            border-bottom: 1px solid #e0e6de;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            border-bottom-color: #9bd45c;
-        }
         .nav-tabs .nav-link.active {
             color: #495057;
             background-color: #fff;
             border-color: #9bd45c #9bd45c #fff;
+            border-bottom-width: 0;
         }
 
         .nav-tabs .nav-link:hover {
-            border-color: #9bd45c #9bd45c #fff;            
+            border-color: #9bd45c #9bd45c #fff;
+            background-color: #fff;
+            border-bottom-width: 0;         
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white m-auto" style="width: 80%">
-        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3.png'), _alt="Logo", _height="50")}}</a>
-        <div class="container" style="color: grey">
+    <nav class="navbar navbar-expand-lg navbar-light m-auto" style="width: 100%">
+        <a class="navbar-brand" href="{{=URL('default', 'index')}}"> {{=IMG(_src=URL('static', 'images/JVlogo3_gray.png'), _alt="Logo", _height="50")}}</a>
+        
             <ul class="nav nav-tabs m-auto">
                 <li class="nav-item">
                     <a class="nav-link text-secondary" href="{{=URL('default', 'index')}}">Dashboard</a>
@@ -109,7 +106,7 @@
                 </li>
             </ul>
             <!-- Login -->
-            <ul class="nav">
+            <ul class="nav" style="background-color: #e0e6de;">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -132,7 +129,6 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </nav>
 
     <!-- Favicons -->
@@ -162,8 +158,10 @@
 </footer>
 
 <!-- The javascript =============================== -->
+<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 <script src="{{=URL('static','js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{=URL('static','js/web2py-bootstrap4.js')}}"></script>
+<script src="https://kit.fontawesome.com/0abca07cb0.js" crossorigin="anonymous"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
