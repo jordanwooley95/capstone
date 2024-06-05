@@ -179,32 +179,32 @@ def about():
     return dict(message="About us")
 
 
-@auth.requires_login()
-def personal():
-    user_id = auth.user_id
-    event_type = request.args(0)
-    status = request.args(1)
+#@auth.requires_login()
+#def personal():
+    #user_id = auth.user_id
+    #event_type = request.args(0)
+    #status = request.args(1)
     
     # Build the SQL statement dynamically based on the provided filters
-    sqlstmt_events = (
-        "SELECT user_id, customer_id, status, event_type, COUNT(*) AS event_count "
-        "FROM events "
-        f"WHERE user_id = {user_id} "
-    )
+    #sqlstmt_events = (
+        #"SELECT user_id, customer_id, status, event_type, COUNT(*) AS event_count "
+        #"FROM events "
+        #f"WHERE user_id = {user_id} "
+    #)
     
     # Add conditions for event_type and status if provided
-    if event_type:
-        sqlstmt_events += f"AND event_type = '{event_type}' "
-    if status:
-        sqlstmt_events += f"AND status = '{status}' "
+    #if event_type:
+        #sqlstmt_events += f"AND event_type = '{event_type}' "
+    #if status:
+        #sqlstmt_events += f"AND status = '{status}' "
     
-    sqlstmt_events += (
-        "AND comm_type IN ('Phone', 'Email', 'In person') "
-        "GROUP BY user_id, status, event_type"
-    )
+    #sqlstmt_events += (
+        #"AND comm_type IN ('Phone', 'Email', 'In person') "
+        #"GROUP BY user_id, status, event_type"
+    #)
 
-    rows = db.executesql(sqlstmt_events, as_dict=True)
-    return dict(rows=rows)
+    #rows = db.executesql(sqlstmt_events, as_dict=True)
+    #return dict(rows=rows)
 
 
 

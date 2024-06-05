@@ -285,6 +285,7 @@ def cannalytics():
     money_made = (
         "SELECT date(ordered_on) AS ordered_on, SUM(o.quantity * price) as total_order_amount "
         " FROM orders o JOIN products p ON o.product_id = p.id "
+        " Where date(ordered_on)>'2024-05-15' "
         " GROUP BY date(ordered_on) "
     )
     category_sold = (
