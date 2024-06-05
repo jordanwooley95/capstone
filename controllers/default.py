@@ -158,7 +158,6 @@ def index():
     )
 
     if user_id is not None:
-        user_id = auth.user_id
         sqlstmt_events += f"WHERE user_id = {user_id} "
 
     # execute query
