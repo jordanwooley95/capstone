@@ -1,334 +1,331 @@
 {{extend 'layout.html'}}
 
 <head>
-    <title>Cannalytics</title>
-    <!--Jumbotron styling-->
-    <style>
-        .main-container {
-            margin-top: 0;
-        }
+	<title>Cannalytics</title>
+	<!--Jumbotron styling-->
+	<style>
+		.main-container {
+			margin-top: 0;
+		}
 
-        .jumbotron-bg {
-            background-image: url('/crm/static/images/cannalytics-image.jpg');
-            /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+		.jumbotron-bg {
+			background-image: url("/crm/static/images/cannalytics-image.jpg");
+			/* Replace 'path_to_your_image.jpg' with the actual path to your image */
 
-            background-size: cover;
-            /* Cover the entire jumbotron with the background image */
+			background-size: cover;
+			/* Cover the entire jumbotron with the background image */
 
-            background-position: center;
-            /* Center the background image within the jumbotron */
+			background-position: center;
+			/* Center the background image within the jumbotron */
 
-            color: white;
-            /* Set text color to white for better readability */
+			color: white;
+			/* Set text color to white for better readability */
 
-            width: 100vw;
-            margin-left: -15px;
+			width: 100vw;
+			margin-left: -15px;
 
-            h5 {
-                display: inline;
-            }
+			h5 {
+				display: inline;
+			}
 
-            .card {
-                width: 100%;
-                /* Ensure the cards take full width of their column */
-            }
-        }
+			.card {
+				width: 100%;
+				/* Ensure the cards take full width of their column */
+			}
+		}
 
-        body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-            color: #333;
-            line-height: 1.6em;
-            margin: 0;
-            padding: 0;
-        }
+		body {
+			background-color: #f4f4f4;
+			font-family: Arial, sans-serif;
+			color: #333;
+			line-height: 1.6em;
+			margin: 0;
+			padding: 0;
+		}
 
-        #jumbotron {
-            min-height: 122px;
-            max-height: 122px;
+		#jumbotron {
+			min-height: 122px;
+			max-height: 122px;
+		}
 
-        }
+		#container {
+			width: 80%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 0 100px;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 0;
+			margin-bottom: 100px;
+		}
 
-        #container {
-            width: 80%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0 100px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 0;
-            margin-bottom: 100px;
+		#tester,
+		#tester2 {
+			width: 45%;
+			height: 250px;
+			margin-bottom: 50px;
+			margin-top: 50px;
+			border: 1px solid #ccc;
+			box-sizing: content-box;
+			overflow: auto;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+		}
 
-        }
+		#state_map {
+			width: 100%;
+			height: 600px;
+			margin-top: 20px;
+			margin-bottom: 50px;
+			cursor: crosshair;
+			border: 1px solid #ccc;
+			box-sizing: content-box;
+			overflow: auto;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+		}
 
-        #tester,
-        #tester2 {
-            width: 45%;
-            height: 250px;
-            margin-bottom: 50px;
-            margin-top: 50px;
-            border: 1px solid #ccc;
-            box-sizing: content-box;
-            overflow: auto;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
+		#tester3,
+		#tester4,
+		#tester5 {
+			width: 100%;
+			height: 400px;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			border: 1px solid #ccc;
+			box-sizing: content-box;
+			overflow: auto;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+		}
 
-        #state_map {
-            width: 100%;
-            height: 600px;
-            margin-top: 20px;
-            margin-bottom: 50px;
-            cursor: crosshair;
-            border: 1px solid #ccc;
-            box-sizing: content-box;
-            overflow: auto;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-
-        }
-
-        #tester3,
-        #tester4,
-        #tester5 {
-            width: 100%;
-            height: 400px;
-            margin-top: 50px;
-            margin-bottom: 50px;
-            border: 1px solid #ccc;
-            box-sizing: content-box;
-            overflow: auto;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        #tester5 {
-            width: 100%;
-            height: 350px;
-            margin-bottom: 50px;
-            margin-top: 50px;
-        }
-    </style>
+		#tester5 {
+			width: 100%;
+			height: 350px;
+			margin-bottom: 50px;
+			margin-top: 50px;
+		}
+	</style>
 </head>
 
 <body>
-    <!-- Hero-->
-    <div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;">
-        <div id="jumbotron" class="container">
-            <h1 class="display-4"> Cannalytics</h1>
-        </div>
-    </div>
-    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
+	<!-- Hero-->
+	<div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left: -15px; margin-right: -15px">
+		<div id="jumbotron" class="container">
+			<h1 class="display-4">Cannalytics</h1>
+		</div>
+	</div>
+	<script src="https://cdn.plot.ly/plotly-2.24.1.min.js" charset="utf-8"></script>
 
-    <div id="container">
-        <div id="state_map"></div>
-        <div id="tester"></div>
-        <div id="tester2"></div>
-        <div id="tester3"></div>
-        <div id="tester4"></div>
-        <div id="tester5"></div>
-    </div>
-    <script>
-        // state map
-        var locations = [];
-        var z = [];
-        var text = [];
-    
-        {{ for state_row in sold_by_state_rows: }}
-            locations.push("{{ =state_row['state_name'] }}");
-            z.push({{ =state_row['howmany'] }});
-            text.push({{ =state_row['howmany'] }});
-        {{ pass }}
-    
-        var data = [{
-            type: 'choropleth',
-            locationmode: 'USA-states',
-            locations: locations,
-            z: z,
-            text: text.map(function(value) {
-                return '$' + value.toLocaleString();  // Add a dollar sign and commas
-            }),
-            hoverinfo: 'location+text',  // Only show the location and the text in the hover text
-            colorscale: [
-                [0, 'rgb(144, 238, 144)'], // Light green for the lowest values
-                [1, 'rgb(0, 100, 0)'] // Dark green for the highest values
-            ],
-            colorbar: {
-                title: 'Income in USD',
-                thickness: 20,
-                tickprefix: '$',  // Add a dollar sign
-            },
-            marker: {
-                line:{
-                    color: 'rgb(255,255,255)',
-                    width: 2
-                }
-            }
-        }];
-    
-        var layout = {
-            title: 'Sales by State',
-            geo:{
-                scope: 'usa',
-                showlakes: false,
-            },
-            margin: {
-                l: 0,
-                r: 0,
-                t: 50,
-                b: 10
-            },
-            
-        };
-    
-        var config = {
-            responsive: true,
-            autosize: true,
-            scrollZoom: false,
-            displayModeBar: false,
-        };
-    
-        Plotly.newPlot('state_map', data, layout, config);
-    
-        // strains graph
-        xdata = [];
-        ydata = [];
-        {{ for strain_row in strain_rows: }}
-            xdata.push("{{ =strain_row['strain'] }}");
-            ydata.push("{{ =strain_row['howmany'] }}");
-        {{ pass }}
-        TESTER = document.getElementById('tester');
-        var config = {
-            displayModeBar: false,
-            responsive: true,
-            autosize: true,
-            scrollZoom: false,
-        };
-    
-        Plotly.newPlot(TESTER, [{
-            x: xdata,
-            y: ydata,
-            type: 'bar',
-            marker: {
-                color: 'rgb(76,175,80)'
-            }
-        }],{
-            margin: { t: 30 },
-            xaxis: {
-                title: 'Strain',
-            },
-            hoverlabel: {
-                bgcolor: 'rgb(255, 255, 255)'
-            }
-        }, config);
-    
-        // categories graph
-        xdata2 = [];
-        ydata2 = [];
-        {{ for category_row in category_rows: }}
-               xdata2.push("{{ =category_row['category'] }}");
-               ydata2.push({{ =category_row['howmany'] }});
-        {{ pass }}
-        TESTER2 = document.getElementById('tester2');
-        Plotly.newPlot( TESTER2, [{
-            x: xdata2,
-            y: ydata2,
-            type: 'bar',
-            marker: {
-                color: 'rgb(76,175,80)'
-               }
-           }],{
-               margin: { t: 30 },
-            xaxis: {
-                title: 'Category',
-            },
-            hoverlabel: {
-                bgcolor: 'rgb(255, 255, 255)'
-            },
+	<div id="container">
+		<div id="state_map"></div>
+		<div id="tester"></div>
+		<div id="tester2"></div>
+		<div id="tester3"></div>
+		<div id="tester4"></div>
+		<div id="tester5"></div>
+	</div>
+	<script>
+		// state map
+		var locations = [];
+		var z = [];
+		var text = [];
 
-         },config );
-    
-        //  products graph
-        xdata3 = [];
-        ydata3 = [];
-        {{ for product_row in product_rows: }}
-            xdata3.push("{{ =product_row['product_name'] }}");
-            ydata3.push({{ =product_row['howmany'] }});
-        {{ pass }}
-        TESTER3 = document.getElementById('tester3');
-        Plotly.newPlot( TESTER3, [{
-            x: xdata3,
-            y: ydata3,
-            type: 'bar',
-            marker: {
-                color: 'rgb(76,175,80)'
-               }
-               }], {
-            margin: { t: 30 },
-            xaxis: {
-                title: 'Top 10 Products',
-                tickangle: -45,
-                automargin: true
-            },
-    
-            hoverlabel: {
-                bgcolor: 'rgb(255, 255, 255)'
-            },
-        }, config);
-    
-        // Top 10 customers graph
-        var xdata4 = [];
-        var ydata4 = [];
-        {{ for customer_orders_row in customer_orders_rows: }}
-        xdata4.push("{{ =customer_orders_row['first_name'] }} {{ =customer_orders_row['last_name'] }}");
-        ydata4.push({{ =customer_orders_row['howmany'] }});
-        {{ pass }}
-        var TESTER4 = document.getElementById('tester4');
-        Plotly.newPlot( TESTER4, [{
-            x: xdata4,
-            y: ydata4,
-            type: 'bar',
-            marker: {
-                color: 'rgb(76,175,80)'
-            } }], {
-            margin: { t: 10 },
-            xaxis: {
-                title: 'Top 10 Customers',
-                tickangle: 45,
-                automargin: true,
-            },
-            hoverlabel: {
-                bgcolor: 'rgb(255, 255, 255)'
-            }
-        }, config );
-        
-        // money made each day graph
-        var xdata5 = [];
-        var ydata5 = [];
-        {{ for money_row in money_made_rows: }}
-            xdata5.push("{{ =money_row['ordered_on'] }}");
-            ydata5.push({{ =money_row['total_order_amount'] }});
-        {{ pass }}
-        var TESTER5 = document.getElementById('tester5');
-        Plotly.newPlot(TESTER5, [{
-            x: xdata5,
-            y: ydata5,
-            type: 'line',
-            marker: {
-                color: 'rgb(76,175,80)'
-            }
-        }], {
-            margin: {
-                t: 30,
-            },
-            xaxis: {
-                title: 'Sales Per Day',
-            },
-            yaxis: {
-                title: 'Total Order Amount',
-                standoff: 15
-            },
-            hoverlabel: {
-                bgcolor: 'rgb(255, 255, 255)'
-            }
-        }, config);
-    </script>
+		{{ for state_row in sold_by_state_rows: }}
+		    locations.push("{{ =state_row['state_name'] }}");
+		    z.push({{ =state_row['howmany'] }});
+		    text.push({{ =state_row['howmany'] }});
+		{{ pass }}
+
+		var data = [{
+		    type: 'choropleth',
+		    locationmode: 'USA-states',
+		    locations: locations,
+		    z: z,
+		    text: text.map(function(value) {
+		        return '$' + value.toLocaleString();  // Add a dollar sign and commas
+		    }),
+		    hoverinfo: 'location+text',  // Only show the location and the text in the hover text
+		    colorscale: [
+		        [0, 'rgb(144, 238, 144)'], // Light green for the lowest values
+		        [1, 'rgb(0, 100, 0)'] // Dark green for the highest values
+		    ],
+		    colorbar: {
+		        title: 'Income in USD',
+		        thickness: 20,
+		        tickprefix: '$',  // Add a dollar sign
+		    },
+		    marker: {
+		        line:{
+		            color: 'rgb(255,255,255)',
+		            width: 2
+		        }
+		    }
+		}];
+
+		var layout = {
+		    title: 'Sales by State',
+		    geo:{
+		        scope: 'usa',
+		        showlakes: false,
+		    },
+		    margin: {
+		        l: 0,
+		        r: 0,
+		        t: 50,
+		        b: 10
+		    },
+
+		};
+
+		var config = {
+		    responsive: true,
+		    autosize: true,
+		    scrollZoom: false,
+		    displayModeBar: false,
+		};
+
+		Plotly.newPlot('state_map', data, layout, config);
+
+		// strains graph
+		xdata = [];
+		ydata = [];
+		{{ for strain_row in strain_rows: }}
+		    xdata.push("{{ =strain_row['strain'] }}");
+		    ydata.push("{{ =strain_row['howmany'] }}");
+		{{ pass }}
+		TESTER = document.getElementById('tester');
+		var config = {
+		    displayModeBar: false,
+		    responsive: true,
+		    autosize: true,
+		    scrollZoom: false,
+		};
+
+		Plotly.newPlot(TESTER, [{
+		    x: xdata,
+		    y: ydata,
+		    type: 'bar',
+		    marker: {
+		        color: 'rgb(76,175,80)'
+		    }
+		}],{
+		    margin: { t: 30 },
+		    xaxis: {
+		        title: 'Strain',
+		    },
+		    hoverlabel: {
+		        bgcolor: 'rgb(255, 255, 255)'
+		    }
+		}, config);
+
+		// categories graph
+		xdata2 = [];
+		ydata2 = [];
+		{{ for category_row in category_rows: }}
+		       xdata2.push("{{ =category_row['category'] }}");
+		       ydata2.push({{ =category_row['howmany'] }});
+		{{ pass }}
+		TESTER2 = document.getElementById('tester2');
+		Plotly.newPlot( TESTER2, [{
+		    x: xdata2,
+		    y: ydata2,
+		    type: 'bar',
+		    marker: {
+		        color: 'rgb(76,175,80)'
+		       }
+		   }],{
+		       margin: { t: 30 },
+		    xaxis: {
+		        title: 'Category',
+		    },
+		    hoverlabel: {
+		        bgcolor: 'rgb(255, 255, 255)'
+		    },
+
+		 },config );
+
+		//  products graph
+		xdata3 = [];
+		ydata3 = [];
+		{{ for product_row in product_rows: }}
+		    xdata3.push("{{ =product_row['product_name'] }}");
+		    ydata3.push({{ =product_row['howmany'] }});
+		{{ pass }}
+		TESTER3 = document.getElementById('tester3');
+		Plotly.newPlot( TESTER3, [{
+		    x: xdata3,
+		    y: ydata3,
+		    type: 'bar',
+		    marker: {
+		        color: 'rgb(76,175,80)'
+		       }
+		       }], {
+		    margin: { t: 30 },
+		    xaxis: {
+		        title: 'Top 10 Products',
+		        tickangle: -45,
+		        automargin: true
+		    },
+
+		    hoverlabel: {
+		        bgcolor: 'rgb(255, 255, 255)'
+		    },
+		}, config);
+
+		// Top 10 customers graph
+		var xdata4 = [];
+		var ydata4 = [];
+		{{ for customer_orders_row in customer_orders_rows: }}
+		xdata4.push("{{ =customer_orders_row['first_name'] }} {{ =customer_orders_row['last_name'] }}");
+		ydata4.push({{ =customer_orders_row['howmany'] }});
+		{{ pass }}
+		var TESTER4 = document.getElementById('tester4');
+		Plotly.newPlot( TESTER4, [{
+		    x: xdata4,
+		    y: ydata4,
+		    type: 'bar',
+		    marker: {
+		        color: 'rgb(76,175,80)'
+		    } }], {
+		    margin: { t: 10 },
+		    xaxis: {
+		        title: 'Top 10 Customers',
+		        tickangle: 45,
+		        automargin: true,
+		    },
+		    hoverlabel: {
+		        bgcolor: 'rgb(255, 255, 255)'
+		    }
+		}, config );
+
+		// money made each day graph
+		var xdata5 = [];
+		var ydata5 = [];
+		{{ for money_row in money_made_rows: }}
+		    xdata5.push("{{ =money_row['ordered_on'] }}");
+		    ydata5.push({{ =money_row['total_order_amount'] }});
+		{{ pass }}
+		var TESTER5 = document.getElementById('tester5');
+		Plotly.newPlot(TESTER5, [{
+		    x: xdata5,
+		    y: ydata5,
+		    type: 'line',
+		    marker: {
+		        color: 'rgb(76,175,80)'
+		    }
+		}], {
+		    margin: {
+		        t: 30,
+		    },
+		    xaxis: {
+		        title: 'Sales Per Day',
+		    },
+		    yaxis: {
+		        title: 'Total Order Amount',
+		        standoff: 15
+		    },
+		    hoverlabel: {
+		        bgcolor: 'rgb(255, 255, 255)'
+		    }
+		}, config);
+	</script>
 </body>
