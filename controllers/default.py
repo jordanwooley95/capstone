@@ -277,8 +277,10 @@ def get_state_abbr():
 def cannalytics():
     # Queries
     sold_by_state = (
-        "SELECT SUM(o.quantity) as howmany, s.state_name "
-        " FROM orders o JOIN customers c ON o.customer_id = c.id "
+        "SELECT SUM(o.quantity * price) as howmany, s.state_name "
+        " FROM orders o " 
+        " JOIN customers c ON o.customer_id = c.id "
+        " JOIN products p ON o.product_id = p.id "
         " JOIN states s ON c.state_id = s.id GROUP BY s.state_name"
     )
     strain_sold = (

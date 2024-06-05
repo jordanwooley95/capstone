@@ -143,13 +143,18 @@
             locationmode: 'USA-states',
             locations: locations,
             z: z,
+            text: text.map(function(value) {
+                return '$' + value.toLocaleString();  // Add a dollar sign and commas
+            }),
+            hoverinfo: 'location+text',  // Only show the location and the text in the hover text
             colorscale: [
                 [0, 'rgb(144, 238, 144)'], // Light green for the lowest values
                 [1, 'rgb(0, 100, 0)'] // Dark green for the highest values
             ],
             colorbar: {
-                title: 'Number of Orders',
+                title: 'Income in USD',
                 thickness: 20,
+                tickprefix: '$',  // Add a dollar sign
             },
             marker: {
                 line:{
@@ -166,19 +171,19 @@
                 showlakes: false,
             },
             margin: {
-            l: 0,
-            r: 0,
-            t: 50,
-            b: 10
+                l: 0,
+                r: 0,
+                t: 50,
+                b: 10
             },
             
         };
     
         var config = {
-        responsive: true,
-        autosize: true,
-        scrollZoom: false,
-        displayModeBar: false,
+            responsive: true,
+            autosize: true,
+            scrollZoom: false,
+            displayModeBar: false,
         };
     
         Plotly.newPlot('state_map', data, layout, config);
