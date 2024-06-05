@@ -171,11 +171,12 @@
             t: 50,
             b: 10
             },
-            autosize: true,
-            responsive: true
+            
         };
     
         var config = {
+        responsive: true,
+        autosize: true,
         scrollZoom: false,
         displayModeBar: false,
         };
@@ -190,7 +191,12 @@
             ydata.push("{{ =strain_row['howmany'] }}");
         {{ pass }}
         TESTER = document.getElementById('tester');
-        var config = {displayModeBar: false};
+        var config = {
+            displayModeBar: false,
+            responsive: true,
+            autosize: true,
+            scrollZoom: false,
+        };
     
         Plotly.newPlot(TESTER, [{
             x: xdata,
