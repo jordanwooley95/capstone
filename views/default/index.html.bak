@@ -281,19 +281,10 @@
                     <a href="#" type="button" data-toggle="modal" data-target="#Modal1"
                         class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
-                            {{ if recent_orders[0]['days_ago'] == 0: }}
-                                <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                                <small>{{=recent_orders[0]['days_ago']}} day ago</small>
-                            </div>
-                            <p class="mb-1">{{=recent_orders[0]['state']}}</p>
-                        
-                            {{else: }}
-                                <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
-                                <small>{{=recent_orders[0]['days_ago']}} days ago</small>
-                            </div>
-                            <p class="mb-1">{{=recent_orders[0]['state']}}</p>
-                    {{ pass }}
-                    {{ pass }}
+                            <h6 class="mb-1">{{=recent_orders[0]['name']}}</h6>
+                            <small>{{=recent_orders[0]['days_ago']}} days ago</small>
+                        </div>
+                        <p class="mb-1">{{=recent_orders[0]['state']}}</p>
                     </a>
 
                    <!-- First Item Modal -->
