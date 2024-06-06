@@ -398,23 +398,21 @@
 </div>
 
 
-            <!-- Shoutouts Column -->
-            <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab">
-                <h4 style="color: white">Shoutout</h4>
-                <div class="card" style="width: 18rem">
-                    {{=IMG(_src=URL('static', 'images/CC17.jpg'), _alt="stock-image-woman", _width="100%")}}
-                    <div class="card-body">
-                        <h5 class="card-title">Cleveland Codes Cohort 17</h5>
-                        <p class="card-text">GREAT job team!</p>
-                        <a href="shoutouts.html" target="_blank" class="btn btn-dark">Show some love</a>
-                    </div>
-                </div>
+             <!-- Shoutouts Column -->
+            <div style="display: flex; justify-content: center;">
+    <div class="col-sm border border-dark rounded container m-3 p-3" style="background-color: #8e65ab;">
+        <h4 style="color: white;">Shoutout</h4>
+        <div class="card" style="width: 18rem;">
+            {{=IMG(_src=URL('static', 'images/CC17.jpg'), _alt="stock-image-woman", _width="100%")}}
+            <div class="card-body">
+                <h5 class="card-title">Cleveland Codes Cohort 17</h5>
+                <p class="card-text">GREAT job team!</p>
+                <a href="shoutouts.html" target="_blank" class="btn btn-dark">Show some love</a>
             </div>
         </div>
+    </div>
+</div>
 
-        </div>
-    </br>
-        </br>
         
         <!-- Cannalytics Columns-->
 <div class="container" style="width: 80%">
