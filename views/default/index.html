@@ -93,7 +93,7 @@
                 <div style="text-align: left;">
                     
                     {{ if auth.user_id is None: }}
-                        <b>Please LOGIN to view User inquiries</b>
+                        <div class="alert alert-danger">Please LOGIN to view User inquiries</div>
                     {{ else: }}
                     
                         {{ for event in events: }}
@@ -146,7 +146,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ if auth.user_id is None: }}
-                        <b>Please LOGIN to view User inquiries</b>
+                        <div class="alert alert-danger">Please LOGIN to view User inquiries</div>
                     {{ else: }}
                     
                         {{ for event in events: }}
@@ -196,7 +196,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ if auth.user_id is None: }}
-                        <b>Please LOGIN to view User inquiries</b>
+                        <div class="alert alert-danger">Please LOGIN to view User inquiries</div>
                     {{ else: }}
                     
                         {{ for event in events: }}
@@ -246,7 +246,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ if auth.user_id is None: }}
-                        <b>Please LOGIN to view User inquiries</b>
+                        <div class="alert alert-danger">Please LOGIN to view User inquiries</div>
                     {{ else: }}
                     
                         {{ for event in events: }}
