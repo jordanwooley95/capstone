@@ -251,11 +251,11 @@
                     
                         {{ for event in events: }}
 
-                                    {{ if auth.user_id is not None and event['event_type'] == 'Call' and event['status'] == 'Open': }}
+                                    {{ if auth.user_id is not None and event['event_type'] == 'Email' and event['status'] == 'Closed': }}
                                     <hr>
                                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                                         <b>Status:</b> {{=event['status']}}<br>
-                                        <b>Contact Number:</b> {{=event['phone_number']}}<br>
+                                        <b>Contact Email:</b> {{=event['email']}}<br>
                                         <b>Birthday:</b> {{=event['birthday']}}<br>
                                         <b>Comments:</b> {{=event['comments']}}
 
