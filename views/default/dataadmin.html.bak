@@ -1,105 +1,128 @@
 {{extend 'layout.html'}}
-<head>
-  <title>Featured Products</title>
-</head>
-    
-<!--Jumbotron styling-->
-    <style>
-    .jumbotron-bg {
-      background-image: url('/crm/static/images/dataadmin-hero.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
-      background-size: cover; /* Cover the entire jumbotron with the background image */
-      background-position: center; /* Center the background image within the jumbotron */
-      color: white; /* Set text color to white for better readability */
-        /*background-color: black;*/
-      
-     h5 {
-        display: inline;
-    }
 
-    .card {
-        width: 100%; /* Ensure the cards take full width of their column */
-    }
-    }
-    
+<head>
+    <title>Data Admin</title>
+    <!--Jumbotron styling-->
+    <style>
+        .jumbotron-bg {
+            background-image: url('/crm/static/images/dataadmin-hero.jpg');
+            /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            /* Cover the entire jumbotron with the background image */
+            background-position: center;
+            /* Center the background image within the jumbotron */
+            color: white;
+            /* Set text color to white for better readability */
+            /*background-color: black;*/
+
+            h5 {
+                display: inline;
+            }
+
+            .card {
+                width: 100%;
+                /* Ensure the cards take full width of their column */
+            }
+        }
+
+        .main-container {
+            margin-top: 0;
+        }
+
+        h5 {
+            display: inline;
+        }
+
+        .card {
+            width: 100%;
+            /* Ensure the cards take full width of their column */
+        }
+
+        #jumbotron {
+            min-height: 122px;
+            max-height: 122px;
+        }
     </style>
 
-<!-- Hero-->
-<div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;" >
-  <div class="container">
-    <h1 class="display-4">Data Admin Hub</h1>
-      <p class="lead">Quick access to all of our databases</p>
-  </div>
-</div>
-<style>
-    h5 {
-        display: inline;
-    }
+</head>
 
-    .card {
-        width: 100%; /* Ensure the cards take full width of their column */
-    }
-</style>
+
+
+
+<!-- Hero-->
+<div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;">
+    <div id="jumbotron" class="container">
+        <h1 class="display-4">Data Admin Hub</h1>
+        <p class="lead">Quick access to all of our databases</p>
+    </div>
+</div>
 </br>
+
 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
-        
+
         <!--Brands-->
         <div class="col">
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title" style="color:#9bd45c">Brands <i class="fa-solid fa-cannabis"></i></h5>
                     <p class="card-text text-muted">Access brands database</p>
-                    <a href="http://127.0.0.1:8000/crm/default/brands.html" target="_blank" class="btn btn-dark border border-white">Click Here</a>
+                    <a href="brands.html" target="_blank"
+                        class="btn btn-dark border border-white">Click Here</a>
                 </div>
             </div>
         </div>
-        
-         <!--Customers-->
+
+        <!--Customers-->
         <div class="col">
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title" style="color:#9bd45c">Customers <i class="fa fa-user-circle"></i></h5>
                     <p class="card-text text-muted">Access customers database</p>
-                    <a href="http://127.0.0.1:8000/crm/default/customers.html" class="btn btn-dark border border-white">Click Here</a>
+                    <a href="customers.html" target="_blank"
+                        class="btn btn-dark border border-white">Click Here</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
-        
-         <!--Events-->
+
+        <!--Events-->
         <div class="col">
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title" style="color:#9bd45c">Events <i class="fa-solid fa-calendar-days"></i></h5>
                     <p class="card-text text-muted">Access events database</p>
-                    <a href="http://127.0.0.1:8000/crm/default/events.html" class="btn btn-dark border border-white">Click Here</a>
+                    <a href="events.html" target="_blank"
+                        class="btn btn-dark border border-white">Click Here</a>
                 </div>
             </div>
         </div>
-        
-         <!--Products-->
+
+        <!--Products-->
         <div class="col">
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title" style="color:#9bd45c">Products <i class="fa fa-shopping-bag"></i></h5>
                     <p class="card-text text-muted">Access products database</p>
-                    <a href="http://127.0.0.1:8000/crm/default/products.html" class="btn btn-dark border border-white">Click Here</a>
+                    <a href="products.html" target="_blank"
+                        class="btn btn-dark border border-white">Click Here</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
-        
-         <!--Orders-->
+
+        <!--Orders-->
         <div class="col">
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title" style="color:#9bd45c">Orders <i class="fa fa-shopping-cart"></i>
-</h5>
+                    </h5>
                     <p class="card-text text-muted">Access orders database</p>
-                    <a href="http://127.0.0.1:8000/crm/default/orders.html" class="btn btn-dark border border-white">Click Here</a>
+                    <a href="http://127.0.0.1:8000/crm/default/orders.html" target="_blank"
+                        class="btn btn-dark border border-white">Click Here</a>
                 </div>
             </div>
         </div>

@@ -49,7 +49,7 @@
 <!-- Hero-->
 <div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;" >
   <div class="container" id="jumbotron">
-    <h1 class="display-4" style="text-transform: capitalize;"> test, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}Guest{{pass}}</h1>
+    <h1 class="display-4" style="text-transform: capitalize;"> Welcome, {{if auth.user:}}{{=auth.user.first_name}}{{else:}}Guest{{pass}}</h1>
       <p class="lead">Admin Dashboard</p>
   </div>
 </div>
@@ -409,7 +409,7 @@
              </br>
         <h5 class="card-title">Cannalytics</h5>
         <p class="card-text">View charts and graphs to gain insight on how we're doing! </p>
-        <a href="http:/crm/default/cannalytics" class="btn btn-dark">Go to Cannalytics</a>
+        <a href="cannalytics.html" class="btn btn-dark">Go to Cannalytics</a>
       </div>
     </div>
     </div>
