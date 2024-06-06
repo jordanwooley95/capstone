@@ -93,7 +93,8 @@
                 <div style="text-align: left;">
                     
         {{ for event in events: }}
-                    {{ if event['event_type'] == 'Call' and event['status'] == 'Open': }}
+                    
+                    {{ if auth.user_id is not None and event['event_type'] == 'Call' and event['status'] == 'Open': }}
                     <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
@@ -140,7 +141,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
-                    {{ if event['event_type'] == 'Email' and event['status'] == 'Open': }}
+                    {{ if auth.user_id is not None and event['event_type'] == 'Email' and event['status'] == 'Open': }}
                     <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
@@ -184,7 +185,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
-                    {{ if event['event_type'] == 'Call' and event['status'] == 'Closed': }}
+                    {{ if auth.user_id is not None and event['event_type'] == 'Call' and event['status'] == 'Closed': }}
                     <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
@@ -228,7 +229,7 @@
                 <br>
                 <div style="text-align: left;">
                     {{ for event in events: }}
-                    {{ if event['event_type'] == 'Email' and event['status'] == 'Closed': }}
+                    {{ if auth.user_id is not None and event['event_type'] == 'Email' and event['status'] == 'Closed': }}
                     <hr>
                         <b>Customer Name:</b> {{=event['first_name']}} {{=event['last_name']}}<br>
                         <b>Status:</b> {{=event['status']}}<br>
@@ -409,7 +410,7 @@
              </br>
         <h5 class="card-title">Cannalytics</h5>
         <p class="card-text">View charts and graphs to gain insight on how we're doing! </p>
-        <a href="cannalytics.html" class="btn btn-dark">Go to Cannalytics</a>
+        <a href="cannalytics.html" target="_blank" class="btn btn-dark">Go to Cannalytics</a>
       </div>
     </div>
     </div>
