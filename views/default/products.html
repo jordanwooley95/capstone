@@ -1,3 +1,32 @@
 {{extend 'layout.html'}}
-<h1>Products</h1>
+<head>
+    <style>
+        ul.dataNav {
+            width: 10% !important;
+            margin-bottom: 0px !important;
+            background-color: #fff;
+            list-style: none;
+            padding: 0 !important;
+        }
+        .nav-link h2 {
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="dataNav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <h2>Products</h2>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{=URL('default','brands')}}">{{=T('Brands')}}</a>
+                <a class="dropdown-item" href="{{=URL('default','events')}}">{{=T('Events')}}</a>
+                <a class="dropdown-item" href="{{=URL('default','orders')}}">{{=T('Orders')}}</a>
+                <a class="dropdown-item" href="{{=URL('default','customers')}}">{{=T('Customers')}}</a>
+            </div>
+        </li>
+    </ul>
+</body>
 {{=grid}}
