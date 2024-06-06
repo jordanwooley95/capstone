@@ -333,32 +333,32 @@ def cannalytics():
 def dataadmin():
     return dict(message="Hello from Cannalytics!")
 
-
+@auth.requires_login()
 def brands():
     grid = SQLFORM.grid(db.brands)
     return dict(grid=grid)
 
-
+@auth.requires_login()
 def customers():
     grid = SQLFORM.grid(db.customers)
     return dict(grid=grid)
 
-
+@auth.requires_login()
 def events():
     grid = SQLFORM.grid(db.events)
     return dict(grid=grid)
 
-
+@auth.requires_login()
 def states():
     grid = SQLFORM.grid(db.states)
     return dict(grid=grid)
 
-
+@auth.requires_login()
 def products():
     grid = SQLFORM.grid(db.products)
     return dict(grid=grid)
 
-
+@auth.requires_login()
 def orders():
     grid = SQLFORM.grid(db.orders)
     return dict(grid=grid)
