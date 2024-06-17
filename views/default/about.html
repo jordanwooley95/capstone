@@ -1,13 +1,16 @@
 {{extend 'layout.html'}}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <style>
         /*Jumbotron styling*/
-    
-        html, body, section {
+
+        html,
+        body,
+        section {
             margin: 0;
             padding: 0;
         }
@@ -15,277 +18,334 @@
         .main-container {
             margin-top: 0;
         }
-    .jumbotron-bg {
-      background-image: url('/crm/static/images/AboutJumbo.jpg'); /* Replace 'path_to_your_image.jpg' with the actual path to your image */
-      background-size: cover; /* Cover the entire jumbotron with the background image */
-      background-position: center; /* Center the background image within the jumbotron */
-      color: white; /* Set text color to white for better readability */
-      width: 100vw;
-      margin-left: -15px;
-      margin-right: 0;
 
-     h5 {
-        display: inline;
-    }
+        .jumbotron-bg {
+            background-image: url('/crm/static/images/AboutJumbo.jpg');
+            /* Replace 'path_to_your_image.jpg' with the actual path to your image */
+            background-size: cover;
+            /* Cover the entire jumbotron with the background image */
+            background-position: center;
+            /* Center the background image within the jumbotron */
+            color: white;
+            /* Set text color to white for better readability */
+            width: 100vw;
+            margin-left: -15px;
+            margin-right: 0;
 
-    .card {
-        width: 100%; /* Ensure the cards take full width of their column */
-    }
-}
-    
-    #jumbotron {
+            h5 {
+                display: inline;
+            }
+
+            .card {
+                width: 100%;
+                /* Ensure the cards take full width of their column */
+            }
+        }
+
+        #jumbotron {
             min-height: 122px;
             max-height: 122px;
         }
-        
+
         /*other styling*/
-       
     </style>
 </head>
-    <body>
+
+<body>
 
 
-<!-- Hero-->
-<div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;" >
-  <div class="container" id="jumbotron">
-      </br>
-    <h1 class="display-4"> Meet our st<b>OWNERS</b>:</h1>
-      <p class="lead">About Joint Ventures and the team</p>
-  </div>
-</div>
-
-      </br>
-<div class="container m-auto" style="width:80%;">
-    <h2> Who We Are: </h2>
-      <p class="lead">Joint Ventures is a cannabis dispensary that provides a pathway between nationally
-                                    recognized cannabis based brands and customers. Annually, we host several events in
-                                    which we invite several collaborative brands. During these events, we allow these
-                                    brands the ability to market and sell their products. </p>
-                                    <p class="lead">
-                                        
-                                    Based on the results of sales
-                                    as well as the connections built with our clientele, these brands then have the
-                                    opportunity to become an official vendor for Joint Ventures, allowing us access to
-                                    sell their products within our dispensary. This joint collaboration allows clients
-                                    to purchase products that are not readily available within their area, as well as
-                                    allows brands to expand their clientele nationally.</p>
-    
-  </div>
-</br>
-
-<!--Slideshow-->
-<div id="carouselExampleCaptions" class="carousel slide m-auto container" data-ride="carousel" style="width:80%;">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    
-  </ol>
-  <div class="carousel-inner border border-dark rounded">
-    <div class="carousel-item active">
-        {{=IMG(_src=URL('static', 'images/about-slide1.jpg'), _alt="stock-image-graph", _width="100%")}}
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Product Variety</h5>
-        <p>In establishing our joint relationships, we found the importance of not only having
-                                    a vast amount of brands to purchase from, but a vast amount product types that will
-                                    service the needs of all clients.</p>
-      </div>
+    <!-- Hero-->
+    <div class="jumbotron jumbotron-fluid jumbotron-bg" style="margin-left:-15px;margin-right:-15px;">
+        <div class="container" id="jumbotron">
+            </br>
+            <h1 class="display-4"> Meet our st<b>OWNERS</b>:</h1>
+            <p class="lead">About Joint Ventures and the team</p>
+        </div>
     </div>
-    <div class="carousel-item">
-       {{=IMG(_src=URL('static', 'images/about-slide2.jpg'), _alt="stock-image-graph", _width="100%")}}
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Multi-Use Options </h5>
-        <p>We offer a magnitude of products that can be used
-                                    for both recreational and medical use. We also offer Indica, Sativa, and Hybrid
-                                    products so that clients can select products specifically from their favorite
-                                    cannabis strain.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-       {{=IMG(_src=URL('static', 'images/about-slide3.jpg'), _alt="stock-image-graph", _width="100%")}}
-         <div class="carousel-caption d-none d-md-block">
-        <h5>Something For Everyone</h5>
-        <p>From hand grown premium flower, to THC infused soda, there is a
-                                    product available for everyone. Here at Joint Ventures, everyday is Friday!</p>
-      </div>
-    </div>
-   
-  </div>
-</div>
-</div>
 
- </br>
-</br>
-</br>
+    </br>
+    <div class="container m-auto" style="width:80%;">
+        <h2> Who We Are: </h2>
+        <p class="lead">Joint Ventures is a cannabis dispensary that provides a pathway between nationally
+            recognized cannabis based brands and customers. Annually, we host several events in
+            which we invite several collaborative brands. During these events, we allow these
+            brands the ability to market and sell their products. </p>
+        <p class="lead">
 
-                                        
-   <section class="m-auto" style="width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;background-color:#F9F8F2">
-        <div class="text-left  m-auto" style="width:80%;" >
+            Based on the results of sales
+            as well as the connections built with our clientele, these brands then have the
+            opportunity to become an official vendor for Joint Ventures, allowing us access to
+            sell their products within our dispensary. This joint collaboration allows clients
+            to purchase products that are not readily available within their area, as well as
+            allows brands to expand their clientele nationally.</p>
+
+    </div>
+    </br>
+
+    <!--Slideshow-->
+    <div id="carouselExampleCaptions" class="carousel slide m-auto container" data-ride="carousel" style="width:80%;">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+
+        </ol>
+        <div class="carousel-inner border border-dark rounded">
+            <div class="carousel-item active">
+                {{=IMG(_src=URL('static', 'images/about-slide1.jpg'), _alt="stock-image-graph", _width="100%")}}
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Product Variety</h5>
+                    <p>In establishing our joint relationships, we found the importance of not only having
+                        a vast amount of brands to purchase from, but a vast amount product types that will
+                        service the needs of all clients.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                {{=IMG(_src=URL('static', 'images/about-slide2.jpg'), _alt="stock-image-graph", _width="100%")}}
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Multi-Use Options </h5>
+                    <p>We offer a magnitude of products that can be used
+                        for both recreational and medical use. We also offer Indica, Sativa, and Hybrid
+                        products so that clients can select products specifically from their favorite
+                        cannabis strain.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                {{=IMG(_src=URL('static', 'images/about-slide3.jpg'), _alt="stock-image-graph", _width="100%")}}
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Something For Everyone</h5>
+                    <p>From hand grown premium flower, to THC infused soda, there is a
+                        product available for everyone. Here at Joint Ventures, everyday is Friday!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    </br>
+    </br>
+    </br>
+
+
+    <section class="m-auto"
+        style="width: 103%; padding: 60px 50px 100px 50px; margin-left:-15px;background-color:#F9F8F2">
+        <div class="text-left  m-auto" style="width:80%;">
             <br>
             <h2> About our Team: </h2>
-      <p class="lead">Joint Ventures was created in 2024 in the newly legalized state of Ohio by a group of
-                                    ambitious product experts. The company is equally owned and managed by this team.
-    </p>
+            <p class="lead">Joint Ventures was created in 2024 in the newly legalized state of Ohio by a group of
+                ambitious product experts. The company is equally owned and managed by this team.
+            </p>
         </div>
         <br>
-       <br>
-       
-<!--Cara-->
-      <div class="card m-auto  mb-3" style="width: 80%;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img style= "width: 100%;
+        <br>
+
+        <!--Cara-->
+        <div class="card m-auto  mb-3" style="width: 80%;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img style="width: 100%;
     height: 100%;
-    object-fit: cover;"src="{{=URL('static', 'images/cara.jpg')}}"  alt="...">
-    </div>
-      
-    <div class="col-md-8" >
-      <div class="card-body">
-          <br>
-          
-        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspCara Colker-Eybel</h5>
-        <p class="card-text">Before joining Cleveland Codes, I worked as a math teacher for the Cleveland Metropolitan School District. I always encouraged my students to push themselves and try new things - and I realized it was time for me to do the same! I am looking to make the transition from math teacher into the world of Software Engineering. The Cleveland Codes program has given me a great foundation from which I can grow my skills, and I hope to find an entry level position and/or internship where I can continue my learning. When I’m not coding, I enjoy riding my bike on the towpath, taking walks, and hanging out with my cat, Raisin.</p>
-      <a href="mailto:ccolkereybel@gmail.com"> <button class= "btn btn-dark btn-med m-auto border border-white text-white" type="button"><i class="fa-regular fa-envelope"></i> Email me!</button> </a>
-                   
-                
-      </div>
-    </div>
-          </div>
-       </div>
-</br>
-</br>
+    object-fit: cover;" src="{{=URL('static', 'images/cara.jpg')}}" alt="...">
+                </div>
 
- <!--Jordan-->
-       <div class="card m-auto  mb-3" style="width: 80%;">
-  <div class="row no-gutters">
-      
-      <div class="col-md-4">
-      <img style= "width: 100%;
-    height: 100%;
-    object-fit: cover;"src="{{=URL('static', 'images/jordan.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/jordan.jpg')}}')"  alt="...">
-    </div>
-      
-    <div class="col-md-8">
-      <div class="card-body">
-          <br>
-          
-        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspJordan Wooley</h5>
-        <p class="card-text">I decided to do Cleveland Codes to find new opportunities in a new career. I have always been interested in computers and programming so it was a perfect fit! When I’m not programming I enjoy playing video games, golf or going to baseball games with friends.</p>
-       <a href="mailto:jordanwooley95@gmail.com"> <button class= "btn btn-dark btn-med m-auto border border-white text-white" type="button"><i class="fa-regular fa-envelope"></i> Email me!</button> </a>
-      </div>
-    </div>
-           </div>
-       </div>
-      </br>
-</br>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
 
-    <!--Briana-->
-       <div class="card m-auto  mb-3" style="width: 80%;">
-  <div class="row no-gutters">
-      
-      <div class="col-md-4">
-      <img style= "width: 100%;
-    height: 100%;
-    object-fit: cover;"src="{{=URL('static', 'images/Briana.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/Briana.jpg')}}')"  alt="...">
-    </div>
-      
-    <div class="col-md-8">
-      <div class="card-body">
-          <br>
-          
-        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspBriana Robinson</h5>
-        <p class="card-text">I recieved my bachelor's degree from Kent State University in Visual Communication Design and currently work as a front-end web designer for a marketing agency. I felt it was important to be able to develop the designs I create, independent of website editors such as Wordpress, leading me to the Cleveland Codes program. I'm really excited to apply the things I've learned and transition into a development role. I look forward to the potential opportunities that will come from me obatining these new skills. When I'm not coding, I enjoy working out, finding a good Netflix docu-series to binge watch, and spending time with my family and my dog Zeke.</p>
-      <a href="mailto:brianarenae89@gmail.com"> <button class= "btn btn-dark btn-med m-auto border border-white text-white" type="button"><i class="fa-regular fa-envelope"></i> Email me!</button> </a>
-      </div>
-    </div>
-           </div>
-       </div>
-      </br>
-</br>
-
-<!--Jeanitha-->
-       <div class="card m-auto  mb-3" style="width: 80%;">
-  <div class="row no-gutters">
-      
-      <div class="col-md-4">
-      <img style= "width: 100%;
-    height: 100%;
-    object-fit: cover;"src="{{=URL('static', 'images/Jeanitha.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/Jeanitha.jpg')}}')"  alt="...">
-    </div>
-      
-    <div class="col-md-8">
-      <div class="card-body">
-          <br>
-          
-        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspJeanitha Houze</h5>
-        <p class="card-text">Jeanitha is a member of the Joint Ventures team!</p>
-        <a href="mailto:jeanithalh@gmail.com"> <button class= "btn btn-dark btn-med m-auto border border-white text-white" type="button"><i class="fa-regular fa-envelope"></i> Email me!</button> </a>
-      </div>
-    </div>
-           </div>
-       </div>
-    
-</br>
-</br>
-<!--Aazaz-->
-       <div class="card m-auto  mb-3" style="width: 80%;">
-  <div class="row no-gutters">
-      
-      <div class="col-md-4">
-      <img style= "width: 100%;
-    height: 100%;
-    object-fit: cover;"src="{{=URL('static', 'images/aazaz.jpg')}}" onclick="showImagePopup('{{=URL('static', 'images/aazaz.jpg')}}')"  alt="...">
-    </div>
-      
-    <div class="col-md-8">
-      <div class="card-body">
-          <br>
-          
-        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspAazaz Peer</h5>
-        <p class="card-text"> I’m a graduate of Cleveland State University with a bachelors in medical sciences, but I have always had passion for technology and computers as well. Cleveland codes gave me the opportunity to learn more about the development side of computer applications and websites. Cleveland codes helped me get familiar with the different tools that are available such as visual code studio or MySQL or frameworks such as web2py etc. Now I feel comfortable with the tools and source code for software development and can build valuable projects that can be implemented into the society. Short term goal is to land a entry level job in the software development field. Long term goal is to use my medical skills and software development skills to build software or equipment that will help the medical field improve and help people live healthier lives.</p>
-       <a href="mailto:aazazpeer@icloud.com"> <button class= "btn btn-dark btn-med m-auto border border-white text-white" type="button"><i class="fa-regular fa-envelope"></i> Email me!</button> </a>
-      </div>
-    </div>
-           </div>
-       </div>
-      
+                        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspCara
+                            Colker-Eybel</h5>
+                        <p class="card-text">Before joining Cleveland Codes, I worked as a math teacher for the
+                            Cleveland Metropolitan School District. I always encouraged my students to push themselves
+                            and try new things - and I realized it was time for me to do the same! I am looking to make
+                            the transition from math teacher into the world of Software Engineering. The Cleveland Codes
+                            program has given me a great foundation from which I can grow my skills, and I hope to find
+                            an entry level position and/or internship where I can continue my learning. When I’m not
+                            coding, I enjoy riding my bike on the towpath, taking walks, and hanging out with my cat,
+                            Raisin.</p>
+                        <a href="mailto:ccolkereybel@gmail.com"> <button
+                                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i
+                                    class="fa-regular fa-envelope"></i> Email me!</button> </a>
 
 
-
-
-      
-  </div>
-</div>
-
-
-
-       
-</section>
-
-<div class="text-center m-auto" style="width:75%; padding-top:20px;padding-bottom:60px;" >
-    </br>
-            <h2 class="lead" ><b> Specs:</b> </h2>
-      <p class="text-muted">The Joint Ventures CRM was created collaboratively using Web2Py and managed with Github. Languages used include HTML, CSS, Javascript, SQLite, and Python. 
-    </p> 
+                    </div>
+                </div>
+            </div>
         </div>
-  </div>
-</br>
-    
+        </br>
+        </br>
+
+        <!--Jordan-->
+        <div class="card m-auto  mb-3" style="width: 80%;">
+            <div class="row no-gutters">
+
+                <div class="col-md-4">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover;" src="{{=URL('static', 'images/jordan.jpg')}}"
+                        onclick="showImagePopup('{{=URL('static', 'images/jordan.jpg')}}')" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+
+                        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspJordan
+                            Wooley</h5>
+                        <p class="card-text">I decided to do Cleveland Codes to find new opportunities in a new career.
+                            I have always been interested in computers and programming so it was a perfect fit! When I’m
+                            not programming I enjoy playing video games, golf or going to baseball games with friends.
+                        </p>
+                        <a href="mailto:jordanwooley95@gmail.com"> <button
+                                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i
+                                    class="fa-regular fa-envelope"></i> Email me!</button> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        </br>
+
+        <!--Briana-->
+        <div class="card m-auto  mb-3" style="width: 80%;">
+            <div class="row no-gutters">
+
+                <div class="col-md-4">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover;" src="{{=URL('static', 'images/Briana.jpg')}}"
+                        onclick="showImagePopup('{{=URL('static', 'images/Briana.jpg')}}')" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+
+                        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspBriana
+                            Robinson</h5>
+                        <p class="card-text">I recieved my bachelor's degree from Kent State University in Visual
+                            Communication Design and currently work as a front-end web designer for a marketing agency.
+                            I felt it was important to be able to develop the designs I create, independent of website
+                            editors such as Wordpress, leading me to the Cleveland Codes program. I'm really excited to
+                            apply the things I've learned and transition into a development role. I look forward to the
+                            potential opportunities that will come from me obatining these new skills. When I'm not
+                            coding, I enjoy working out, finding a good Netflix docu-series to binge watch, and spending
+                            time with my family and my dog Zeke.</p>
+                        <a href="mailto:brianarenae89@gmail.com"> <button
+                                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i
+                                    class="fa-regular fa-envelope"></i> Email me!</button> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </br>
+        </br>
+
+        <!--Jeanitha-->
+        <div class="card m-auto  mb-3" style="width: 80%;">
+            <div class="row no-gutters">
+
+                <div class="col-md-4">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover;" src="{{=URL('static', 'images/Jeanitha.jpg')}}"
+                        onclick="showImagePopup('{{=URL('static', 'images/Jeanitha.jpg')}}')" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+
+                        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspJeanitha
+                            Houze</h5>
+                        <p class="card-text">Jeanitha is a member of the Joint Ventures team!</p>
+                        <a href="mailto:jeanithalh@gmail.com"> <button
+                                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i
+                                    class="fa-regular fa-envelope"></i> Email me!</button> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </br>
+        </br>
+        <!--Aazaz-->
+        <div class="card m-auto  mb-3" style="width: 80%;">
+            <div class="row no-gutters">
+
+                <div class="col-md-4">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover;" src="{{=URL('static', 'images/aazaz.jpg')}}"
+                        onclick="showImagePopup('{{=URL('static', 'images/aazaz.jpg')}}')" alt="...">
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <br>
+
+                        <h5 class="card-title" style="color:#9bd45c"><i class="fa-solid fa-cannabis"></i> &nbspAazaz
+                            Peer</h5>
+                        <p class="card-text"> I’m a graduate of Cleveland State University with a bachelors in medical
+                            sciences, but I have always had passion for technology and computers as well. Cleveland
+                            codes gave me the opportunity to learn more about the development side of computer
+                            applications and websites. Cleveland codes helped me get familiar with the different tools
+                            that are available such as visual code studio or MySQL or frameworks such as web2py etc. Now
+                            I feel comfortable with the tools and source code for software development and can build
+                            valuable projects that can be implemented into the society. Short term goal is to land a
+                            entry level job in the software development field. Long term goal is to use my medical
+                            skills and software development skills to build software or equipment that will help the
+                            medical field improve and help people live healthier lives.</p>
+                        <a href="mailto:aazazpeer@icloud.com"> <button
+                                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i
+                                    class="fa-regular fa-envelope"></i> Email me!</button> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-<script>
-    function showImagePopup(imageUrl) {
-        var popup = document.createElement('div');
-        popup.className = 'image-popup';
-        var img = document.createElement('img');
-        img.src = imageUrl;
-        img.className = 'enlarged-image'
-        popup.appendChild(img);
-        document.body.appendChild(popup);
-        popup.onclick = function () {
-            document.body.removeChild(popup);
-        };
-    }
-</script>
+
+
+
+
+        </div>
+        </div>
+
+
+
+
+    </section>
+
+    <div class="text-center m-auto" style="width:75%; padding-top:20px;padding-bottom:60px;">
+        </br>
+        <h2 class="lead"><b> Specs:</b> </h2>
+        <p class="text-muted">The Joint Ventures CRM was created collaboratively using Web2Py and managed with Github.
+            Languages used include HTML, CSS, Javascript, SQLite, and Python.
+        </p>
+        <a href="https://github.com/jordanwooley95/crm" target="_blank"> <button
+                class="btn btn-dark btn-med m-auto border border-white text-white" type="button"><i></i>Source
+                Code</button> </a>
+    </div>
+    </div>
+    </br>
+
+
+
+    <script>
+        function showImagePopup(imageUrl) {
+            var popup = document.createElement('div');
+            popup.className = 'image-popup';
+            var img = document.createElement('img');
+            img.src = imageUrl;
+            img.className = 'enlarged-image'
+            popup.appendChild(img);
+            document.body.appendChild(popup);
+            popup.onclick = function () {
+                document.body.removeChild(popup);
+            };
+        }
+    </script>
 </body>
+
 </html
